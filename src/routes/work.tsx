@@ -41,7 +41,7 @@ const corporate = [
 const transformations = [
   {
     title: "From reactive to intentional",
-    who: "Senior Professional, Consulting — India/UAE",
+    who: "Senior Professional, Consulting - India/UAE",
     challenge: "High reactivity and a habit of being overwhelmed by other people's opinions.",
     approach: "The Internal Operating System program, with a focus on objectivity training.",
     outcome:
@@ -49,7 +49,7 @@ const transformations = [
   },
   {
     title: "From silence to influence",
-    who: "Senior Leader, Financial Sector — UK",
+    who: "Senior Leader, Financial Sector - UK",
     challenge: "Staying silent when unprepared, and struggling to influence without formal authority.",
     approach: "Executive Coaching using the Expectation Scale and the PAUSE framework.",
     outcome: "Influence without authority, a more self-sufficient team, and recognition from management.",
@@ -63,7 +63,7 @@ const transformations = [
   },
   {
     title: "From cognitive fog to board clarity",
-    who: "Ops Head, Board Level, Chemical Engineering — Hong Kong",
+    who: "Ops Head, Board Level, Chemical Engineering - Hong Kong",
     challenge: "Cognitive slowdown and unclear articulation in board meetings.",
     approach: "Resource strain identification paired with a cognitive clarity framework.",
     outcome: "Restored board-level clarity, sharper questioning and clearer articulation.",

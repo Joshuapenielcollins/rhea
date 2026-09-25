@@ -25,7 +25,7 @@ export function SiteFooter() {
           <Link to="/" className="inline-flex" aria-label="RheAligned, home">
             <img
               src={logoUrl}
-              alt="RheAligned — Clarity, Confidence, Influence"
+              alt="RheAligned - Clarity, Confidence, Influence"
               className="h-auto w-[min(17rem,75vw)] object-contain brightness-0 invert"
             />
           </Link>

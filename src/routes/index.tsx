@@ -62,12 +62,12 @@ const transformations = [
   {
     title: "From silence to influence",
     outcome: "Recognized Leadership",
-    context: "Senior Leader, Financial Sector — UK",
+    context: "Senior Leader, Financial Sector - UK",
   },
   {
     title: "From reactive to intentional",
     outcome: "Mental Peace & Bigger Role",
-    context: "Senior Professional, Consulting — India/UAE",
+    context: "Senior Professional, Consulting - India/UAE",
   },
   {
     title: "From tangled to in control",
@@ -410,12 +410,12 @@ function TestimonialsPreview() {
     {
       quote:
         "I went from staying silent when unprepared to pausing, revamping, and responding with confidence.",
-      who: "Senior Leader, Financial Sector — UK",
+      who: "Senior Leader, Financial Sector - UK",
     },
     {
       quote:
         "Now I choose what deserves my energy. It's changed everything, my mental health, my relationships, my peace.",
-      who: "Senior Professional, Consulting Sector — India/UAE",
+      who: "Senior Professional, Consulting Sector - India/UAE",
     },
   ];
   return (

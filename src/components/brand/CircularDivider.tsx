@@ -1,4 +1,4 @@
-/** A hairline with a ring node on it — the connective tissue between chapters. */
+/** A hairline with a ring node on it - the connective tissue between chapters. */
 export function CircularDivider({ align = "left" }: { align?: "left" | "center" }) {
   return (
     <div className="shell" aria-hidden="true">

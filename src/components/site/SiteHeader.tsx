@@ -18,7 +18,7 @@ function Wordmark() {
     <Link to="/" className="flex shrink-0 items-center" aria-label="RheAligned, home">
       <img
         src={logoUrl}
-        alt="RheAligned — Clarity, Confidence, Influence"
+        alt="RheAligned - Clarity, Confidence, Influence"
         className="h-auto w-[clamp(10.5rem,18vw,14rem)] object-contain"
       />
     </Link>

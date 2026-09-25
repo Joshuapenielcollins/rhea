@@ -44,7 +44,7 @@ const entries: Entry[] = [
   },
   {
     pull: "I don't second-guess anymore. I have a framework now.",
-    attribution: "Senior Leader, Financial Sector — UK",
+    attribution: "Senior Leader, Financial Sector - UK",
     full: [
       "The shift is remarkable. I went from staying silent when unprepared to pausing, revamping, and responding with confidence. My team is more self-sufficient now. They reach out more, they trust me more. The change in team dynamics has been recognized by management.",
       "I've gained influence without authority. The enthusiasm dip was unexpected but made sense. Less self-obsession means less dopamine from overthinking. That's progress.",
@@ -52,7 +52,7 @@ const entries: Entry[] = [
   },
   {
     pull: "Now I choose what deserves my energy. I've moved from being reactive to intentional.",
-    attribution: "Senior Professional, Consulting Sector — India/UAE",
+    attribution: "Senior Professional, Consulting Sector - India/UAE",
     full: [
       "I used to get upset by everything: workplace behavior, extended family, people's opinions. I'd replay things endlessly and lose mental peace. Now I choose what deserves my energy.",
       "The shift was scary initially, but now I understand. It's had a positive impact on my mental health and peace. I have more time and energy now, for my self-development and my kids. Being mindful has brought me closer to all my relationships.",
@@ -60,7 +60,7 @@ const entries: Entry[] = [
   },
   {
     pull: "I'm not trying to be perfect anymore. I'm building a system.",
-    attribution: "Executive, Technology Sector — USA",
+    attribution: "Executive, Technology Sector - USA",
     full: [
       "The negative narration doesn't stop overnight. And I thought that was failure. I kept telling myself \u201cI'm trying, it doesn't stop.\u201d But that's natural. It takes time and consistent effort to make the change.",
       "Now I understand that. I have a method now: physical change, distraction, positive reinforcement.",
