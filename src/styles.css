@@ -1,0 +1,362 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * RheAligned design system.
+ * Brand: Primary Green #207280, Deep Green #054049, warm ivory neutrals.
+ * All colours in oklch. Geometry is restrained; the circle language lives in
+ * rings, arcs and nodes rather than in rounded rectangles.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-ivory: var(--ivory);
+  --color-sand: var(--sand);
+  --color-hairline: var(--hairline);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Montserrat is the primary voice; the editorial serif is applied via .editorial */
+  --font-serif: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-editorial: "Times New Roman", Times, Georgia, serif;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  --shadow-soft: 0 1px 2px color-mix(in oklab, var(--deep) 6%, transparent),
+    0 12px 32px -18px color-mix(in oklab, var(--deep) 35%, transparent);
+  --shadow-lift: 0 2px 4px color-mix(in oklab, var(--deep) 7%, transparent),
+    0 26px 50px -26px color-mix(in oklab, var(--deep) 45%, transparent);
+
+  --background: oklch(0.985 0.0041 91.45);
+  --foreground: oklch(0.2037 0.0099 220.01);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2037 0.0099 220.01);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2037 0.0099 220.01);
+
+  --primary: oklch(0.5105 0.0784 211.51);
+  --primary-foreground: oklch(0.985 0.0041 91.45);
+
+  --deep: oklch(0.3416 0.0569 211.03);
+  --deep-foreground: oklch(0.985 0.0041 91.45);
+
+  --secondary: oklch(0.958 0.0083 91.48);
+  --secondary-foreground: oklch(0.3416 0.0569 211.03);
+
+  --muted: oklch(0.958 0.0083 91.48);
+  --muted-foreground: oklch(0.5117 0.0196 205.76);
+
+  --accent: oklch(0.958 0.0083 91.48);
+  --accent-foreground: oklch(0.3416 0.0569 211.03);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0.0041 91.45);
+
+  --ivory: oklch(0.985 0.0041 91.45);
+  --sand: oklch(0.958 0.0083 91.48);
+  --hairline: oklch(0.9071 0.0141 88.69);
+
+  --border: oklch(0.9071 0.0141 88.69);
+  --input: oklch(0.9071 0.0141 88.69);
+  --ring: oklch(0.5105 0.0784 211.51);
+
+  --chart-1: oklch(0.5105 0.0784 211.51);
+  --chart-2: oklch(0.3416 0.0569 211.03);
+  --chart-3: oklch(0.6404 0.0616 211.4);
+  --chart-4: oklch(0.7404 0.0446 205.4);
+  --chart-5: oklch(0.9071 0.0141 88.69);
+
+  --sidebar: oklch(0.958 0.0083 91.48);
+  --sidebar-foreground: oklch(0.2037 0.0099 220.01);
+  --sidebar-primary: oklch(0.5105 0.0784 211.51);
+  --sidebar-primary-foreground: oklch(0.985 0.0041 91.45);
+  --sidebar-accent: oklch(0.9071 0.0141 88.69);
+  --sidebar-accent-foreground: oklch(0.3416 0.0569 211.03);
+  --sidebar-border: oklch(0.9071 0.0141 88.69);
+  --sidebar-ring: oklch(0.5105 0.0784 211.51);
+}
+
+.dark {
+  --background: oklch(0.2037 0.0099 220.01);
+  --foreground: oklch(0.985 0.0041 91.45);
+  --card: oklch(0.26 0.0169 215);
+  --card-foreground: oklch(0.985 0.0041 91.45);
+  --popover: oklch(0.26 0.0169 215);
+  --popover-foreground: oklch(0.985 0.0041 91.45);
+  --primary: oklch(0.6404 0.0616 211.4);
+  --primary-foreground: oklch(0.2037 0.0099 220.01);
+  --deep: oklch(0.3416 0.0569 211.03);
+  --deep-foreground: oklch(0.985 0.0041 91.45);
+  --secondary: oklch(0.28 0.0169 215);
+  --secondary-foreground: oklch(0.985 0.0041 91.45);
+  --muted: oklch(0.28 0.0169 215);
+  --muted-foreground: oklch(0.72 0.0196 205.76);
+  --accent: oklch(0.28 0.0169 215);
+  --accent-foreground: oklch(0.985 0.0041 91.45);
+  --ivory: oklch(0.2037 0.0099 220.01);
+  --sand: oklch(0.26 0.0169 215);
+  --hairline: oklch(1 0 0 / 12%);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.6404 0.0616 211.4);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    font-synthesis-weight: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  h1 {
+    letter-spacing: -0.03em;
+  }
+
+  blockquote {
+    font-family: var(--font-editorial);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Editorial eyebrow label rendered as a visible section chip */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, currentColor 22%, transparent);
+  background: color-mix(in oklab, currentColor 8%, transparent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary);
+
+  &::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: currentColor;
+    box-shadow: 0 0 0 3px color-mix(in oklab, currentColor 18%, transparent);
+  }
+}
+
+/* Strong, visible section heading */
+@utility section-title {
+  margin-top: 1.25rem;
+  font-size: clamp(1.6rem, 2.9vw, 2.35rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Times New Roman italic: the contrasting editorial voice */
+@utility editorial {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+/* Section rhythm: structured breathing room, not empty space */
+@utility section-y {
+  padding-block: clamp(3.25rem, 5.5vw, 5.5rem);
+}
+
+@utility section-y-lg {
+  padding-block: clamp(4rem, 7vw, 7rem);
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Structured containers: thin borders, controlled radius, real internal space */
+@utility panel {
+  position: relative;
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+  transition:
+    border-color 400ms var(--ease-calm),
+    box-shadow 400ms var(--ease-calm),
+    transform 400ms var(--ease-calm);
+}
+
+@utility panel-hover {
+  &:hover {
+    border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+  }
+}
+
+@utility panel-deep {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: var(--deep);
+  color: var(--deep-foreground);
+  box-shadow: var(--shadow-lift);
+  padding: clamp(1.75rem, 3vw, 3rem);
+}
+
+@utility panel-quiet {
+  position: relative;
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: var(--sand);
+  padding: clamp(1.5rem, 2.4vw, 2.25rem);
+}
+
+/* Soft rounded surface used for grouped rows and lists */
+@utility surface {
+  border: 1px solid var(--hairline);
+  border-radius: 1.25rem;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* Circular section / item number */
+@utility ring-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--primary) 55%, transparent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+@utility label-xs {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+@utility hairline-t {
+  border-top: 1px solid var(--hairline);
+}
+
+/* Slow, calm ring rotation used sparingly on brand compositions */
+@keyframes ring-drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@utility ring-drift {
+  animation: ring-drift 90s linear infinite;
+  transform-origin: center;
+}
+
+@utility ring-drift-reverse {
+  animation: ring-drift 140s linear infinite reverse;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
