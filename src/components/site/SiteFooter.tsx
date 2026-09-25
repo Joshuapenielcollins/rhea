@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/rhealigned-logo.png.asset.json";
+import logoUrl from "@/assets/rhealigned-logo.png";
 
 const nav = [
   { to: "/about", label: "About" },
@@ -24,7 +24,7 @@ export function SiteFooter() {
         <div>
           <Link to="/" className="inline-flex" aria-label="RheAligned, home">
             <img
-              src={logoAsset.url}
+              src={logoUrl}
               alt="RheAligned — Clarity, Confidence, Influence"
               className="h-auto w-[min(17rem,75vw)] object-contain brightness-0 invert"
             />

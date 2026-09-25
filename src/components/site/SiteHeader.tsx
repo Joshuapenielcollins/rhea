@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { CTA } from "@/components/brand/CTA";
-import logoAsset from "@/assets/rhealigned-logo.png.asset.json";
+import logoUrl from "@/assets/rhealigned-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -17,7 +17,7 @@ function Wordmark() {
   return (
     <Link to="/" className="flex shrink-0 items-center" aria-label="RheAligned, home">
       <img
-        src={logoAsset.url}
+        src={logoUrl}
         alt="RheAligned — Clarity, Confidence, Influence"
         className="h-auto w-[clamp(10.5rem,18vw,14rem)] object-contain"
       />
