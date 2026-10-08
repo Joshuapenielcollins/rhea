@@ -8,14 +8,11 @@ const __dirname = path.dirname(__filename);
 // Read testimonials from src/lib/testimonials.ts
 const testimonialsContent = fs.readFileSync(
   path.join(__dirname, "../src/lib/testimonials.ts"),
-  "utf8"
+  "utf8",
 );
 
 // Read articles from src/lib/articles.ts
-const articlesContent = fs.readFileSync(
-  path.join(__dirname, "../src/lib/articles.ts"),
-  "utf8"
-);
+const articlesContent = fs.readFileSync(path.join(__dirname, "../src/lib/articles.ts"), "utf8");
 
 // We can parse or import the data
 // Let's create the documents directly:
