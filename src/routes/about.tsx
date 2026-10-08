@@ -298,7 +298,7 @@ function About() {
             <div className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card p-8 md:p-12 shadow-sm">
               <div className="max-w-3xl">
                 <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                  Positioning
+                  The Perspective I Bring
                 </span>
                 <p className="mt-4 text-[clamp(1.2rem,2.1vw,1.6rem)] font-medium leading-relaxed text-foreground">
                   I am an ICF-certified executive and leadership coach who spent 14 years inside
