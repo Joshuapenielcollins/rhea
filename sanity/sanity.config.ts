@@ -7,6 +7,7 @@ export default defineConfig({
   title: "RheAligned Coaching CMS",
   projectId: "nfzvcsrt",
   dataset: "production",
+  basePath: "/admin",
   plugins: [structureTool()],
   schema: {
     types: schemaTypes,
