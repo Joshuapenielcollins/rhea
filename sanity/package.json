@@ -1,7 +1,6 @@
 {
   "name": "rhealigned-sanity-studio",
   "private": true,
-  "type": "module",
   "version": "1.0.0",
   "main": "package.json",
   "scripts": {
