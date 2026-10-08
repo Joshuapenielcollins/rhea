@@ -47,8 +47,13 @@ const builder = sanityClient ? imageUrlBuilder(sanityClient) : null;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function urlFor(source: any) {
-  if (!builder || !source) return "";
-  return builder.image(source).auto("format").fit("max").url();
+  if (!builder || !source || !source.asset) return "";
+  try {
+    return builder.image(source).auto("format").fit("max").url();
+  } catch (err) {
+    console.warn("Unable to resolve Sanity image source:", err);
+    return "";
+  }
 }
 
 /**

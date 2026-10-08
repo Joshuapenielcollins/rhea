@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
-    "build": "sanity build",
+    "build": "sanity build dist -y && mkdir -p dist/admin && cp -r dist/static dist/admin/ && cp dist/index.html dist/admin/",
     "deploy": "sanity deploy"
   },
   "dependencies": {

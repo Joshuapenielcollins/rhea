@@ -32,21 +32,31 @@
   ],
   "rewrites": [
     {
-      "source": "/admin/(.*)",
+      "source": "/admin/static/(.*)",
       "destination": {
-        "service": "studio"
-      }
-    },
-    {
-      "source": "/admin",
-      "destination": {
-        "service": "studio"
+        "service": "studio",
+        "path": "/static/$1"
       }
     },
     {
       "source": "/static/(.*)",
       "destination": {
-        "service": "studio"
+        "service": "studio",
+        "path": "/static/$1"
+      }
+    },
+    {
+      "source": "/admin",
+      "destination": {
+        "service": "studio",
+        "path": "/index.html"
+      }
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": {
+        "service": "studio",
+        "path": "/index.html"
       }
     },
     {
