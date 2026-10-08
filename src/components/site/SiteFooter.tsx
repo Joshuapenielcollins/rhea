@@ -4,7 +4,6 @@ import logoUrl from "@/assets/rhealigned-logo.png";
 const nav = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/work", label: "Work" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
@@ -22,12 +21,18 @@ export function SiteFooter() {
       </div>
       <div className="shell relative grid gap-10 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <Link to="/" className="inline-flex" aria-label="RheAligned, home">
+          <Link to="/" className="inline-flex flex-col" aria-label="RheAligned, home">
             <img
               src={logoUrl}
               alt="RheAligned - Clarity, Confidence, Influence"
               className="h-auto w-[min(17rem,75vw)] object-contain brightness-0 invert"
             />
+            <p className="mt-4 text-sm font-semibold tracking-wide text-deep-foreground/90">
+              Clarity. Confidence. Influence.
+            </p>
+            <p className="mt-1 text-xs text-deep-foreground/70">
+              Precision thinking for ambitious leaders.
+            </p>
           </Link>
         </div>
 
@@ -44,7 +49,10 @@ export function SiteFooter() {
         </nav>
 
         <div className="text-sm text-deep-foreground/70">
-          <a href="mailto:rhea@rhealigned.com" className="block transition-colors hover:text-deep-foreground">
+          <a
+            href="mailto:rhea@rhealigned.com"
+            className="block transition-colors hover:text-deep-foreground"
+          >
             rhea@rhealigned.com
           </a>
           <a

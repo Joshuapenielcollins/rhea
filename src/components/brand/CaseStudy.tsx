@@ -35,12 +35,12 @@ export function CaseStudy({ data, index }: { data: CaseStudyData; index: number 
       </div>
 
       <dl className="relative">
-        <span
-          className="absolute left-[5px] top-3 bottom-3 w-px bg-hairline"
-          aria-hidden="true"
-        />
+        <span className="absolute left-[5px] top-3 bottom-3 w-px bg-hairline" aria-hidden="true" />
         {rows.map((row) => (
-          <div key={row.k} className="relative grid grid-cols-[auto_minmax(0,1fr)] gap-5 pb-7 last:pb-0">
+          <div
+            key={row.k}
+            className="relative grid grid-cols-[auto_minmax(0,1fr)] gap-5 pb-7 last:pb-0"
+          >
             <span
               className="relative z-10 mt-[7px] block h-[11px] w-[11px] shrink-0 rounded-full bg-background"
               style={{

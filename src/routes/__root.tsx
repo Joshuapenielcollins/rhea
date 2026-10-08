@@ -77,14 +77,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Executive Coaching for Leaders | RheAligned Coaching" },
+      { title: "Executive and Leadership Coach | Rhea Bulsara Sidhva | RheAligned" },
       {
         name: "description",
         content:
-          "Executive and leadership coaching for senior leaders, founders and globally mobile professionals. Work with ICF-certified coach Rhea Bulsara.",
+          "Executive and leadership coaching for senior leaders and founders. Former Global HR Leader at BP, Tata Group, and Sainsbury's. ICF-ACC | 500+ Hours of Coaching Practice.",
       },
-      { name: "author", content: "Rhea Bulsara" },
+      { name: "author", content: "Rhea Bulsara Sidhva" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { property: "og:site_name", content: "RheAligned" },
+      { property: "og:locale", content: "en_US" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "theme-color", content: "#054049" },
@@ -104,16 +109,100 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "ProfessionalService",
-          name: "RheAligned",
-          slogan: "Clarity. Confidence. Influence.",
-          description:
-            "Executive and leadership coaching for senior leaders, founders and globally mobile professionals.",
-          areaServed: ["Hong Kong", "United Kingdom", "United Arab Emirates", "India", "United States"],
-          email: "rhea@rhealigned.com",
-          sameAs: [
-            "https://linkedin.com/in/rheacoaching",
-            "https://instagram.com/rhealign.coaching",
+          "@graph": [
+            {
+              "@type": ["ProfessionalService", "Organization"],
+              "@id": "https://rhealigned.com/#organization",
+              name: "RheAligned",
+              alternateName: "RheAligned Executive Coaching",
+              url: "https://rhealigned.com",
+              logo: "https://rhealigned.com/favicon.png",
+              slogan: "Clarity. Confidence. Influence.",
+              description:
+                "Executive and leadership coaching for senior leaders, founders, and global organizations. Cognitive systems-based coaching founded by former Global HR Leader Rhea Bulsara Sidhva.",
+              founder: {
+                "@type": "Person",
+                "@id": "https://rhealigned.com/#rhea",
+                name: "Rhea Bulsara Sidhva",
+                jobTitle: "Executive and Leadership Coach",
+                description:
+                  "Former Global HR Leader at BP, Tata Group, and Sainsbury's. ICF-ACC certified executive coach with 500+ hours of coaching practice.",
+                url: "https://rhealigned.com/about",
+                sameAs: [
+                  "https://linkedin.com/in/rheacoaching",
+                  "https://instagram.com/rhealign.coaching",
+                ],
+                knowsAbout: [
+                  "Executive Coaching",
+                  "Leadership Development",
+                  "Cognitive Systems",
+                  "Emotional Resilience",
+                  "Talent Strategy",
+                  "Global Mobility",
+                ],
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Hong Kong",
+                addressCountry: "HK",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: "22.3193",
+                longitude: "114.1694",
+              },
+              areaServed: [
+                "Hong Kong",
+                "United Kingdom",
+                "United Arab Emirates",
+                "India",
+                "United States",
+                "Singapore",
+              ],
+              email: "rhea@rhealigned.com",
+              sameAs: [
+                "https://linkedin.com/in/rheacoaching",
+                "https://instagram.com/rhealign.coaching",
+              ],
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://rhealigned.com/#faq",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What is RheAligned executive coaching?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "RheAligned is an executive and leadership coaching practice founded by Rhea Bulsara Sidhva. It focuses on cognitive operating systems, emotional agility, and practical leadership frameworks for senior executives, founders, and organizations.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Who is Rhea Bulsara Sidhva?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Rhea Bulsara Sidhva is an ICF-certified executive coach (ICF-ACC) and former Global HR Leader with 14+ years of multinational corporate experience at BP, Tata Group, and Sainsbury's, specializing in leadership pipelines, talent mobility, and executive clarity.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "What executive coaching programs does RheAligned provide?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "RheAligned offers The Executive Recalibration, The Internal Operating System, The Implementation Dip Program, Cross-Cultural Clarity, and The Untangling Session for individuals, alongside tailored enterprise leadership development and talent consulting.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Does RheAligned coach executives outside of Hong Kong?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes. While headquartered in Hong Kong, RheAligned works virtually with senior executives, founders, and global teams across the UK, UAE, India, Singapore, and the United States across multiple time zones.",
+                  },
+                },
+              ],
+            },
           ],
         }),
       },

@@ -24,12 +24,7 @@ export function ConcentricRings({
   const steps = Array.from({ length: rings }, (_, i) => 46 - i * (40 / rings));
 
   return (
-    <svg
-      viewBox="0 0 100 100"
-      className={className}
-      aria-hidden="true"
-      focusable="false"
-    >
+    <svg viewBox="0 0 100 100" className={className} aria-hidden="true" focusable="false">
       <g className={drift && !reduced ? "ring-drift" : undefined}>
         <circle
           cx="50"

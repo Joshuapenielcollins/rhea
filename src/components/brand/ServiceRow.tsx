@@ -42,7 +42,9 @@ export function ServiceRow({
           className="relative mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full border transition-all duration-500"
           style={{
             borderColor: open ? "var(--primary)" : "var(--hairline)",
-            background: open ? "color-mix(in oklab, var(--primary) 8%, transparent)" : "transparent",
+            background: open
+              ? "color-mix(in oklab, var(--primary) 8%, transparent)"
+              : "transparent",
           }}
           aria-hidden="true"
         >

@@ -11,10 +11,7 @@ export type Milestone = {
 export function Timeline({ items }: { items: Milestone[] }) {
   return (
     <ol className="relative">
-      <span
-        className="absolute left-[7px] top-3 bottom-3 w-px bg-hairline"
-        aria-hidden="true"
-      />
+      <span className="absolute left-[7px] top-3 bottom-3 w-px bg-hairline" aria-hidden="true" />
       {items.map((m) => (
         <li
           key={m.org}

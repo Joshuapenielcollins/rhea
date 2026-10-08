@@ -1,25 +1,29 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/brand/Reveal";
-import { CTA } from "@/components/brand/CTA";
+import { CTA, CTAWithMicro } from "@/components/brand/CTA";
 import { RingMarker } from "@/components/brand/RingMarker";
 import { Arc } from "@/components/brand/Arc";
-import { ServiceRow } from "@/components/brand/ServiceRow";
 
 export const Route = createFileRoute("/services")({
   component: Services,
   head: () => ({
     meta: [
-      { title: "Executive Coaching & Leadership Services | RheAligned" },
+      {
+        title: "Executive Coaching and Leadership Development | RheAligned",
+      },
       {
         name: "description",
         content:
-          "Executive coaching, cognitive clarity programs and leadership development for individuals and organizations. See options, outcomes and investment.",
+          "Executive coaching and leadership development grounded in the RheAligned Method. For individual leaders, founders, and forward-thinking organizations globally.",
       },
-      { property: "og:title", content: "Executive Coaching & Leadership Services | RheAligned" },
+      {
+        property: "og:title",
+        content: "Executive Coaching and Leadership Development | RheAligned",
+      },
       {
         property: "og:description",
         content:
-          "Executive coaching, cognitive clarity programs and leadership development for individuals and organizations.",
+          "I partner with ambitious individuals and forward-thinking organizations globally to build clarity, resilience, and influence.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/services" },
@@ -28,79 +32,80 @@ export const Route = createFileRoute("/services")({
   }),
 });
 
-const programs = [
+const individualPrograms = [
   {
     name: "Executive & Leadership Coaching",
-    lede: "One-on-one coaching for leaders facing complex challenges.",
-    who: "C-suite executives, board-level operators, startup founders and senior leaders navigating complexity, high-stakes decisions or transitions.",
+    target:
+      "For senior leaders and board-level operators navigating complexity, high-stakes decisions, or transition.",
     gains: [
-      "Sharper, faster decision-making under pressure, the kind of shift one client described as going from staying silent to responding with confidence",
-      "A personal system to interrupt negative mental patterns and stop second-guessing",
-      "The ability to move from reactive and overwhelmed to intentionally choosing where your energy goes",
+      "Sharper, faster decision-making under pressure",
+      "A personal system to interrupt negative mental patterns",
+      "The ability to move from reactive to intentional",
     ],
-    investment: "HK$12,000 to HK$15,000 (6 sessions)",
+    investment: "HK$8,000 - 12,000 (6 sessions)",
+    ctaText: "Book a free 30-minute discovery call",
+    ctaMicro: "No obligation · Virtual, any time zone",
   },
   {
     name: "The Implementation Dip Program",
-    lede: "For leaders and founders who know what to do but can't make it stick. This program is built for the dip, the stretch where motivation fades and old habits come back.",
-    who: "High performers, entrepreneurs and leaders caught in overthinking and second-guessing, who start strong and struggle to follow through.",
+    target: "For leaders and founders who know what to do but can't make it stick.",
     gains: [
       "A map of your personal triggers and patterns",
-      "Acceptance of the real, non-linear timeline for change, which moves you from frustration into a system-based approach",
-      "Your personalized PAUSE framework, ready to use immediately",
-      "A tracking system for real-world application, so consistency has something to hold onto",
+      "Acceptance of the real, non-linear timeline for change",
+      "Your personalized PAUSE framework",
+      "A tracking system for real-world application",
     ],
-    investment: "HK$8,000 to HK$10,000 (5 sessions)",
+    investment: "HK$8,000 - 10,000 (5 sessions)",
+    ctaText: "Book a free 30-minute discovery call",
+    ctaMicro: "No obligation · Virtual, any time zone",
   },
   {
     name: "The Internal Operating System",
-    lede: "We deconstruct the unexamined beliefs and narratives running in the background, then rebuild your internal OS with clarity, structure and frameworks you can act on.",
-    who: "Professionals and founders dealing with impostor syndrome, persistent self-doubt, or an internal voice that holds them back.",
+    target:
+      "For professionals and founders dealing with impostor syndrome, persistent self-doubt, or an internal voice that holds them back.",
     gains: [
       "Deep identification of your triggers and recurring patterns",
-      "A documented Internal OS, your own personalized mental model",
-      "The 3-Stage Interruption method to stop negative loops on demand, moving you from \u201cI can't\u201d to \u201cI am learning to\u201d",
-      "Clarity on your identity beyond your title, so you lead from core strengths rather than the limits of a role. This is the shift that allowed one client to move from being \u201creactive to everything\u201d to \u201cchoosing what deserves her energy.\u201d",
+      "A documented Internal OS",
+      "The 3-Stage Interruption method",
+      "Clarity on your identity beyond your title",
     ],
-    investment: "HK$9,000 to HK$12,000 (6 sessions)",
+    investment: "HK$9,000 - 12,000 (6 sessions)",
+    ctaText: "Book a free 30-minute discovery call",
+    ctaMicro: "No obligation · Virtual, any time zone",
   },
   {
     name: "Cross-Cultural Clarity",
-    lede: "For leaders moving between or managing across UK, USA, India, UAE and Hong Kong contexts.",
-    who: "Expat leaders, managers running diverse teams, and professionals transitioning across geographies.",
+    target:
+      "For leaders moving between or managing across UK, USA, India, UAE, and Hong Kong contexts.",
     gains: [
       "A practical cultural decision-making framework",
       "Stakeholder mapping for your specific cultural context",
-      "An understanding of how influence shifts as you cross borders",
-      "Confidence to lead and communicate wherever you're posted next",
+      "Understanding of how influence shifts across cultures",
+      "Confidence to lead and communicate anywhere",
     ],
-    investment: "HK$10,000 to HK$12,000 (4 sessions)",
+    investment: "HK$10,000 - 12,000 (4 sessions)",
+    ctaText: "Book a free 30-minute discovery call",
+    ctaMicro: "No obligation · Virtual, any time zone",
   },
   {
     name: "The Untangling Session",
-    lede: "When everything feels connected and overwhelming, and you don't know where to start. A focused session to untangle the mess together, pinpoint the most important place to begin, and build a practical execution plan.",
-    who: "Professionals feeling stuck, founders who can't see the wood for the trees, and anyone who needs structure and direction.",
-    gains: [
-      "Clarity on where to start",
-      "A practical execution plan",
-      "Direction and momentum, moving you from tangled to in control",
-      "The shift from expecting answers to discovering your own. This is what one client described as the most surprising and meaningful part of the work.",
-    ],
-    how: "A pre-session reflection to understand your current challenge, a 90-minute session to untangle and build the plan, then a written summary of your action plan with time-bound commitments.",
-    boundary:
-      "This is not for those looking for a long-term therapeutic process or a quick-fix motivational speech. It's for those who need a clear, actionable direction, now.",
-    investment: "HK$1,500 to HK$3,000 (1 to 2 sessions depending on complexity)",
+    target:
+      "For professionals and founders who feel stuck and overwhelmed, and don't know where to start.",
+    gains: ["Clarity on where to start", "A practical execution plan", "Direction and momentum"],
+    investment: "HK$1,500 - 3,000 (1-2 sessions)",
+    ctaText: "Book The Untangling Session",
+    ctaMicro: "Focused 90-minute intervention · Virtual or in-person",
   },
 ];
 
-const organizational = [
+const orgServices = [
   {
     name: "Executive Coaching",
-    lede: "One-on-one coaching for your leaders to strengthen decision-making, presence and influence.",
+    lede: "One-on-one coaching for your leaders to strengthen decision-making, presence, and influence.",
     gains: [
-      "Faster, sharper strategic decisions and stronger board-level presence",
-      "Better stakeholder navigation and influence",
-      "Reduced burnout and improved retention of key talent, as leaders learn to manage their internal state",
+      "Faster, sharper strategic decisions",
+      "Stronger stakeholder navigation and influence",
+      "Reduced burnout and improved retention",
     ],
   },
   {
@@ -108,19 +113,20 @@ const organizational = [
     lede: "Build a consistent coaching mindset and a common leadership language across your pipeline.",
     gains: [
       "A unified leadership approach and shared vocabulary",
-      "Leaders who coach and develop others rather than only directing them",
+      "Leaders who coach and develop others",
       "A culture of resilience and growth mindset",
       "Improved retention of high-potential talent",
     ],
   },
   {
     name: "Talent Management & L&D Consulting",
-    lede: "Fourteen years of global HR leadership, applied to your talent strategy.",
+    lede: "Leverage 14+ years of global HR leadership to transform your talent strategy.",
+    expertise:
+      "Talent management strategy, L&D program design, global mobility platform development, organizational transformation, performance management, leadership competency frameworks.",
     gains: [
-      "Talent management strategy and L&D program design",
-      "Global mobility platform development",
-      "Organizational transformation and performance management",
-      "Leadership competency frameworks",
+      "High-impact talent strategies aligned with commercial goals",
+      "Seamless cross-border mobility and succession frameworks",
+      "Robust competency architecture for emerging leadership",
     ],
   },
 ];
@@ -128,167 +134,195 @@ const organizational = [
 function Services() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-hairline">
+      {/* 4.1 Page Introduction */}
+      <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/20">
         <Arc
           core={false}
-          className="pointer-events-none absolute -right-40 top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 lg:block"
+          className="pointer-events-none absolute -right-40 top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 opacity-30 lg:block"
         />
-        <div className="shell relative pb-14 pt-14 lg:pt-20">
+        <div className="shell relative pb-16 pt-14 lg:pt-20">
           <Reveal>
-            <span className="eyebrow">Services</span>
+            <span className="eyebrow">Services & Engagements</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="mt-5 max-w-[22ch] text-[clamp(1.9rem,3.4vw,2.75rem)] leading-[1.06]">
-              Individual coaching and organizational engagements.
+            <h1 className="mt-5 max-w-[22ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
+              Executive Coaching and Leadership Development
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-5 max-w-[62ch] text-[15px] leading-relaxed text-muted-foreground">
-              I partner with ambitious individuals and forward-thinking organizations globally to
-              build clarity, resilience and influence through practical, cognitive-based coaching.
-              Individuals work with me one to one. Organizations bring me in to develop their
-              leaders and their leadership culture. Both start with a conversation.
-            </p>
-          </Reveal>
-          <Reveal delay={0.22}>
-            <p className="mt-6 max-w-[62ch] text-[15px] leading-relaxed text-muted-foreground">
-              Who this is for: C-suite executives, board-level operators, startup founders, senior
-              leaders and high-potential professionals, and independent consultants or fractional
-              executives who are the face of their own business.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="section-y border-b border-hairline">
-        <div className="shell">
-          <Reveal>
-            <span className="eyebrow">Individual coaching</span>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <p className="mt-6 max-w-[58ch] text-[15px] leading-relaxed text-muted-foreground">
-              Board-level presence. Cognitive sharpness under pressure. Influence that carries
-              across cultural contexts. The patterns underneath all of it.
-            </p>
-          </Reveal>
-
-          <div className="mt-8 space-y-4">
-            {programs.map((p, i) => (
-              <ServiceRow key={p.name} index={i} name={p.name} lede={p.lede}>
-                <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                      Who it's for
-                    </p>
-                    <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed">{p.who}</p>
-                    {p.how ? (
-                      <>
-                        <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                          How it works
-                        </p>
-                        <p className="mt-3 max-w-[52ch] text-[15px] leading-relaxed text-muted-foreground">
-                          {p.how}
-                        </p>
-                      </>
-                    ) : null}
-                    {p.boundary ? (
-                      <p className="mt-7 max-w-[52ch] border-l border-primary pl-5 text-[15px] leading-relaxed">
-                        {p.boundary}
-                      </p>
-                    ) : null}
-                    <p className="mt-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
-                      Investment: {p.investment}
-                    </p>
-                  </div>
-                  <div className="panel-quiet">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                      What you gain
-                    </p>
-                    <ul className="mt-4 space-y-3">
-                      {p.gains.map((g) => (
-                        <li key={g} className="flex gap-4">
-                          <RingMarker size={14} className="mt-[6px] shrink-0" />
-                          <span className="max-w-[52ch] text-[15px] leading-relaxed text-muted-foreground">
-                            {g}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </ServiceRow>
-            ))}
-          </div>
-
-
-
-          <Reveal delay={0.16} className="mt-10">
-            <CTA to="/contact">Book a Coaching Conversation</CTA>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="relative overflow-hidden bg-deep py-16 text-deep-foreground">
-        <Arc
-          tone="light"
-          core={false}
-          className="pointer-events-none absolute -left-40 top-1/2 hidden h-[28rem] w-[28rem] -translate-y-1/2 lg:block"
-        />
-        <div className="shell relative">
-          <Reveal>
-            <span className="eyebrow" style={{ color: "inherit", opacity: 0.7 }}>
-              Organizational services
-            </span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className="mt-6 max-w-[24ch] text-[clamp(1.5rem,2.6vw,2.05rem)] leading-tight">
-              For organizations building leadership that stays clear under pressure.
-            </h2>
-          </Reveal>
-
-          <div className="mt-8 space-y-4 text-foreground">
-            {organizational.map((o, i) => (
-              <ServiceRow key={o.name} index={i} name={o.name} lede={o.lede}>
-                <div className="panel-quiet">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                    What you gain
-                  </p>
-                  <ul className="mt-4 space-y-3">
-                    {o.gains.map((g) => (
-                      <li key={g} className="flex gap-4">
-                        <RingMarker size={14} className="mt-[6px] shrink-0" />
-                        <span className="max-w-[52ch] text-[15px] leading-relaxed text-muted-foreground">
-                          {g}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </ServiceRow>
-            ))}
-          </div>
-
-          <Reveal delay={0.12} className="mt-10">
-            <p className="max-w-[54ch] text-[15px] leading-relaxed text-deep-foreground/75">
-              The cost of a leader who is stuck, reactive, or on the verge of burnout is far greater
-              than the investment in coaching. This is about protecting your most valuable assets:
-              your people.
-            </p>
-            <div className="mt-8">
-              <CTA to="/contact" tone="outline" className="border-deep-foreground/40">
-                Discuss an Organizational Engagement
-              </CTA>
+            <div className="mt-6 max-w-3xl space-y-4 text-[16px] leading-relaxed text-muted-foreground">
+              <p>
+                I partner with ambitious individuals and forward-thinking organizations globally to
+                build clarity, resilience, and influence. My work is grounded in the RheAligned
+                Method, a cognitive systems approach that helps high-performers close the gap
+                between knowing and doing.
+              </p>
+              <p>
+                My primary work is with senior and globally mobile leaders in large organizations. I
+                also work with founders, high-potential professionals, and organizations building
+                leadership pipelines.
+              </p>
+              <p className="font-semibold text-foreground">
+                Whether you are an individual leader, a founder, or an organization, the work starts
+                with a conversation.
+              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="shell flex flex-wrap items-center justify-between gap-6">
-          <p className="max-w-[34ch] text-xl font-semibold tracking-tight leading-snug">
-            Not sure which one fits? That's what the first conversation is for.
-          </p>
-          <CTA to="/contact">Book a Conversation</CTA>
+      {/* 4.2 Individual Coaching Section */}
+      <section className="section-y border-b border-hairline">
+        <div className="shell">
+          <Reveal>
+            <span className="eyebrow">Offerings</span>
+            <h2 className="mt-3 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
+              For Individuals
+            </h2>
+            <p className="mt-3 max-w-[54ch] text-[15px] leading-relaxed text-muted-foreground">
+              Tailored one-on-one engagements designed to install lasting mental clarity, interrupt
+              second-guessing, and build decisive presence.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-8 lg:grid-cols-2">
+            {individualPrograms.map((p, i) => (
+              <Reveal
+                key={p.name}
+                delay={i * 0.06}
+                className="panel flex flex-col justify-between bg-card p-8 shadow-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-xl font-bold tracking-tight text-foreground">{p.name}</h3>
+                    <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                      {p.investment.split(" ")[0]}
+                    </span>
+                  </div>
+
+                  <p className="mt-4 text-[15px] font-medium leading-relaxed text-foreground/80">
+                    {p.target}
+                  </p>
+
+                  <div className="mt-6 border-t border-hairline pt-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                      What you'll gain:
+                    </p>
+                    <ul className="mt-4 space-y-3">
+                      {p.gains.map((g) => (
+                        <li
+                          key={g}
+                          className="flex items-start gap-3 text-sm text-muted-foreground"
+                        >
+                          <RingMarker size={14} className="mt-1 shrink-0" active />
+                          <span className="leading-relaxed">{g}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-hairline pt-6">
+                  <div className="flex flex-wrap items-end justify-between gap-4">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Investment
+                      </p>
+                      <p className="mt-1 text-base font-bold text-foreground">{p.investment}</p>
+                    </div>
+                    <CTAWithMicro to="/contact" micro={p.ctaMicro}>
+                      {p.ctaText}
+                    </CTAWithMicro>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4.3 Organizational Services Section */}
+      <section className="section-y border-b border-hairline bg-deep text-deep-foreground">
+        <div className="shell">
+          <Reveal>
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">
+              Enterprise & Pipeline
+            </span>
+            <h2 className="mt-3 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight text-white">
+              For Organizations
+            </h2>
+            <p className="mt-3 max-w-[54ch] text-[15px] leading-relaxed text-deep-foreground/90">
+              For organizations building leadership that stays clear under pressure.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-8 md:grid-cols-3">
+            {orgServices.map((o, i) => (
+              <Reveal
+                key={o.name}
+                delay={i * 0.08}
+                className="flex flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-8 backdrop-blur"
+              >
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-white">{o.name}</h3>
+                  <p className="mt-4 text-sm leading-relaxed text-deep-foreground/90">{o.lede}</p>
+
+                  {o.expertise && (
+                    <div className="mt-5 rounded-lg bg-black/25 p-3.5 text-xs leading-relaxed text-deep-foreground/80">
+                      <strong className="text-white">Expertise includes:</strong> {o.expertise}
+                    </div>
+                  )}
+
+                  <div className="mt-6 border-t border-white/15 pt-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">
+                      What your organization gains:
+                    </p>
+                    <ul className="mt-3 space-y-2.5">
+                      {o.gains.map((g) => (
+                        <li
+                          key={g}
+                          className="flex items-start gap-2.5 text-xs text-deep-foreground/90"
+                        >
+                          <span className="mt-0.5 text-teal-300 font-bold">✓</span>
+                          <span className="leading-relaxed">{g}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-8 border-t border-white/15 pt-6">
+                  <CTAWithMicro
+                    to="/contact"
+                    tone="light"
+                    className="w-full"
+                    microClassName="text-white/80"
+                    micro="Customized to your needs · Virtual or in-person"
+                  >
+                    Discuss an Organizational Engagement
+                  </CTAWithMicro>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-20 bg-sand/30">
+        <div className="shell flex flex-wrap items-center justify-between gap-8">
+          <div>
+            <h3 className="text-2xl font-bold tracking-tight text-foreground">
+              Not sure which option is the right fit?
+            </h3>
+            <p className="mt-2 text-sm text-muted-foreground">
+              That's exactly what the first conversation is for. No pressure, just honest
+              assessment.
+            </p>
+          </div>
+          <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
+            Book a free 30-minute discovery call
+          </CTAWithMicro>
         </div>
       </section>
     </>

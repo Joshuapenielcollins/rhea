@@ -78,7 +78,10 @@ export function StickyNarrative({
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] lg:gap-16">
       <div className="lg:sticky lg:top-[104px] lg:self-start lg:pb-10">
-        <span className="eyebrow" style={tone === "deep" ? { color: "inherit", opacity: 0.75 } : undefined}>
+        <span
+          className="eyebrow"
+          style={tone === "deep" ? { color: "inherit", opacity: 0.75 } : undefined}
+        >
           {eyebrow}
         </span>
         {title ? (

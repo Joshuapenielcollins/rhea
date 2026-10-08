@@ -33,7 +33,9 @@ function AudienceItem({
         onClick={() => onActivate(index)}
         className="group relative flex w-full items-start gap-5 rounded-2xl border px-5 py-6 text-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-7 md:py-7"
         style={{
-          borderColor: active ? "color-mix(in oklab, var(--primary) 40%, transparent)" : "var(--hairline)",
+          borderColor: active
+            ? "color-mix(in oklab, var(--primary) 40%, transparent)"
+            : "var(--hairline)",
           background: active ? "var(--card)" : "transparent",
           boxShadow: active ? "var(--shadow-soft)" : "none",
           transform: active ? "translateY(-2px)" : "none",
@@ -61,7 +63,11 @@ function AudienceItem({
         <span className="min-w-0">
           <span
             className="block text-[clamp(1.05rem,1.7vw,1.3rem)] font-semibold leading-snug tracking-tight transition-colors duration-500"
-            style={{ color: active ? "var(--foreground)" : "color-mix(in oklab, var(--foreground) 62%, transparent)" }}
+            style={{
+              color: active
+                ? "var(--foreground)"
+                : "color-mix(in oklab, var(--foreground) 62%, transparent)",
+            }}
           >
             {item.title}
           </span>
@@ -94,7 +100,14 @@ export function AudienceOrbit({ audiences }: { audiences: Audience[] }) {
       <div className="hidden lg:sticky lg:top-[112px] lg:block lg:self-start">
         <div className="relative mx-auto aspect-square w-full max-w-[380px]">
           <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" aria-hidden="true">
-            <circle cx="200" cy="200" r="168" fill="none" stroke="var(--hairline)" strokeWidth="1" />
+            <circle
+              cx="200"
+              cy="200"
+              r="168"
+              fill="none"
+              stroke="var(--hairline)"
+              strokeWidth="1"
+            />
             <circle
               cx="200"
               cy="200"
@@ -122,14 +135,7 @@ export function AudienceOrbit({ audiences }: { audiences: Audience[] }) {
             transition={{ type: "spring", stiffness: 60, damping: 18, mass: 0.9 }}
           >
             <svg viewBox="0 0 400 400" className="h-full w-full" aria-hidden="true">
-              <line
-                x1="200"
-                y1="134"
-                x2="200"
-                y2="34"
-                stroke="var(--primary)"
-                strokeWidth="1.5"
-              />
+              <line x1="200" y1="134" x2="200" y2="34" stroke="var(--primary)" strokeWidth="1.5" />
               <circle cx="200" cy="32" r="9" fill="var(--primary)" />
               <circle
                 cx="200"

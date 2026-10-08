@@ -7,7 +7,6 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/work", label: "Work" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
@@ -65,7 +64,7 @@ export function SiteHeader() {
 
         <div className="hidden lg:block">
           <CTA to="/contact" tone="outline" className="px-5 py-2 text-[13px]">
-            Book a Conversation
+            Book a Discovery Call
           </CTA>
         </div>
 
@@ -105,8 +104,11 @@ export function SiteHeader() {
               </li>
             ))}
           </ul>
-          <div className="mt-8">
-            <CTA to="/contact">Book a Conversation</CTA>
+          <div className="mt-8 flex flex-col gap-2">
+            <CTA to="/contact">Book a free 30-minute discovery call</CTA>
+            <span className="text-xs text-muted-foreground">
+              No obligation · Virtual, any time zone
+            </span>
           </div>
         </nav>
       ) : null}
