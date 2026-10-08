@@ -1,16 +1,32 @@
+# Default crawler rules
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /studio
+Disallow: /studio/
+
+# Specific major search engine bots
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
+# Social bots
 User-agent: Twitterbot
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
-User-agent: *
-Allow: /
-
+# Sitemap index
 Sitemap: https://rhealigned.com/sitemap.xml
