@@ -1,1 +1,9 @@
-module.exports = { api: { projectId: "nfzvcsrt", dataset: "production" } };
+module.exports = {
+  api: {
+    projectId: "nfzvcsrt",
+    dataset: "production",
+  },
+  project: {
+    basePath: "/admin",
+  },
+};
