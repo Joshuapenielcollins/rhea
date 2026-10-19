@@ -102,27 +102,30 @@ const orgServices = [
   {
     name: "Executive Coaching",
     lede: "One-on-one coaching for your leaders to strengthen decision-making, presence, and influence.",
+    expertise:
+      "Senior executive 1:1 advisory, transition coaching, executive presence & stakeholder influence, high-stakes decision-making under pressure.",
     gains: [
       "Faster, sharper strategic decisions",
       "Stronger stakeholder navigation and influence",
-      "Reduced burnout and improved retention",
+      "Reduced burnout and improved leadership retention",
     ],
   },
   {
     name: "Leadership Development Programs",
     lede: "Build a consistent coaching mindset and a common leadership language across your pipeline.",
+    expertise:
+      "Cohort leadership workshops, manager-as-coach training, unified leadership culture, and scalable high-potential career acceleration.",
     gains: [
       "A unified leadership approach and shared vocabulary",
-      "Leaders who coach and develop others",
-      "A culture of resilience and growth mindset",
-      "Improved retention of high-potential talent",
+      "Leaders who coach and develop others with growth mindset",
+      "Improved retention and velocity of high-potential talent",
     ],
   },
   {
     name: "Talent Management & L&D Consulting",
     lede: "Leverage 14+ years of global HR leadership to transform your talent strategy.",
     expertise:
-      "Talent management strategy, L&D program design, global mobility platform development, organizational transformation, performance management, leadership competency frameworks.",
+      "Talent management strategy, L&D program design, global mobility platforms, organizational transformation, and competency architecture.",
     gains: [
       "High-impact talent strategies aligned with commercial goals",
       "Seamless cross-border mobility and succession frameworks",
@@ -256,38 +259,46 @@ function Services() {
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
+          <div className="mt-10 grid gap-8 md:grid-cols-3 items-stretch">
             {orgServices.map((o, i) => (
               <Reveal
                 key={o.name}
                 delay={i * 0.08}
-                className="flex flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-8 backdrop-blur"
+                className="flex h-full flex-col justify-between rounded-2xl border border-white/15 bg-white/5 p-7 backdrop-blur sm:p-8"
               >
-                <div>
-                  <h3 className="text-xl font-bold tracking-tight text-white">{o.name}</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-deep-foreground/90">{o.lede}</p>
-
-                  {o.expertise && (
-                    <div className="mt-5 rounded-lg bg-black/25 p-3.5 text-xs leading-relaxed text-deep-foreground/80">
-                      <strong className="text-white">Expertise includes:</strong> {o.expertise}
-                    </div>
-                  )}
-
-                  <div className="mt-6 border-t border-white/15 pt-5">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">
-                      What your organization gains:
+                <div className="flex flex-1 flex-col">
+                  <div>
+                    <h3 className="text-xl font-bold tracking-tight text-white h-[3.75rem] flex items-start">
+                      {o.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-deep-foreground/90 h-[4.25rem]">
+                      {o.lede}
                     </p>
-                    <ul className="mt-3 space-y-2.5">
-                      {o.gains.map((g) => (
-                        <li
-                          key={g}
-                          className="flex items-start gap-2.5 text-xs text-deep-foreground/90"
-                        >
-                          <span className="mt-0.5 text-teal-300 font-bold">✓</span>
-                          <span className="leading-relaxed">{g}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+                    <div className="mt-5 h-[98px] rounded-lg bg-black/25 p-3.5 text-xs leading-relaxed text-deep-foreground/80 flex items-start">
+                      <p>
+                        <strong className="text-white">Expertise includes:</strong> {o.expertise}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex flex-1 flex-col justify-between border-t border-white/15 pt-5">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">
+                        What your organization gains:
+                      </p>
+                      <ul className="mt-3 space-y-2.5">
+                        {o.gains.map((g) => (
+                          <li
+                            key={g}
+                            className="flex items-start gap-2.5 text-xs text-deep-foreground/90"
+                          >
+                            <span className="mt-0.5 text-teal-300 font-bold">✓</span>
+                            <span className="leading-relaxed">{g}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
 
@@ -295,8 +306,10 @@ function Services() {
                   <CTAWithMicro
                     to="/contact"
                     tone="light"
-                    className="w-full"
-                    microClassName="text-white/80"
+                    align="center"
+                    className="w-full text-center"
+                    ctaClassName="w-full justify-center text-center text-xs sm:text-[13.5px] font-semibold py-3 px-4"
+                    microClassName="text-white/80 text-center"
                     micro="Customized to your needs · Virtual or in-person"
                   >
                     Discuss an Organizational Engagement

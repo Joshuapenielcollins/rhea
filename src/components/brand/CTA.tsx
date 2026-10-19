@@ -95,6 +95,7 @@ export function CTAWithMicro({
   micro = "No obligation · Virtual, any time zone",
   tone = "solid",
   className,
+  ctaClassName,
   microClassName,
   align = "start",
 }: {
@@ -104,6 +105,7 @@ export function CTAWithMicro({
   micro?: string | undefined;
   tone?: Tone | undefined;
   className?: string | undefined;
+  ctaClassName?: string | undefined;
   microClassName?: string | undefined;
   align?: "start" | "center" | "end" | undefined;
 }) {
@@ -117,7 +119,7 @@ export function CTAWithMicro({
         className,
       )}
     >
-      <CTA to={to} href={href} tone={tone}>
+      <CTA to={to} href={href} tone={tone} className={ctaClassName}>
         {children}
       </CTA>
       {micro && (

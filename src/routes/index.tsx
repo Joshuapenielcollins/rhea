@@ -4,6 +4,7 @@ import { Reveal } from "@/components/brand/Reveal";
 import { CTA, CTAWithMicro } from "@/components/brand/CTA";
 import { RingMarker } from "@/components/brand/RingMarker";
 import rheaPortrait from "@/assets/rhea-portrait.jpg";
+import rheaSpeaking from "@/assets/rhea-speaking.jpg";
 import {
   getArticles,
   getTestimonials,
@@ -53,120 +54,127 @@ export const Route = createFileRoute("/")({
 function Hero({ settings }: { settings: SanitySiteSettings }) {
   return (
     <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/30">
-      <div className="shell grid gap-12 pb-14 pt-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-14 lg:pb-18 lg:pt-14">
-        <div>
-          {/* Eyebrow Line */}
-          <Reveal>
-            <p className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-primary">
-              Rhea Bulsara Sidhva | Former Global HR Leader
-            </p>
-          </Reveal>
+      <div className="shell pb-14 pt-10 lg:pb-18 lg:pt-14">
+        {/* Top Grid: Copy on Left, Circular Photo on Right */}
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-14">
+          <div>
+            {/* Eyebrow Line */}
+            <Reveal>
+              <p className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-primary">
+                Rhea Bulsara Sidhva | Former Global HR Leader
+              </p>
+            </Reveal>
 
-          {/* Credential Badge */}
-          <Reveal delay={0.05} className="mt-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3.5 py-1 text-[12px] font-medium text-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              ICF-Associate Certified Coach | {settings.coachingHours} Hours of Coaching Practice
-            </span>
-          </Reveal>
+            {/* Credential Badge */}
+            <Reveal delay={0.05} className="mt-4">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-3.5 py-1 text-[12px] font-medium text-foreground">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                ICF-Associate Certified Coach | {settings.coachingHours} Hours of Coaching Practice
+              </span>
+            </Reveal>
 
-          {/* Headline */}
-          <Reveal delay={0.1}>
-            <h1 className="mt-5 max-w-[22ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-              Whether you're stuck or tangled, the path forward starts with clarity.{" "}
-              <span className="editorial font-normal italic text-primary">I help you find it.</span>
-            </h1>
-          </Reveal>
+            {/* Headline */}
+            <Reveal delay={0.1}>
+              <h1 className="mt-5 max-w-[22ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
+                Whether you're stuck or tangled, the path forward starts with clarity.{" "}
+                <span className="editorial font-normal italic text-primary">I help you find it.</span>
+              </h1>
+            </Reveal>
 
-          {/* Subheadline */}
-          <Reveal delay={0.15}>
-            <p className="mt-5 max-w-[48ch] text-[16px] font-medium leading-relaxed text-foreground/85">
-              Executive coaching for senior leaders and founders who are operating below their real
-              capacity, not because they lack skill, but because their internal operating system is
-              working against them.
-            </p>
-          </Reveal>
+            {/* Subheadline */}
+            <Reveal delay={0.15}>
+              <p className="mt-5 max-w-[48ch] text-[16px] font-medium leading-relaxed text-foreground/85">
+                Executive coaching for senior leaders and founders who are operating below their real
+                capacity, not because they lack skill, but because their internal operating system is
+                working against them.
+              </p>
+            </Reveal>
 
-          {/* CTAs */}
-          <Reveal delay={0.25}>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
-                Book a free 30-minute discovery call
-              </CTAWithMicro>
+            {/* CTAs */}
+            <Reveal delay={0.25}>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
+                  Book a free 30-minute discovery call
+                </CTAWithMicro>
 
-              <div className="self-start pt-0.5">
-                <CTA to="/services" tone="outline">
-                  Explore Coaching Options
-                </CTA>
+                <div className="self-start pt-0.5">
+                  <CTA to="/services" tone="outline">
+                    Explore Coaching Options
+                  </CTA>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Hero Photo & Composition - Made larger and moved slightly up */}
+          <Reveal delay={0.12} className="flex flex-col items-center lg:-mt-2">
+            <div className="relative mx-auto aspect-square w-full max-w-[460px] lg:max-w-[480px]">
+              <Arc className="absolute inset-0 h-full w-full opacity-85" />
+              <div className="absolute inset-4 sm:inset-5 overflow-hidden rounded-full border-2 border-primary/20 shadow-2xl">
+                <img
+                  src={rheaPortrait}
+                  alt="Rhea Bulsara Sidhva - Executive and Leadership Coach"
+                  className="h-full w-full object-cover object-center filter transition-transform duration-700 hover:scale-105"
+                />
               </div>
             </div>
-          </Reveal>
-
-          {/* Hero Stats Band */}
-          <Reveal delay={0.3}>
-            <div className="mt-10 overflow-hidden rounded-xl border border-hairline bg-card shadow-sm">
-              <div className="grid grid-cols-2 divide-x divide-hairline border-b border-hairline sm:grid-cols-4">
-                <div className="p-4">
-                  <p className="text-2xl font-bold tracking-tight text-primary">
-                    {settings.coachingHours}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-muted-foreground">Coaching Hours</p>
-                </div>
-                <div className="p-4">
-                  <p className="text-2xl font-bold tracking-tight text-primary">
-                    {settings.corporateExperienceYears}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-muted-foreground">
-                    Years Corporate Experience
-                  </p>
-                </div>
-                <div className="p-4">
-                  <p className="text-2xl font-bold tracking-tight text-primary">
-                    {settings.countriesCount}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-muted-foreground">
-                    Countries Lived & Worked In
-                  </p>
-                </div>
-                <div className="p-4">
-                  <p className="text-2xl font-bold tracking-tight text-primary">ICF-ACC</p>
-                  <p className="mt-1 text-xs font-medium text-muted-foreground">Certified Coach</p>
-                </div>
-              </div>
-              <div className="flex flex-wrap items-center justify-between gap-2 bg-sand/60 px-4 py-2.5 text-xs text-muted-foreground">
-                <span>
-                  Corporate Experience:{" "}
-                  <strong className="font-semibold text-foreground">
-                    BP · Tata Group · Sainsbury's
-                  </strong>
-                </span>
-                <span>
-                  Geographies:{" "}
-                  <strong className="font-semibold text-foreground">
-                    Hong Kong · UK · UAE · India
-                  </strong>
-                </span>
-              </div>
+            <div className="mt-5 whitespace-nowrap rounded-full border border-hairline bg-card/95 px-5 py-2 text-xs font-semibold shadow-md backdrop-blur">
+              <span>Rhea Bulsara Sidhva</span>
+              <span className="mx-2 text-muted-foreground/60">·</span>
+              <span className="text-primary">Executive & Leadership Coach</span>
             </div>
           </Reveal>
         </div>
 
-        {/* Hero Photo & Composition */}
-        <Reveal delay={0.12} className="flex flex-col items-center">
-          <div className="relative mx-auto aspect-square w-full max-w-[420px]">
-            <Arc className="absolute inset-0 h-full w-full opacity-80" />
-            <div className="absolute inset-4 overflow-hidden rounded-full border-2 border-primary/20 shadow-2xl">
-              <img
-                src={rheaPortrait}
-                alt="Rhea Bulsara Sidhva - Executive and Leadership Coach"
-                className="h-full w-full object-cover object-center filter transition-transform duration-700 hover:scale-105"
-              />
+        {/* Hero Stats Band - Expanded Full Width & Centered */}
+        <Reveal delay={0.3} className="mt-12 lg:mt-16">
+          <div className="overflow-hidden rounded-2xl border border-hairline bg-card shadow-sm">
+            <div className="grid grid-cols-2 divide-y divide-hairline sm:grid-cols-4 sm:divide-x sm:divide-y-0">
+              <div className="p-6 text-center">
+                <p className="text-3xl lg:text-4xl font-bold tracking-tight text-primary">
+                  {settings.coachingHours}
+                </p>
+                <p className="mt-1.5 text-xs lg:text-sm font-medium text-muted-foreground">
+                  Coaching Hours
+                </p>
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-3xl lg:text-4xl font-bold tracking-tight text-primary">
+                  {settings.corporateExperienceYears}
+                </p>
+                <p className="mt-1.5 text-xs lg:text-sm font-medium text-muted-foreground">
+                  Years Corporate Experience
+                </p>
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-3xl lg:text-4xl font-bold tracking-tight text-primary">
+                  {settings.countriesCount}
+                </p>
+                <p className="mt-1.5 text-xs lg:text-sm font-medium text-muted-foreground">
+                  Countries Lived & Worked In
+                </p>
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-3xl lg:text-4xl font-bold tracking-tight text-primary">ICF-ACC</p>
+                <p className="mt-1.5 text-xs lg:text-sm font-medium text-muted-foreground">
+                  Certified Coach
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="mt-4 whitespace-nowrap rounded-full border border-hairline bg-card/95 px-5 py-2 text-xs font-semibold shadow-md backdrop-blur">
-            <span>Rhea Bulsara Sidhva</span>
-            <span className="mx-2 text-muted-foreground/60">·</span>
-            <span className="text-primary">Executive & Leadership Coach</span>
+            <div className="flex flex-wrap items-center justify-center gap-6 border-t border-hairline bg-sand/60 px-6 py-3.5 text-xs text-muted-foreground sm:justify-between">
+              <span>
+                Corporate Experience:{" "}
+                <strong className="font-semibold text-foreground">
+                  BP · Tata Group · Sainsbury's
+                </strong>
+              </span>
+              <span>
+                Geographies:{" "}
+                <strong className="font-semibold text-foreground">
+                  Hong Kong · UK · UAE · India
+                </strong>
+              </span>
+            </div>
           </div>
         </Reveal>
       </div>
@@ -435,28 +443,43 @@ function ForOrganizationsBand() {
         className="pointer-events-none absolute -right-32 top-1/2 h-[500px] w-[500px] -translate-y-1/2 opacity-25"
       />
       <div className="shell relative">
-        <Reveal>
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">
-            For Organizations
-          </span>
-          <h2 className="mt-4 max-w-[24ch] text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-tight text-white">
-            Build a leadership culture that stays clear-headed under pressure.
-          </h2>
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-[1.18fr_0.82fr] lg:items-center">
+          <div>
+            <Reveal>
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">
+                For Organizations
+              </span>
+              <h2 className="mt-4 max-w-[22ch] text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-tight text-white">
+                Build a leadership culture that stays clear-headed under pressure.
+              </h2>
+            </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="mt-6 max-w-3xl space-y-4 text-[15px] leading-relaxed text-deep-foreground/90">
-            <p>
-              I partner with organizations to develop resilient, clear-thinking leaders who can
-              navigate complexity, make sharper decisions, and influence across cultures.
-            </p>
-            <p>
-              My work draws on 14 years inside global HR at BP, Tata Group, and Sainsbury's, where I
-              built global mobility platforms, shaped leadership pipelines, and partnered with
-              business leaders through transformation and ambiguity.
-            </p>
+            <Reveal delay={0.08}>
+              <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-deep-foreground/90">
+                <p>
+                  I partner with organizations to develop resilient, clear-thinking leaders who can
+                  navigate complexity, make sharper decisions, and influence across cultures.
+                </p>
+                <p>
+                  My work draws on 14 years inside global HR at BP, Tata Group, and Sainsbury's, where I
+                  built global mobility platforms, shaped leadership pipelines, and partnered with
+                  business leaders through transformation and ambiguity.
+                </p>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          <Reveal delay={0.14} className="relative flex justify-center">
+            <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+              <img
+                src={rheaSpeaking}
+                alt="Rhea Bulsara Sidhva speaking with organizational leaders"
+                className="aspect-[4/3] w-full object-cover object-top filter transition-transform duration-700 hover:scale-105"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent" />
+            </div>
+          </Reveal>
+        </div>
 
         {/* 3 Services Cards */}
         <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -464,10 +487,16 @@ function ForOrganizationsBand() {
             <Reveal
               key={s.title}
               delay={0.1 + i * 0.06}
-              className="rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"
+              className="flex h-full flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"
             >
-              <h3 className="text-lg font-semibold tracking-tight text-white">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-deep-foreground/80">{s.desc}</p>
+              <div>
+                <h3 className="text-lg font-semibold tracking-tight text-white min-h-[3.25rem] flex items-start">
+                  {s.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-deep-foreground/80 min-h-[4rem]">
+                  {s.desc}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>
