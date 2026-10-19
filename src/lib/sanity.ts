@@ -201,14 +201,31 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       return testimonialsData;
     }
 
-    return sanityTestimonials.map((t) => ({
-      id: t._id,
-      pull: t.pull,
-      category: t.category,
-      role: t.role,
-      breakthrough: t.breakthrough,
-      keyLearning: t.keyLearning,
-    }));
+    return sanityTestimonials.map((t) => {
+      let category = t.category;
+      if (category === "Leadership & Politics" || (category && category.toLowerCase().includes("politics"))) {
+        category = "Leadership & Influence";
+      }
+      const breakthrough = t.breakthrough
+        ? t.breakthrough
+            .replace(/politics and flattery/gi, "favoritism and flattery")
+            .replace(/workplace politics/gi, "organizational dynamics")
+        : t.breakthrough;
+      const keyLearning = t.keyLearning
+        ? t.keyLearning
+            .replace(/workplace politics/gi, "organizational dynamics")
+            .replace(/politics/gi, "organizational dynamics")
+        : t.keyLearning;
+
+      return {
+        id: t._id,
+        pull: t.pull,
+        category,
+        role: t.role,
+        breakthrough,
+        keyLearning,
+      };
+    });
   } catch (err) {
     console.warn("Sanity fetch failed for testimonials, using local fallback:", err);
     return testimonialsData;

@@ -9,12 +9,12 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       {
-        title: "Let's Have the Conversation That Matters | Contact Rhea Bulsara | RheAligned",
+        title: "Let's Have the Conversation That Matters | Contact Rhea Bulsara Sidhva | RheAligned",
       },
       {
         name: "description",
         content:
-          "Book a free 30-minute discovery call with executive coach Rhea Bulsara. No obligation · Virtual, any time zone. Or discuss an organizational engagement.",
+          "Book a free 30-minute discovery call with executive coach Rhea Bulsara Sidhva. No obligation · Virtual, any time zone. Or discuss an organizational engagement.",
       },
       {
         property: "og:title",
@@ -71,13 +71,8 @@ const directDetails = [
   { label: "Email", value: "rhea@rhealigned.com", href: "mailto:rhea@rhealigned.com" },
   {
     label: "LinkedIn",
-    value: "linkedin.com/in/rheacoaching",
-    href: "https://linkedin.com/in/rheacoaching",
-  },
-  {
-    label: "Instagram",
-    value: "@rhealign.coaching",
-    href: "https://instagram.com/rhealign.coaching",
+    value: "Connect on LinkedIn",
+    href: "https://linkedin.com/in/rhea-bulsara-sidhva",
   },
   { label: "Base", value: "Hong Kong · Virtual Global Practice" },
 ];
@@ -432,16 +427,24 @@ function Contact() {
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   Direct Channels
                 </h4>
-                <div className="mt-3 grid gap-3 text-xs sm:grid-cols-2">
+                <div className="mt-4 divide-y divide-hairline/60 text-xs">
                   {directDetails.map((d) => (
-                    <div key={d.label}>
-                      <span className="text-muted-foreground">{d.label}: </span>
+                    <div
+                      key={d.label}
+                      className="flex flex-col gap-1 py-3 first:pt-1 last:pb-1 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <span className="font-medium text-muted-foreground">{d.label}</span>
                       {d.href ? (
                         <a
                           href={d.href}
-                          className="font-semibold text-foreground hover:text-primary"
+                          target={d.href.startsWith("http") ? "_blank" : undefined}
+                          rel={d.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                          className="font-semibold text-foreground transition-colors hover:text-primary inline-flex items-center gap-1.5"
                         >
-                          {d.value}
+                          <span>{d.value}</span>
+                          {d.href.startsWith("http") && (
+                            <span className="text-primary text-[11px]">↗</span>
+                          )}
                         </a>
                       ) : (
                         <span className="font-semibold text-foreground">{d.value}</span>

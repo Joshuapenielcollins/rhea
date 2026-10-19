@@ -283,7 +283,7 @@ function Insights() {
                       </div>
 
                       <div className="mt-6 flex items-center justify-between border-t border-hairline pt-4 text-xs">
-                        <span className="text-muted-foreground">By Rhea Bulsara</span>
+                        <span className="text-muted-foreground">By Rhea Bulsara Sidhva</span>
                         <span className="font-semibold text-primary group-hover:translate-x-1 transition-transform">
                           Read article →
                         </span>

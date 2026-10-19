@@ -152,21 +152,21 @@ function Hero({ settings }: { settings: SanitySiteSettings }) {
         </div>
 
         {/* Hero Photo & Composition */}
-        <Reveal delay={0.12} className="relative">
-          <div className="relative mx-auto aspect-square w-full max-w-[430px]">
+        <Reveal delay={0.12} className="flex flex-col items-center">
+          <div className="relative mx-auto aspect-square w-full max-w-[420px]">
             <Arc className="absolute inset-0 h-full w-full opacity-80" />
             <div className="absolute inset-4 overflow-hidden rounded-full border-2 border-primary/20 shadow-2xl">
               <img
                 src={rheaPortrait}
                 alt="Rhea Bulsara Sidhva - Executive and Leadership Coach"
-                className="h-full w-full object-cover object-top filter transition-transform duration-700 hover:scale-105"
+                className="h-full w-full object-cover object-center filter transition-transform duration-700 hover:scale-105"
               />
             </div>
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-hairline bg-card/95 px-4 py-1.5 text-xs font-semibold shadow-md backdrop-blur">
-              <span>Rhea Bulsara Sidhva</span>
-              <span className="mx-1.5 text-muted-foreground/60">·</span>
-              <span className="text-primary">Executive & Leadership Coach</span>
-            </div>
+          </div>
+          <div className="mt-4 whitespace-nowrap rounded-full border border-hairline bg-card/95 px-5 py-2 text-xs font-semibold shadow-md backdrop-blur">
+            <span>Rhea Bulsara Sidhva</span>
+            <span className="mx-2 text-muted-foreground/60">·</span>
+            <span className="text-primary">Executive & Leadership Coach</span>
           </div>
         </Reveal>
       </div>

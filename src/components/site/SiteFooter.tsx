@@ -56,18 +56,16 @@ export function SiteFooter() {
             rhea@rhealigned.com
           </a>
           <a
-            href="https://linkedin.com/in/rheacoaching"
+            href="https://linkedin.com/in/rhea-bulsara-sidhva"
+            target="_blank"
+            rel="noopener noreferrer"
             className="mt-2 block transition-colors hover:text-deep-foreground"
           >
-            LinkedIn
+            Connect on LinkedIn ↗
           </a>
-          <a
-            href="https://instagram.com/rhealign.coaching"
-            className="mt-2 block transition-colors hover:text-deep-foreground"
-          >
-            @rhealign.coaching
-          </a>
-          <p className="mt-4">Hong Kong · Coaching available virtually across all time zones.</p>
+          <p className="mt-4 text-xs leading-relaxed text-deep-foreground/60">
+            Hong Kong · Coaching available virtually across all time zones.
+          </p>
         </div>
       </div>
       <div className="shell relative flex items-center justify-between border-t border-deep-foreground/15 py-5 text-xs text-deep-foreground/60">

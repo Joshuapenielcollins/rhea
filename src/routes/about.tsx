@@ -7,6 +7,8 @@ import { RingMarker } from "@/components/brand/RingMarker";
 import { CTAWithMicro } from "@/components/brand/CTA";
 import { CaseStudy } from "@/components/brand/CaseStudy";
 import rheaPortrait from "@/assets/rhea-portrait.jpg";
+import rheaStanding from "@/assets/rhea-standing.jpg";
+import rheaSpeaking from "@/assets/rhea-speaking.jpg";
 
 import { getSiteSettings } from "@/lib/sanity";
 
@@ -217,7 +219,7 @@ function About() {
     <>
       {/* 3.1 Hero Section */}
       <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/30">
-        <div className="shell grid gap-12 pb-16 pt-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pt-20">
+        <div className="shell grid gap-12 pb-14 pt-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pt-12">
           <div>
             <Reveal>
               <p className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-primary">
@@ -257,8 +259,8 @@ function About() {
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[400px]">
               <div className="absolute inset-0 overflow-hidden rounded-2xl border border-hairline shadow-xl">
                 <img
-                  src={rheaPortrait}
-                  alt="Rhea Bulsara Sidhva"
+                  src={rheaStanding}
+                  alt="Rhea Bulsara Sidhva - Executive & Leadership Coach"
                   className="h-full w-full object-cover object-top"
                 />
               </div>
@@ -293,7 +295,7 @@ function About() {
 
       {/* 3.3 Prominent Positioning Statement */}
       <section className="section-y border-b border-hairline">
-        <div className="shell">
+        <div className="shell grid gap-8 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
           <Reveal>
             <div className="relative overflow-hidden rounded-2xl border border-primary/25 bg-card p-8 md:p-12 shadow-sm">
               <div className="max-w-3xl">
@@ -307,6 +309,15 @@ function About() {
                   why smart leaders get stuck, and I help them get unstuck.
                 </p>
               </div>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1} className="relative hidden lg:block">
+            <div className="overflow-hidden rounded-2xl border border-hairline shadow-lg aspect-[4/3]">
+              <img
+                src={rheaSpeaking}
+                alt="Rhea Bulsara Sidhva facilitating executive clarity"
+                className="h-full w-full object-cover object-center"
+              />
             </div>
           </Reveal>
         </div>

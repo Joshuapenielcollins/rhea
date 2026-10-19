@@ -124,6 +124,7 @@ export function CTAWithMicro({
         <span
           className={cn(
             "text-[12px] text-muted-foreground tracking-wide font-normal",
+            align === "start" ? "pl-6" : align === "end" ? "pr-6" : "px-2 text-center",
             microClassName,
           )}
         >

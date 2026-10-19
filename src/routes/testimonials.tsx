@@ -39,7 +39,7 @@ export const Route = createFileRoute("/testimonials")({
 
 const categories = [
   "All",
-  "Leadership & Politics",
+  "Leadership & Influence",
   "Emotional Agility",
   "Founders & Business",
   "Resilience & Team",
@@ -70,7 +70,7 @@ function Testimonials() {
           <Reveal delay={0.12}>
             <p className="mt-5 max-w-[56ch] text-[16px] leading-relaxed text-muted-foreground">
               Executive coaching for leaders who want clarity, resilience, and impact without the
-              politics, overthinking, or burnout. The focus is on concrete breakthroughs and shifts
+              friction, overthinking, or burnout. The focus is on concrete breakthroughs and shifts
               in internal operating systems.
             </p>
           </Reveal>
@@ -107,10 +107,10 @@ function Testimonials() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
-                    <span className="rounded-full bg-sand px-3 py-1 font-semibold text-foreground/80">
+                    <span className="shrink-0 whitespace-nowrap rounded-full bg-sand px-3 py-1 font-semibold text-foreground/80">
                       {t.category}
                     </span>
-                    <span className="font-semibold uppercase tracking-wider text-primary">
+                    <span className="truncate font-semibold uppercase tracking-wider text-primary text-right">
                       {t.role}
                     </span>
                   </div>
@@ -159,7 +159,7 @@ function Testimonials() {
                 find their own, then helps them build a clear execution plan.
               </p>
               <p>
-                Whether it's navigating complex workplace politics, building a more self-sufficient
+                Whether it's navigating complex organizational dynamics, building a more self-sufficient
                 team, communicating under pressure, or redefining resilience, the work focuses on
                 the cognitive system underneath.
               </p>

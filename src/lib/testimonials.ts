@@ -2,7 +2,10 @@ export interface Testimonial {
   id: string;
   pull: string;
   category:
-    "Leadership & Politics" | "Emotional Agility" | "Founders & Business" | "Resilience & Team";
+    | "Leadership & Influence"
+    | "Emotional Agility"
+    | "Founders & Business"
+    | "Resilience & Team";
   role: string;
   breakthrough: string;
   keyLearning: string;
@@ -22,17 +25,17 @@ export const testimonialsData: Testimonial[] = [
   {
     id: "2",
     pull: "I moved from feeling heavy and tense to light and easy. The self-realisation gave me wings to fly again.",
-    category: "Leadership & Politics",
+    category: "Leadership & Influence",
     role: "Manufacturing Leader | Global Operations",
     breakthrough:
-      "I was frustrated with a culture that rewarded politics and flattery over genuine work, feeling undermined despite high impact. Rhea helped me build an internal shield, moving from mere coping to pragmatic boundary-setting. Most importantly, I realized colleagues were simply operating from their own survival instincts. I now choose my battles, focus on my real impact across 300+ managers, and process challenges constructively rather than bottling them up.",
+      "I was frustrated with a culture that rewarded favoritism and flattery over genuine work, feeling undermined despite high impact. Rhea helped me build an internal shield, moving from mere coping to pragmatic boundary-setting. Most importantly, I realized colleagues were simply operating from their own survival instincts. I now choose my battles, focus on my real impact across 300+ managers, and process challenges constructively rather than bottling them up.",
     keyLearning:
-      "Depersonalizing workplace politics allows you to protect your energy and lead with lightness.",
+      "Depersonalizing organizational dynamics allows you to protect your energy and lead with lightness.",
   },
   {
     id: "3",
     pull: "I gained influence without authority, and the team became far more self-sufficient.",
-    category: "Leadership & Politics",
+    category: "Leadership & Influence",
     role: "Project Manager & People Leader",
     breakthrough:
       "When I started coaching, I was managing a team but struggling with expectations, feedback, and influence triggers. Rhea gave me a practical map from intent to action to outcome. I learned to communicate with clarity and depth, empower people, and create a psychological growth zone. The external outcomes followed: recognition from leadership, improved team dynamics, and far greater team autonomy.",
@@ -72,7 +75,7 @@ export const testimonialsData: Testimonial[] = [
   {
     id: "7",
     pull: "Shifted from trying to 'motivate' to focusing on alignment and application.",
-    category: "Leadership & Politics",
+    category: "Leadership & Influence",
     role: "Dean & Academic Leader",
     breakthrough:
       "I was struggling to engage a younger cohort and felt frustration over perceived lack of motivation. Rhea helped me reframe from forcing motivation to building alignment with effort and application. When people are convinced of the intrinsic value of the process, performance and mindset align automatically. That reframe fundamentally elevated how I lead.",

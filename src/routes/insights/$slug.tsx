@@ -65,8 +65,7 @@ export const Route = createFileRoute("/insights/$slug")({
               jobTitle: "Executive and Leadership Coach",
               url: "https://rhealigned.com/about",
               sameAs: [
-                "https://linkedin.com/in/rheacoaching",
-                "https://instagram.com/rhealign.coaching",
+                "https://linkedin.com/in/rhea-bulsara-sidhva",
               ],
             },
             publisher: {
@@ -267,7 +266,7 @@ function BlogPostPage() {
                   Read Rhea's full story →
                 </Link>
                 <a
-                  href="https://linkedin.com/in/rheacoaching"
+                  href="https://linkedin.com/in/rhea-bulsara-sidhva"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground"
