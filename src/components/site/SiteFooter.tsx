@@ -56,7 +56,7 @@ export function SiteFooter() {
             rhea@rhealigned.com
           </a>
           <a
-            href="https://linkedin.com/in/rhea-bulsara-sidhva"
+            href="https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-2 block transition-colors hover:text-deep-foreground"

@@ -76,11 +76,10 @@ export const Route = createFileRoute("/insights/")({
 
 const categories = [
   "All",
-  "Mindset",
-  "Identity",
-  "Execution",
-  "Mental Health",
-  "Perspective",
+  "Point of View",
+  "Method",
+  "Pattern Recognition",
+  "Proof",
 ] as const;
 
 function Insights() {
@@ -90,11 +89,15 @@ function Insights() {
 
   const filteredArticles = useMemo(() => {
     return articles.filter((a) => {
-      const matchesCategory = selectedCategory === "All" || a.category === selectedCategory;
+      const matchesCategory =
+        selectedCategory === "All" ||
+        a.category === selectedCategory ||
+        (a.pillar && a.pillar.toLowerCase().includes(selectedCategory.toLowerCase()));
       const matchesSearch =
         a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         a.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        a.category.toLowerCase().includes(searchQuery.toLowerCase());
+        a.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (a.pillar && a.pillar.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
   }, [articles, selectedCategory, searchQuery]);

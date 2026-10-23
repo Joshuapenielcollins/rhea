@@ -130,7 +130,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   "Former Global HR Leader at BP, Tata Group, and Sainsbury's. ICF-ACC certified executive coach with 500+ hours of coaching practice.",
                 url: "https://rhealigned.com/about",
                 sameAs: [
-                  "https://linkedin.com/in/rhea-bulsara-sidhva",
+                  "https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/",
                 ],
                 knowsAbout: [
                   "Executive Coaching",
@@ -161,7 +161,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               ],
               email: "rhea@rhealigned.com",
               sameAs: [
-                "https://linkedin.com/in/rhea-bulsara-sidhva",
+                "https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/",
               ],
             },
             {

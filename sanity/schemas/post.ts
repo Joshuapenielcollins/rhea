@@ -26,6 +26,10 @@ export default {
       type: "string",
       options: {
         list: [
+          { title: "Point of View", value: "Point of View" },
+          { title: "Method", value: "Method" },
+          { title: "Pattern Recognition", value: "Pattern Recognition" },
+          { title: "Proof (Real Stories from the Field)", value: "Proof" },
           { title: "Mindset", value: "Mindset" },
           { title: "Identity", value: "Identity" },
           { title: "Execution", value: "Execution" },
@@ -34,6 +38,12 @@ export default {
         ],
       },
       validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "pillar",
+      title: "Content Pillar",
+      type: "string",
+      description: "e.g. 'Pattern Recognition', 'Proof', 'Point of View', 'Method'",
     },
     {
       name: "readTime",

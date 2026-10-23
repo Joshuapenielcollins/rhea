@@ -72,7 +72,7 @@ const directDetails = [
   {
     label: "LinkedIn",
     value: "Connect on LinkedIn",
-    href: "https://linkedin.com/in/rhea-bulsara-sidhva",
+    href: "https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/",
   },
   { label: "Base", value: "Hong Kong · Virtual Global Practice" },
 ];
