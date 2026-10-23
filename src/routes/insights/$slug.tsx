@@ -120,6 +120,29 @@ export const Route = createFileRoute("/insights/$slug")({
   component: BlogPostPage,
 });
 
+function renderFormattedText(text: string) {
+  if (!text) return null;
+  if (!text.includes("**")) {
+    return text.replace(/\*/g, "");
+  }
+
+  const parts = text.split(/\*\*/);
+  return (
+    <>
+      {parts.map((part, index) => {
+        if (index % 2 === 1) {
+          return (
+            <strong key={index} className="font-semibold text-foreground">
+              {part.replace(/\*/g, "").trim()}
+            </strong>
+          );
+        }
+        return <span key={index}>{part.replace(/\*/g, "")}</span>;
+      })}
+    </>
+  );
+}
+
 function BlogPostPage() {
   const { article, allArticles } = Route.useLoaderData();
   const [copied, setCopied] = useState(false);
@@ -208,11 +231,13 @@ function BlogPostPage() {
         </div>
       </div>
 
+
+
       {/* Article Content */}
       <main className="shell max-w-3xl pb-16">
         {article.pullQuote && (
           <blockquote className="my-8 rounded-xl border-l-4 border-primary bg-primary/5 p-6 text-lg font-medium italic text-foreground sm:text-xl sm:leading-relaxed">
-            "{article.pullQuote}"
+            "{renderFormattedText(article.pullQuote)}"
           </blockquote>
         )}
 
@@ -221,11 +246,11 @@ function BlogPostPage() {
             <div key={idx} className="space-y-4">
               {section.heading && (
                 <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl pt-2">
-                  {section.heading}
+                  {section.heading.replace(/\*/g, "")}
                 </h2>
               )}
               {section.paragraphs.map((p, pIdx) => (
-                <p key={pIdx}>{p}</p>
+                <p key={pIdx}>{renderFormattedText(p)}</p>
               ))}
             </div>
           ))}
@@ -238,7 +263,7 @@ function BlogPostPage() {
             <span>Key Takeaway</span>
           </div>
           <p className="mt-2 text-base font-semibold leading-relaxed text-foreground sm:text-lg">
-            {article.keyTakeaway}
+            {renderFormattedText(article.keyTakeaway)}
           </p>
         </div>
 
