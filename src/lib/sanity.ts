@@ -46,6 +46,11 @@ export const sanityClient = isSanityConfigured
 
 const builder = sanityClient ? imageUrlBuilder(sanityClient) : null;
 
+const CACHE_TTL_MS = 60 * 1000; // 60 seconds
+let cachedArticles: { data: Article[]; time: number } | null = null;
+let cachedTestimonials: { data: Testimonial[]; time: number } | null = null;
+let cachedSettings: { data: SanitySiteSettings; time: number } | null = null;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function urlFor(source: any) {
   if (!builder || !source || !source.asset) return "";
@@ -61,6 +66,10 @@ export function urlFor(source: any) {
  * Fetch all articles, strictly returning ONLY the 16 given blogs.
  */
 export async function getArticles(): Promise<Article[]> {
+  if (cachedArticles && Date.now() - cachedArticles.time < CACHE_TTL_MS) {
+    return cachedArticles.data;
+  }
+
   if (!sanityClient) {
     return articlesData;
   }
@@ -104,7 +113,7 @@ export async function getArticles(): Promise<Article[]> {
     }
 
     // Always return all 16 given blogs, enriched with Sanity data if present
-    return articlesData.map((fallback) => {
+    const result = articlesData.map((fallback) => {
       const post = matchedSanityMap.get(fallback.slug);
       if (!post) return fallback;
 
@@ -125,6 +134,9 @@ export async function getArticles(): Promise<Article[]> {
         sections: post.sections && post.sections.length > 0 ? post.sections : fallback.sections,
       };
     });
+
+    cachedArticles = { data: result, time: Date.now() };
+    return result;
   } catch (err) {
     console.warn("Sanity fetch failed for articles, using local articles fallback:", err);
     return articlesData;
@@ -201,6 +213,10 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
  * Fetch all testimonials from Sanity, falling back to local testimonialsData
  */
 export async function getTestimonials(): Promise<Testimonial[]> {
+  if (cachedTestimonials && Date.now() - cachedTestimonials.time < CACHE_TTL_MS) {
+    return cachedTestimonials.data;
+  }
+
   if (!sanityClient) {
     return testimonialsData;
   }
@@ -222,7 +238,7 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       return testimonialsData;
     }
 
-    return sanityTestimonials.map((t) => {
+    const result = sanityTestimonials.map((t) => {
       let category = t.category;
       if (category === "Leadership & Politics" || (category && category.toLowerCase().includes("politics"))) {
         category = "Leadership & Influence";
@@ -247,6 +263,9 @@ export async function getTestimonials(): Promise<Testimonial[]> {
         keyLearning,
       };
     });
+
+    cachedTestimonials = { data: result, time: Date.now() };
+    return result;
   } catch (err) {
     console.warn("Sanity fetch failed for testimonials, using local fallback:", err);
     return testimonialsData;
@@ -257,6 +276,10 @@ export async function getTestimonials(): Promise<Testimonial[]> {
  * Fetch global site settings (coaching hours, experience years, countries count)
  */
 export async function getSiteSettings(): Promise<SanitySiteSettings> {
+  if (cachedSettings && Date.now() - cachedSettings.time < CACHE_TTL_MS) {
+    return cachedSettings.data;
+  }
+
   if (!sanityClient) {
     return defaultSiteSettings;
   }
@@ -274,12 +297,15 @@ export async function getSiteSettings(): Promise<SanitySiteSettings> {
       return defaultSiteSettings;
     }
 
-    return {
+    const result = {
       coachingHours: settings.coachingHours || defaultSiteSettings.coachingHours,
       corporateExperienceYears:
         settings.corporateExperienceYears || defaultSiteSettings.corporateExperienceYears,
       countriesCount: settings.countriesCount || defaultSiteSettings.countriesCount,
     };
+
+    cachedSettings = { data: result, time: Date.now() };
+    return result;
   } catch (err) {
     console.warn("Sanity fetch failed for siteSettings, using local fallback:", err);
     return defaultSiteSettings;

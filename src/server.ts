@@ -48,8 +48,36 @@ export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
       const handler = await getServerEntry();
-      const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const rawResponse = await handler.fetch(request, env, ctx);
+      const response = await normalizeCatastrophicSsrResponse(rawResponse);
+
+      // Edge and Browser Caching Optimization for GET requests to eliminate latency
+      if (request.method === "GET" && response.status === 200) {
+        const url = new URL(request.url);
+        const isStaticAsset =
+          url.pathname.startsWith("/assets/") ||
+          /\.(?:png|jpg|jpeg|webp|svg|ico|css|js|woff2?|ttf)$/i.test(url.pathname);
+
+        const newHeaders = new Headers(response.headers);
+
+        if (isStaticAsset) {
+          newHeaders.set("Cache-Control", "public, max-age=31536000, immutable");
+        } else if (!url.pathname.startsWith("/admin")) {
+          // Cache SSR HTML at Edge for 5 mins with 24h background revalidation
+          newHeaders.set(
+            "Cache-Control",
+            "public, max-age=0, s-maxage=300, stale-while-revalidate=86400",
+          );
+        }
+
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: newHeaders,
+        });
+      }
+
+      return response;
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
