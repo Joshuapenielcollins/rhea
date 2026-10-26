@@ -120,7 +120,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               logo: "https://rhealigned.com/favicon.png",
               slogan: "Clarity. Confidence. Influence.",
               description:
-                "Executive and leadership coaching for senior leaders, founders, and global organizations. Cognitive systems-based coaching founded by former Global HR Leader Rhea Bulsara Sidhva.",
+                "Executive and leadership coaching for senior leaders, founders, and global organisations. Cognitive systems-based coaching founded by former Global HR Leader Rhea Bulsara Sidhva.",
               founder: {
                 "@type": "Person",
                 "@id": "https://rhealigned.com/#rhea",
@@ -156,8 +156,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 "United Kingdom",
                 "United Arab Emirates",
                 "India",
-                "United States",
-                "Singapore",
               ],
               email: "rhea@rhealigned.com",
               sameAs: [
@@ -173,7 +171,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   name: "What is RheAligned executive coaching?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "RheAligned is an executive and leadership coaching practice founded by Rhea Bulsara Sidhva. It focuses on cognitive operating systems, emotional agility, and practical leadership frameworks for senior executives, founders, and organizations.",
+                    text: "RheAligned is an executive and leadership coaching practice founded by Rhea Bulsara Sidhva. It focuses on cognitive operating systems, emotional agility, and practical leadership frameworks for senior executives, founders, and organisations.",
                   },
                 },
                 {
@@ -186,10 +184,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                 },
                 {
                   "@type": "Question",
-                  name: "What executive coaching programs does RheAligned provide?",
+                  name: "What executive coaching programmes does RheAligned provide?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "RheAligned offers The Executive Recalibration, The Internal Operating System, The Implementation Dip Program, Cross-Cultural Clarity, and The Untangling Session for individuals, alongside tailored enterprise leadership development and talent consulting.",
+                    text: "RheAligned offers three tiers of individual work: The Untangling Session (single 90-minute session), The RheAligned Programme (six sessions over three to six months), and Executive Partnership (twelve sessions), alongside tailored enterprise leadership development and talent consulting.",
                   },
                 },
                 {
@@ -197,7 +195,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
                   name: "Does RheAligned coach executives outside of Hong Kong?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Yes. While headquartered in Hong Kong, RheAligned works virtually with senior executives, founders, and global teams across the UK, UAE, India, Singapore, and the United States across multiple time zones.",
+                    text: "Yes. While headquartered in Hong Kong, RheAligned works virtually with senior executives, founders, and global teams across the UK, UAE, India, and Hong Kong across multiple time zones.",
                   },
                 },
               ],

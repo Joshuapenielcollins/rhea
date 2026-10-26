@@ -1,12 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import logoUrl from "@/assets/rhealigned-logo.png";
 
-const nav = [
+const exploreNav = [
+  { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
+  { to: "/privacy-policy", label: "Privacy Policy" },
 ];
 
 export function SiteFooter() {
@@ -19,7 +21,8 @@ export function SiteFooter() {
         <div className="absolute inset-16 rounded-full border border-deep-foreground/12" />
         <div className="absolute inset-32 rounded-full border border-deep-foreground/15" />
       </div>
-      <div className="shell relative grid gap-10 py-14 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="shell relative grid gap-10 py-14 md:grid-cols-[1.3fr_1.1fr_1fr]">
+        {/* Brand Column */}
         <div>
           <Link to="/" className="inline-flex flex-col" aria-label="RheAligned, home">
             <img
@@ -30,47 +33,86 @@ export function SiteFooter() {
             <p className="mt-4 text-sm font-semibold tracking-wide text-deep-foreground/90">
               Clarity. Confidence. Influence.
             </p>
-            <p className="mt-1 text-xs text-deep-foreground/70">
-              Precision thinking for ambitious leaders.
-            </p>
           </Link>
+          <p className="mt-3 text-xs leading-relaxed text-deep-foreground/60 max-w-xs">
+            Executive & leadership coaching for senior leaders, founders, and organisations.
+          </p>
         </div>
 
-        <nav aria-label="Footer">
-          <ul className="grid grid-cols-2 gap-y-2 text-sm text-deep-foreground/70">
-            {nav.map((item) => (
-              <li key={item.to}>
-                <Link to={item.to} className="transition-colors hover:text-deep-foreground">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {/* Explore Links */}
+        <div>
+          <div className="text-xs font-semibold uppercase tracking-wider text-deep-foreground/50 mb-3">
+            Explore
+          </div>
+          <nav aria-label="Footer Navigation">
+            <ul className="grid grid-cols-2 gap-y-2.5 text-sm text-deep-foreground/75">
+              {exploreNav.map((item) => (
+                <li key={item.to}>
+                  <Link
+                    to={item.to}
+                    className="transition-colors hover:text-deep-foreground focus:outline-none focus:underline"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
 
-        <div className="text-sm text-deep-foreground/70">
-          <a
-            href="mailto:rhea@rhealigned.com"
-            className="block transition-colors hover:text-deep-foreground"
-          >
-            rhea@rhealigned.com
-          </a>
-          <a
-            href="https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-2 block transition-colors hover:text-deep-foreground"
-          >
-            Connect on LinkedIn ↗
-          </a>
-          <p className="mt-4 text-xs leading-relaxed text-deep-foreground/60">
-            Hong Kong · Coaching available virtually across all time zones.
+        {/* Contact & Social Column */}
+        <div className="text-sm text-deep-foreground/75 space-y-3">
+          <div className="text-xs font-semibold uppercase tracking-wider text-deep-foreground/50">
+            Contact & Connect
+          </div>
+          <div>
+            <a
+              href="mailto:rhea@rhealigned.com"
+              className="block font-medium text-deep-foreground hover:underline"
+            >
+              rhea@rhealigned.com
+            </a>
+            <a
+              href="https://www.rhealigned.com"
+              className="text-xs text-deep-foreground/70 hover:text-deep-foreground"
+            >
+              www.rhealigned.com
+            </a>
+          </div>
+          <div className="flex flex-col gap-1.5 pt-1 text-xs">
+            <a
+              href="https://www.linkedin.com/in/rhea-bulsara-sidhva-38070a44/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-deep-foreground"
+            >
+              LinkedIn ↗
+            </a>
+            <a
+              href="https://www.instagram.com/rhea.aligned/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-deep-foreground"
+            >
+              Instagram (@rhea.aligned) ↗
+            </a>
+          </div>
+          <p className="pt-2 text-xs leading-relaxed text-deep-foreground/60">
+            Hong Kong · UK · UAE · India · Coaching available virtually across all time zones.
           </p>
         </div>
       </div>
-      <div className="shell relative flex items-center justify-between border-t border-deep-foreground/15 py-5 text-xs text-deep-foreground/60">
-        <span>© {new Date().getFullYear()} RheAligned</span>
-        <span>Precision thinking for ambitious leaders.</span>
+
+      {/* Copyright Bar */}
+      <div className="shell relative flex flex-wrap items-center justify-between gap-4 border-t border-deep-foreground/15 py-5 text-xs text-deep-foreground/60">
+        <span>© {new Date().getFullYear()} RheAligned. All rights reserved.</span>
+        <div className="flex items-center gap-4">
+          <Link to="/privacy-policy" className="hover:text-deep-foreground">
+            Privacy Policy
+          </Link>
+          <span>·</span>
+          <span>Clarity. Confidence. Influence.</span>
+        </div>
       </div>
     </footer>
   );

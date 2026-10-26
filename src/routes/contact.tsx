@@ -1,29 +1,27 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Reveal } from "@/components/brand/Reveal";
-import { CTA } from "@/components/brand/CTA";
-import { RingMarker } from "@/components/brand/RingMarker";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
   head: () => ({
     meta: [
       {
-        title: "Let's Have the Conversation That Matters | Contact Rhea Bulsara Sidhva | RheAligned",
+        title: "Contact Rhea Bulsara Sidhva | RheAligned",
       },
       {
         name: "description",
         content:
-          "Book a free 30-minute discovery call with executive coach Rhea Bulsara Sidhva. No obligation · Virtual, any time zone. Or discuss an organizational engagement.",
+          "Book a free 30-minute discovery call with executive coach Rhea Bulsara Sidhva. Virtual across UK, UAE, India, and Hong Kong time zones. Or send a message directly.",
       },
       {
         property: "og:title",
-        content: "Let's Have the Conversation That Matters | Contact RheAligned Coaching",
+        content: "Contact Rhea Bulsara Sidhva | RheAligned",
       },
       {
         property: "og:description",
         content:
-          "For individuals: book a free 30-minute discovery call. For organizations: discuss how coaching shifts leadership culture.",
+          "For individuals: book a free 30-minute discovery call. For organisations: discuss how coaching shifts leadership culture.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/contact" },
@@ -31,41 +29,6 @@ export const Route = createFileRoute("/contact")({
     links: [{ rel: "canonical", href: "/contact" }],
   }),
 });
-
-const faqs = [
-  {
-    q: "What is coaching, and how is it different from therapy or consulting?",
-    a: "Coaching is a forward-looking partnership. We focus on the present and the future, identifying goals, challenging limiting beliefs and building frameworks you can act on. Therapy often explores the past in order to heal. Coaching is about building the future you want. And unlike consulting, I don't hand you the answers. I help you find and own them.",
-  },
-  {
-    q: "Who is coaching for?",
-    a: "Senior and globally mobile leaders, founders, and high-potential professionals who know what they need to do but can't make it stick. Leaders who feel their edge slipping under pressure. Entrepreneurs navigating high complexity.",
-  },
-  {
-    q: "I'm already very successful. Will coaching make me look weak?",
-    a: "The most effective leaders are often the most coached. Engaging a coach is a signal of strength, self-awareness, and a commitment to operating at your highest level. It's not about fixing a weakness; it's about optimizing your cognitive edge.",
-  },
-  {
-    q: "We have an internal L&D program. Why should we hire an external coach?",
-    a: "An external coach provides a confidential space with no internal agenda. Leaders can be more honest, challenge assumptions more freely, and work on the internal operating system in a way that isn't always possible with an internal stakeholder.",
-  },
-  {
-    q: "How long does coaching take?",
-    a: "It depends on your goals. Some clients get what they need in 4 to 6 sessions on a specific transition or challenge. The Untangling Session is a focused 1 to 2 session intervention when you need immediate clarity.",
-  },
-  {
-    q: "Do you work virtually or in person?",
-    a: "Both. I'm based in Hong Kong and work virtually with leaders across all global time zones (UK, USA, UAE, India, HK). In-person engagements in Hong Kong are available upon request.",
-  },
-  {
-    q: "What's the investment?",
-    a: "Individual packages range from HK$8,000 to HK$12,000 depending on scope (4 to 6 sessions). The Untangling Session is HK$1,500 to HK$3,000. Organizational engagements are customized to your team's specific scope.",
-  },
-  {
-    q: "What languages do you coach in?",
-    a: "English and Hindi.",
-  },
-];
 
 const directDetails = [
   { label: "Email", value: "rhea@rhealigned.com", href: "mailto:rhea@rhealigned.com" },
@@ -77,95 +40,29 @@ const directDetails = [
   { label: "Base", value: "Hong Kong · Virtual Global Practice" },
 ];
 
-function FaqAccordion() {
-  const [open, setOpen] = useState<number | null>(null);
-
-  return (
-    <ul className="overflow-hidden rounded-xl border border-hairline bg-card shadow-sm">
-      {faqs.map((f, i) => {
-        const isOpen = open === i;
-        return (
-          <li
-            key={f.q}
-            className="border-b border-hairline last:border-b-0"
-            style={{
-              background: isOpen
-                ? "color-mix(in oklab, var(--primary) 4%, transparent)"
-                : undefined,
-            }}
-          >
-            <h3>
-              <button
-                type="button"
-                onClick={() => setOpen(isOpen ? null : i)}
-                aria-expanded={isOpen}
-                className="flex w-full items-start gap-4 px-6 py-5 text-left transition-colors hover:bg-sand/40"
-              >
-                <span className="mt-1 text-xs font-bold text-primary tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="flex-1 text-[15.5px] font-semibold leading-snug tracking-tight text-foreground">
-                  {f.q}
-                </span>
-                <span className="text-primary text-lg font-light leading-none">
-                  {isOpen ? "−" : "+"}
-                </span>
-              </button>
-            </h3>
-            {isOpen && (
-              <div className="px-6 pb-6 pl-12 text-[15px] leading-relaxed text-muted-foreground">
-                {f.a}
-              </div>
-            )}
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
 function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const navigate = useNavigate();
+  const [status, setStatus] = useState<"idle" | "submitting">("idle");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    role: "Individual Leader",
-    message: "",
+    role: "",
+    situation: "",
+    preferredTime: "",
+    consent: false,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.consent) {
+      alert("Please accept the privacy policy consent to proceed.");
+      return;
+    }
     setStatus("submitting");
     setTimeout(() => {
-      setStatus("success");
-    }, 800);
+      navigate({ to: "/thank-you" });
+    }, 600);
   };
-
-  if (status === "success") {
-    return (
-      <div className="rounded-xl border border-primary/30 bg-primary/8 p-8 text-center">
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-xl">
-          ✓
-        </div>
-        <h3 className="mt-4 text-xl font-bold tracking-tight text-foreground">
-          Thank you, {formData.name || "there"}!
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Your note has been delivered. Rhea will review your details and respond within 24 hours.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            setStatus("idle");
-            setFormData({ name: "", email: "", role: "Individual Leader", message: "" });
-          }}
-          className="mt-6 text-xs font-semibold text-primary underline underline-offset-4"
-        >
-          Send another message
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form
@@ -177,7 +74,7 @@ function ContactForm() {
           htmlFor="contact-name"
           className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
         >
-          Name
+          Name <span className="text-primary">*</span>
         </label>
         <input
           id="contact-name"
@@ -195,7 +92,7 @@ function ContactForm() {
           htmlFor="contact-email"
           className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
         >
-          Email
+          Email <span className="text-primary">*</span>
         </label>
         <input
           id="contact-email"
@@ -203,7 +100,7 @@ function ContactForm() {
           required
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          placeholder="your.email@organization.com"
+          placeholder="your.email@organisation.com"
           className="mt-2 w-full rounded-lg border border-hairline bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
       </div>
@@ -213,37 +110,69 @@ function ContactForm() {
           htmlFor="contact-role"
           className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
         >
-          I am a:
+          Role or context <span className="text-xs normal-case text-muted-foreground/70">(optional)</span>
         </label>
-        <select
+        <input
           id="contact-role"
+          type="text"
           value={formData.role}
           onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-          className="mt-2 w-full rounded-lg border border-hairline bg-background px-4 py-2.5 text-sm text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-        >
-          <option value="Individual Leader">Individual Leader</option>
-          <option value="Founder">Founder</option>
-          <option value="Organization">Organization</option>
-          <option value="Other">Other</option>
-        </select>
+          placeholder="e.g. Senior leader, founder, HR & L&D"
+          className="mt-2 w-full rounded-lg border border-hairline bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+        />
       </div>
 
       <div>
         <label
-          htmlFor="contact-message"
+          htmlFor="contact-situation"
           className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
         >
-          What would you like to discuss?
+          What's happening? <span className="text-primary">*</span>
         </label>
         <textarea
-          id="contact-message"
+          id="contact-situation"
           rows={4}
           required
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          placeholder="Share a brief overview of your current context or goals..."
+          value={formData.situation}
+          onChange={(e) => setFormData({ ...formData, situation: e.target.value })}
+          placeholder="Tell me what situation you are navigating or what you would like to explore..."
           className="mt-2 w-full rounded-lg border border-hairline bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
+      </div>
+
+      <div>
+        <label
+          htmlFor="contact-time"
+          className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground"
+        >
+          Preferred call time <span className="text-xs normal-case text-muted-foreground/70">(optional)</span>
+        </label>
+        <input
+          id="contact-time"
+          type="text"
+          value={formData.preferredTime}
+          onChange={(e) => setFormData({ ...formData, preferredTime: e.target.value })}
+          placeholder="e.g. Mornings UK, Afternoons HK, specific days..."
+          className="mt-2 w-full rounded-lg border border-hairline bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+        />
+      </div>
+
+      {/* Consent Checkbox */}
+      <div className="flex items-start gap-3 pt-2">
+        <input
+          id="contact-consent"
+          type="checkbox"
+          required
+          checked={formData.consent}
+          onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+          className="mt-1 h-4 w-4 rounded border-hairline text-primary focus:ring-primary"
+        />
+        <label htmlFor="contact-consent" className="text-xs leading-relaxed text-muted-foreground">
+          I agree to RheAligned using my details to respond to this enquiry.{" "}
+          <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">
+            Privacy Policy
+          </Link>
+        </label>
       </div>
 
       <button
@@ -253,6 +182,14 @@ function ContactForm() {
       >
         {status === "submitting" ? "Sending..." : "Send Message"}
       </button>
+
+      {/* Privacy note */}
+      <p className="text-center text-[11.5px] leading-relaxed text-muted-foreground/80 pt-1">
+        I use your details only to respond to your enquiry. I don't add you to a newsletter without your consent.{" "}
+        <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">
+          Privacy Policy
+        </Link>
+      </p>
     </form>
   );
 }
@@ -296,7 +233,7 @@ function BookingCalendar() {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
-        <span>Instant confirmation with Google Meet / Zoom invite</span>
+        <span>Instant confirmation with video invite</span>
         <a
           href={calendlyUrl}
           target="_blank"
@@ -311,51 +248,29 @@ function BookingCalendar() {
 }
 
 function WhatHappensNext() {
-  const steps = [
-    {
-      num: "01",
-      title: "You book a call at a time that works for you.",
-      desc: "Pick a slot that suits your schedule across any time zone.",
-    },
-    {
-      num: "02",
-      title: "We have a 30-minute conversation about where you are and what's getting in the way.",
-      desc: "A confidential discussion focused on your real cognitive roadblocks.",
-    },
-    {
-      num: "03",
-      title:
-        "If coaching is the right next step, we'll discuss how to work together. If it's not, I'll tell you honestly.",
-      desc: "Zero high-pressure sales pitch. Just straight talk about fit and impact.",
-    },
-  ];
-
   return (
     <section className="section-y border-b border-hairline bg-sand/30">
-      <div className="shell">
+      <div className="shell max-w-4xl">
         <Reveal>
-          <span className="eyebrow">The Process</span>
+          <span className="eyebrow">Clear Expectations</span>
           <h2 className="mt-3 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
-            What Happens Next?
+            What Happens Next
           </h2>
-          <p className="mt-3 max-w-[50ch] text-[15px] leading-relaxed text-muted-foreground">
-            Clear expectations right from the start.
-          </p>
+          <div className="mt-6 space-y-4 text-[15.5px] leading-relaxed text-foreground/85">
+            <p className="font-semibold text-foreground">
+              Prefer email?{" "}
+              <a href="mailto:rhea@rhealigned.com" className="text-primary underline">
+                rhea@rhealigned.com
+              </a>
+            </p>
+            <p>
+              I'll reply within one to two working days. Discovery calls are 30 minutes, no pitch. We'll use the time to clarify what's happening, test fit, and agree whether there's a useful next step.
+            </p>
+            <p>
+              If you're an HR or L&D team exploring a programme, mention it in your message and I'll send the relevant programme outline before we speak.
+            </p>
+          </div>
         </Reveal>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {steps.map((s, i) => (
-            <Reveal key={s.num} delay={i * 0.08} className="panel bg-card p-7 shadow-sm">
-              <span className="text-xs font-bold tracking-[0.18em] text-primary tabular-nums">
-                STEP {s.num}
-              </span>
-              <h3 className="mt-4 text-base font-semibold leading-snug text-foreground">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{s.desc}</p>
-            </Reveal>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -364,7 +279,7 @@ function WhatHappensNext() {
 function Contact() {
   return (
     <>
-      {/* 5.1 Contact Page Structure */}
+      {/* 5.1 Contact Page Introduction */}
       <section className="border-b border-hairline bg-gradient-to-b from-background via-background to-sand/20">
         <div className="shell pb-16 pt-14 lg:pt-20">
           <Reveal>
@@ -389,7 +304,7 @@ function Contact() {
 
               <div className="rounded-xl border border-hairline bg-card p-6">
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                  For Organizations
+                  For Organisations
                 </span>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   Let's discuss how coaching can shift your leadership culture, support retention,
@@ -401,7 +316,7 @@ function Contact() {
         </div>
       </section>
 
-      {/* 5.2 Contact Form & 5.3 Booking Calendar */}
+      {/* 5.2 Contact Form & Booking Calendar */}
       <section className="section-y border-b border-hairline">
         <div className="shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           {/* Booking Calendar Widget */}
@@ -417,7 +332,7 @@ function Contact() {
                   Send a Direct Message
                 </h3>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Have a question or looking for an organizational quote?
+                  Have a question or looking for an organisational engagement?
                 </p>
               </div>
               <ContactForm />
@@ -458,23 +373,29 @@ function Contact() {
         </div>
       </section>
 
-      {/* 5.4 What Happens Next */}
+      {/* What Happens Next */}
       <WhatHappensNext />
 
-      {/* FAQs */}
-      <section className="section-y">
-        <div className="shell grid gap-12 lg:grid-cols-[0.6fr_1.4fr]">
+      {/* C-01 FAQ Link replacing duplicate FAQ */}
+      <section className="py-16 bg-card border-b border-hairline">
+        <div className="shell text-center max-w-2xl">
           <Reveal>
-            <span className="eyebrow">Clarifications</span>
-            <h2 className="mt-3 text-[clamp(1.5rem,2.5vw,2.1rem)] font-bold tracking-tight">
-              Frequently Asked Questions
-            </h2>
+            <h3 className="text-xl font-bold tracking-tight text-foreground">
+              Looking for answers before you book?
+            </h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Everything you need to know about working with Rhea.
+              The FAQ covers how coaching works, how long it takes, and what it isn't.
             </p>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <FaqAccordion />
+            <div className="mt-6">
+              <Link
+                to="/services"
+                hash="faq"
+                className="group inline-flex items-center gap-2 text-sm font-semibold text-primary underline underline-offset-4 hover:text-primary/80"
+              >
+                <span>Read the FAQ</span>
+                <span className="transition-transform group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

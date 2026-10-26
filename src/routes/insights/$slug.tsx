@@ -298,10 +298,7 @@ function BlogPostPage() {
               </span>
               <h3 className="mt-1 text-lg font-bold text-foreground">Rhea Bulsara Sidhva</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                Former Global HR Leader at BP, Tata Group, and Sainsbury's. Certified Executive
-                Coach (ICF-ACC) with 500+ coaching hours. Rhea partners with senior leaders,
-                founders, and enterprise organizations across Hong Kong, the UK, the UAE, India, and
-                the US to dissolve cognitive friction and lead with quiet, unshakeable authority.
+                Rhea Bulsara Sidhva is an ICF Associate Certified Coach (ACC) and founder of RheAligned. A former global HR leader, she spent 14 years inside BP, Tata Group and Sainsbury's across the UK, UAE, India and Hong Kong. She works with senior leaders, high-performing professionals and founders on the patterns that get in the way under pressure.
               </p>
               <div className="mt-4 flex flex-wrap items-center gap-4 text-xs font-semibold">
                 <Link to="/about" className="text-primary hover:underline">
@@ -324,19 +321,18 @@ function BlogPostPage() {
         <div className="mt-12 rounded-2xl border border-hairline bg-sand/35 p-8 text-center sm:p-10">
           <span className="eyebrow">Work With Rhea</span>
           <h3 className="mt-2 text-2xl font-bold tracking-tight text-foreground">
-            Apply these insights to your leadership challenges.
+            If this sounds familiar, a 30-minute discovery call is a useful next step.
           </h3>
           <p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Whether you are navigating high-stakes stakeholders, overcoming overthinking, or scaling
-            organizational leadership, let's explore how coaching can accelerate your progress.
+            No pitch: just a clear look at what's happening and whether there's a useful way forward.
           </p>
           <div className="mt-6 flex justify-center">
             <CTAWithMicro
-              to="/contact"
+              href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
               align="center"
-              micro="No obligation · Virtual, any time zone"
+              micro="30 minutes · No obligation · Virtual"
             >
-              Book a free 30-minute discovery call
+              Book a free discovery call
             </CTAWithMicro>
           </div>
         </div>

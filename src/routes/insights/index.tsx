@@ -30,7 +30,7 @@ export const Route = createFileRoute("/insights/")({
         {
           property: "og:description",
           content:
-            "Evidence-based frameworks on mindset, decision-making, and internal operating systems for executives and founders.",
+            "Evidence-based frameworks on mindset, decision-making, and leadership patterns for executives and founders.",
         },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "/insights" },
@@ -309,8 +309,7 @@ function Insights() {
               Get practical leadership insights delivered to your inbox.
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              A monthly reflection on decision-making, executive presence, and cognitive systems. No
-              spam. Just precision thinking.
+              A monthly reflection on decision-making, executive presence, and cognitive systems. No spam. Just practical writing on the patterns that get in the way.
             </p>
           </Reveal>
 
@@ -335,6 +334,13 @@ function Insights() {
                 Subscribe
               </button>
             </form>
+            <p className="mt-3 text-xs text-muted-foreground/80">
+              I respect your privacy. Read our{" "}
+              <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">
+                Privacy Policy
+              </Link>
+              .
+            </p>
           </Reveal>
         </div>
       </section>

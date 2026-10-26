@@ -93,8 +93,11 @@ function Hero({ settings }: { settings: SanitySiteSettings }) {
             {/* CTAs */}
             <Reveal delay={0.25}>
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
-                  Book a free 30-minute discovery call
+                <CTAWithMicro
+                  href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+                  micro="No obligation · Virtual, any time zone"
+                >
+                  Book a free discovery call
                 </CTAWithMicro>
 
                 <div className="self-start pt-0.5">
@@ -165,13 +168,13 @@ function Hero({ settings }: { settings: SanitySiteSettings }) {
               <span>
                 Corporate Experience:{" "}
                 <strong className="font-semibold text-foreground">
-                  BP · Tata Group · Sainsbury's
+                  Tata Group · BP · Sainsbury's
                 </strong>
               </span>
               <span>
                 Geographies:{" "}
                 <strong className="font-semibold text-foreground">
-                  Hong Kong · UK · UAE · India
+                  UK · UAE · India · Hong Kong
                 </strong>
               </span>
             </div>
@@ -190,7 +193,7 @@ function AudienceChips() {
       to: "/services",
     },
     {
-      title: "High-Potential Professionals",
+      title: "High-Performing Professionals",
       description: "Achieved external success but feel stuck internally.",
       to: "/services",
     },
@@ -274,10 +277,10 @@ function WhatIHelpWith() {
         <Reveal delay={0.18} className="mt-10">
           <div className="rounded-xl border border-hairline bg-deep p-8 text-deep-foreground">
             <p className="editorial text-[clamp(1.4rem,2.5vw,2rem)] leading-snug">
-              This isn't burnout. It's friction in your internal operating system.
+              This isn't therapy or a wellness programme.
             </p>
             <p className="mt-3 text-lg font-light text-deep-foreground/80">
-              And friction can be identified, redesigned, and removed.
+              It's structured work on the patterns that get in the way of decisions you already know how to make.
             </p>
           </div>
         </Reveal>
@@ -296,15 +299,15 @@ function TheRheAlignedMethod() {
     },
     {
       num: "02",
-      title: "Objectify",
+      title: "Make visible",
       description:
-        "We turn vague anxiety or doubt into a defined, manageable problem. The invisible becomes visible.",
+        "Turn vague concerns into clearer problems. The invisible becomes visible.",
     },
     {
       num: "03",
       title: "Activate",
       description:
-        "We install a repeatable system for clarity, so your new operating system works when you need it most.",
+        "We install a repeatable system for clarity, so your new approach works when you need it most.",
     },
   ];
 
@@ -372,71 +375,78 @@ function TheRheAlignedMethod() {
 
 function ClientOutcomes({ testimonials }: { testimonials: Testimonial[] }) {
   const displayItems = testimonials.slice(0, 2);
+  const outcomes = [
+    "Gain clarity on what's next and move forward with confidence and direction.",
+    "Position yourself for bigger opportunities, career growth and business success.",
+    "Build the executive presence to influence decisions, earn trust and get buy-in.",
+    "Navigate high-stakes conversations and complex challenges without second-guessing yourself.",
+    "Make sharper decisions under pressure and turn uncertainty into purposeful action.",
+  ];
 
   return (
     <section className="section-y border-b border-hairline bg-sand/30">
       <div className="shell">
         <Reveal>
-          <span className="eyebrow">Client Outcomes</span>
+          <span className="eyebrow">Outcomes</span>
           <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
-            Real shifts in leadership and peace of mind
+            What changes
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {displayItems.map((t, i) => (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {outcomes.map((outcome, idx) => (
             <Reveal
-              key={t.id || t.role}
-              delay={i * 0.08}
-              className="panel flex flex-col justify-between bg-card p-8 shadow-sm"
+              key={idx}
+              delay={idx * 0.05}
+              className={`panel bg-card p-6 shadow-sm ${idx === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
             >
-              <blockquote className="editorial text-[clamp(1.3rem,2.1vw,1.75rem)] leading-snug text-foreground">
-                “{t.pull}”
-              </blockquote>
-              <div className="mt-8 border-t border-hairline pt-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary">
-                  {t.role}
-                </p>
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 text-primary font-bold">✓</span>
+                <p className="text-[15px] leading-relaxed text-foreground/90 font-medium">{outcome}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
-        <Reveal delay={0.16} className="mt-8">
-          <CTA to="/testimonials" tone="quiet">
-            Read More Success Stories
-          </CTA>
-        </Reveal>
+        <div className="mt-12">
+          <Reveal>
+            <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              What leaders say
+            </h3>
+          </Reveal>
+          <div className="mt-6 grid gap-8 md:grid-cols-2">
+            {displayItems.map((t, i) => (
+              <Reveal
+                key={t.id || t.role}
+                delay={i * 0.08}
+                className="panel flex flex-col justify-between bg-card p-8 shadow-sm"
+              >
+                <blockquote className="editorial text-[clamp(1.3rem,2.1vw,1.75rem)] leading-snug text-foreground">
+                  “{t.pull}”
+                </blockquote>
+                <div className="mt-8 border-t border-hairline pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+                    {t.role}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.16} className="mt-8">
+            <CTA to="/testimonials" tone="quiet">
+              Read More Success Stories
+            </CTA>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
 }
 
 function ForOrganizationsBand() {
-  const orgServices = [
-    {
-      title: "Executive Coaching",
-      desc: "One-on-one coaching for your leaders to strengthen decision-making, presence, and influence.",
-    },
-    {
-      title: "Leadership Development Programs",
-      desc: "Build a consistent coaching mindset and a common leadership language across your pipeline.",
-    },
-    {
-      title: "Talent Management & L&D Consulting",
-      desc: "Leverage 14+ years of global HR leadership to transform your talent strategy.",
-    },
-  ];
-
-  const whyChoose = [
-    "Scalable coaching solutions that reach beyond the executive suite.",
-    "Leaders who coach and develop others, not just direct.",
-    "A culture of resilience and growth mindset.",
-    "Improved retention of high-potential talent.",
-  ];
-
   return (
-    <section className="relative overflow-hidden border-b border-hairline bg-deep py-20 text-deep-foreground">
+    <section id="organisations" className="relative overflow-hidden border-b border-hairline bg-deep py-16 text-deep-foreground">
       <Arc
         tone="light"
         core={false}
@@ -447,25 +457,39 @@ function ForOrganizationsBand() {
           <div>
             <Reveal>
               <span className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">
-                For Organizations
+                Organisational Partnerships
               </span>
               <h2 className="mt-4 max-w-[22ch] text-[clamp(1.85rem,3.4vw,2.75rem)] font-bold leading-tight text-white">
-                Build a leadership culture that stays clear-headed under pressure.
+                For HR and L&D teams
               </h2>
+              <p className="mt-2 text-lg font-medium text-teal-100">
+                Capability isn't the constraint. The pattern is.
+              </p>
             </Reveal>
 
             <Reveal delay={0.08}>
               <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-deep-foreground/90">
                 <p>
-                  I partner with organizations to develop resilient, clear-thinking leaders who can
-                  navigate complexity, make sharper decisions, and influence across cultures.
+                  Your organisation already has the talent. What it needs is a way to interrupt the patterns that stop that talent from showing up under pressure.
                 </p>
                 <p>
-                  My work draws on 14 years inside global HR at BP, Tata Group, and Sainsbury's, where I
-                  built global mobility platforms, shaped leadership pipelines, and partnered with
-                  business leaders through transformation and ambiguity.
+                  I partner with HR and L&D teams on executive coaching and leadership development programmes built around the patterns your leaders actually face.
                 </p>
               </div>
+            </Reveal>
+
+            <Reveal delay={0.16} className="mt-8 flex flex-wrap items-center gap-4">
+              <CTAWithMicro
+                href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+                tone="light"
+                microClassName="text-white/80"
+                micro="Customised to your organisation"
+              >
+                Book a discovery call
+              </CTAWithMicro>
+              <CTA to="/services" tone="quiet" className="text-teal-200 after:bg-teal-200 hover:text-white">
+                See how programmes work →
+              </CTA>
             </Reveal>
           </div>
 
@@ -473,59 +497,13 @@ function ForOrganizationsBand() {
             <div className="relative w-full max-w-[420px] overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
               <img
                 src={rheaSpeaking}
-                alt="Rhea Bulsara Sidhva speaking with organizational leaders"
+                alt="Rhea Bulsara Sidhva speaking with organisational leaders"
                 className="aspect-[4/3] w-full object-cover object-top filter transition-transform duration-700 hover:scale-105"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent" />
             </div>
           </Reveal>
         </div>
-
-        {/* 3 Services Cards */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {orgServices.map((s, i) => (
-            <Reveal
-              key={s.title}
-              delay={0.1 + i * 0.06}
-              className="flex h-full flex-col justify-between rounded-xl border border-white/15 bg-white/5 p-6 backdrop-blur"
-            >
-              <div>
-                <h3 className="text-lg font-semibold tracking-tight text-white min-h-[3.25rem] flex items-start">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-deep-foreground/80 min-h-[4rem]">
-                  {s.desc}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        {/* Why choose */}
-        <Reveal delay={0.25} className="mt-12 border-t border-white/15 pt-8">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-200">
-            Why Organizations Choose This Work
-          </p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2">
-            {whyChoose.map((point) => (
-              <div key={point} className="flex items-start gap-3">
-                <span className="mt-1 text-teal-300 font-bold">✓</span>
-                <span className="text-sm leading-relaxed text-deep-foreground/90">{point}</span>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.3} className="mt-10">
-          <CTAWithMicro
-            to="/contact"
-            tone="light"
-            microClassName="text-white/80"
-            micro="Customized to your needs · Virtual or in-person"
-          >
-            Discuss an Organizational Engagement
-          </CTAWithMicro>
-        </Reveal>
       </div>
     </section>
   );
@@ -601,52 +579,34 @@ function FinalCTASection() {
       />
       <div className="shell relative">
         <Reveal className="text-center">
-          <h2 className="mx-auto max-w-[22ch] text-[clamp(2rem,3.4vw,2.85rem)] font-bold leading-tight">
-            You know what you need to do. Let's help you do it consistently.
+          <h2 className="mx-auto max-w-[26ch] text-[clamp(2rem,3.4vw,2.85rem)] font-bold leading-tight">
+            You're not short of answers. You're short of access to your own.
           </h2>
+          <p className="mx-auto mt-6 max-w-[62ch] text-[16px] leading-relaxed text-foreground/80">
+            I don't rent you mine: rented answers don't survive the board meeting or the investor conversation. That's why the clarity that emerges holds.
+          </p>
+          <p className="mx-auto mt-4 max-w-[62ch] text-[15px] leading-relaxed text-muted-foreground">
+            The best first step is a conversation. Tell me what's happening, and we'll work out whether there's a useful way forward.
+          </p>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2">
-          {/* Individual Column */}
-          <Reveal delay={0.08} className="panel flex flex-col justify-between bg-card p-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-                For Individuals
-              </span>
-              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-                Book a free 30-minute discovery call. No obligation. Just a conversation about where
-                you are and where you want to go.
-              </p>
-            </div>
-            <div className="mt-8">
-              <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
-                Book a free 30-minute discovery call
-              </CTAWithMicro>
-            </div>
-          </Reveal>
+        <Reveal delay={0.12} className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <CTAWithMicro
+            href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+            micro="30 minutes · No obligation · Virtual"
+            align="center"
+          >
+            Book a free discovery call
+          </CTAWithMicro>
 
-          {/* Organization Column */}
-          <Reveal delay={0.14} className="panel flex flex-col justify-between bg-card p-8">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-primary">
-                For Organizations
-              </span>
-              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-                Let's discuss how coaching can shift your leadership culture, support retention, and
-                build performance that lasts.
-              </p>
-            </div>
-            <div className="mt-8">
-              <CTAWithMicro
-                to="/contact"
-                tone="outline"
-                micro="Customized to your needs · Virtual or in-person"
-              >
-                Discuss an Organizational Engagement
-              </CTAWithMicro>
-            </div>
-          </Reveal>
-        </div>
+          <a
+            href="mailto:rhea@rhealigned.com"
+            className="group relative inline-flex items-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-sm"
+          >
+            <span>rhea@rhealigned.com</span>
+            <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
+          </a>
+        </Reveal>
       </div>
     </section>
   );

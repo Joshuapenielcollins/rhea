@@ -70,8 +70,8 @@ function Testimonials() {
           <Reveal delay={0.12}>
             <p className="mt-5 max-w-[56ch] text-[16px] leading-relaxed text-muted-foreground">
               Executive coaching for leaders who want clarity, resilience, and impact without the
-              friction, overthinking, or burnout. The focus is on concrete breakthroughs and shifts
-              in internal operating systems.
+              friction, second-guessing, or exhaustion. The focus is on concrete breakthroughs and shifts
+              in how you think, decide, and lead under pressure.
             </p>
           </Reveal>
 
@@ -159,7 +159,7 @@ function Testimonials() {
                 find their own, then helps them build a clear execution plan.
               </p>
               <p>
-                Whether it's navigating complex organizational dynamics, building a more self-sufficient
+                Whether it's navigating complex organisational dynamics, building a more self-sufficient
                 team, communicating under pressure, or redefining resilience, the work focuses on
                 the cognitive system underneath.
               </p>

@@ -21,21 +21,21 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       {
-        title: "About Rhea Bulsara Sidhva | Executive and Leadership Coach | RheAligned",
+        title: "About Rhea Bulsara Sidhva | Executive & Leadership Coach | RheAligned",
       },
       {
         name: "description",
         content:
-          "Your Thought Partner in Clarity. ICF-ACC executive coach with 14+ years corporate HR leadership at BP, Tata Group, and Sainsbury's across HK, UK, UAE, and India.",
+          "Executive and leadership coach who spent 14 years inside corporate HR at Tata Group, BP, and Sainsbury's across UK, UAE, India, and Hong Kong. ICF-ACC.",
       },
       {
         property: "og:title",
-        content: "About Rhea Bulsara Sidhva | Your Thought Partner in Clarity",
+        content: "About Rhea Bulsara Sidhva | RheAligned",
       },
       {
         property: "og:description",
         content:
-          "Executive and leadership coach who spent 14 years inside corporate HR at BP, Tata Group, and Sainsbury's.",
+          "Executive and leadership coach who spent 14 years inside corporate HR at Tata Group, BP, and Sainsbury's.",
       },
       { property: "og:type", content: "profile" },
       { property: "og:url", content: "/about" },
@@ -58,7 +58,7 @@ const patterns = [
   },
   {
     name: "The Idolism Loop",
-    definition: "Giving someone else's opinion more weight than your own inner compass.",
+    definition: "When someone else's certainty carries more weight than your own.",
     diagram: (
       <svg viewBox="0 0 120 90" className="h-24 w-32" aria-hidden="true">
         <circle cx="60" cy="45" r="34" fill="none" stroke="var(--hairline)" strokeWidth="1" />
@@ -109,7 +109,7 @@ const clientTransformations = [
     title: "From reactive to intentional",
     who: "Senior Professional, Consulting | India/UAE",
     challenge: "High reactivity and a habit of being overwhelmed by other people's opinions.",
-    approach: "The Internal Operating System program, with a focus on objectivity training.",
+    approach: "Structured coaching focused on pattern awareness and cognitive clarity.",
     outcome:
       "Enhanced responsibilities at work, along with mental peace and a more intentional way of living.",
   },
@@ -131,7 +131,7 @@ const clientTransformations = [
   },
   {
     title: "From cognitive fog to board clarity",
-    who: "Operations Head, Board Level, Chemical Engineering | Hong Kong",
+    who: "Operations Head, board level",
     challenge: "Cognitive slowdown and unclear articulation in high-stakes board meetings.",
     approach: "Resource strain identification paired with a cognitive clarity framework.",
     outcome:
@@ -145,12 +145,12 @@ const method = [
     body: "We identify the hidden narratives and specific beliefs creating friction in your thinking.",
   },
   {
-    step: "Objectify",
-    body: "We turn vague anxiety or doubt into a defined, manageable problem. The invisible becomes visible.",
+    step: "Make visible",
+    body: "Turn vague concerns into clearer problems. The invisible becomes visible.",
   },
   {
     step: "Activate",
-    body: "We install a repeatable system for clarity, so your new operating system works when you need it most.",
+    body: "We install a repeatable system for clarity, so your new approach works when you need it most.",
   },
 ];
 
@@ -236,21 +236,27 @@ function About() {
 
             <Reveal delay={0.1}>
               <h1 className="mt-5 max-w-[18ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-                Your Thought Partner in Clarity
+                About Rhea Bulsara Sidhva
               </h1>
             </Reveal>
 
             <Reveal delay={0.16}>
-              <p className="mt-5 max-w-[50ch] text-[16px] font-medium leading-relaxed text-foreground/85">
-                I am an ICF-certified executive and leadership coach, and a former global HR leader.
-                For 14 years, I worked inside the organizations you know: BP, Tata Group, and
-                Sainsbury's. Across the UK, UAE, India, and Hong Kong.
-              </p>
+              <div className="mt-5 max-w-[52ch] space-y-3 text-[16px] font-medium leading-relaxed text-foreground/85">
+                <p>
+                  Capability alone does not guarantee effective leadership. The patterns we fall into under pressure determine how much of that capability we actually use.
+                </p>
+                <p>
+                  I'm Rhea Bulsara Sidhva, an ICF Associate Certified Coach (ACC), former global HR leader and founder of RheAligned.
+                </p>
+              </div>
             </Reveal>
 
             <Reveal delay={0.22} className="mt-8">
-              <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
-                Book a free 30-minute discovery call
+              <CTAWithMicro
+                href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+                micro="No obligation · Virtual, any time zone"
+              >
+                Book a free discovery call
               </CTAWithMicro>
             </Reveal>
           </div>
@@ -274,21 +280,25 @@ function About() {
         </div>
       </section>
 
-      {/* 3.2 Opening Statement & Pull-Quote */}
+      {/* Why patterns, not gaps */}
       <section className="section-y border-b border-hairline bg-sand/30">
-        <div className="shell grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <div className="shell max-w-4xl">
           <Reveal>
-            <blockquote className="editorial text-[clamp(1.7rem,3vw,2.4rem)] leading-snug text-foreground">
-              “The distance between where you are and where you're capable of being is often just a
-              few thoughts.”
-            </blockquote>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <p className="text-[16px] leading-relaxed text-muted-foreground">
-              I've spent fourteen years inside global organizations, and I've seen this truth play
-              out again and again. Smart leaders don't fail because they lack skill. They stall
-              because their internal operating system starts working against them.
-            </p>
+            <span className="eyebrow">Perspective</span>
+            <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
+              Why patterns, not gaps
+            </h2>
+            <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-foreground/85">
+              <p>
+                Most leadership development starts from a deficit: what's missing, what to fix, what competency to build. That framing misses the real constraint.
+              </p>
+              <p>
+                The leaders I work with are capable. They have the experience, the skills and the judgement. What gets in the way is a pattern that shows up under pressure, and patterns are not gaps in competence. They can be recognised, examined and changed.
+              </p>
+              <p>
+                I call these patterns the Expectation Trap, the Idolism Loop (when someone else's certainty carries more weight than your own) and the Negative Narration Spiral. Recognising them is the first step towards changing how we think, respond and act.
+              </p>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -331,7 +341,7 @@ function About() {
               <span className="eyebrow">The RheAligned Method</span>
               <p className="mt-4 max-w-[50ch] text-[15.5px] leading-relaxed text-muted-foreground">
                 The RheAligned Method is a cognitive systems approach. We deconstruct the hidden
-                narratives keeping you stuck, objectify them so you can see them clearly, and
+                narratives keeping you stuck, make them visible so you can see them clearly, and
                 activate a repeatable system for clarity under pressure.
               </p>
             </Reveal>
@@ -400,8 +410,7 @@ function About() {
               practical insight in the coaching room.
             </p>
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground/80">
-              Beyond one-to-one coaching, Rhea has facilitated group work on self-identity,
-              including sessions with refugees in Hong Kong and global mobility cohorts.
+              Beyond one-to-one coaching, Rhea facilitates executive workshops and leadership group work on self-identity and cross-cultural transition.
             </p>
           </Reveal>
 
@@ -413,7 +422,7 @@ function About() {
                   <thead className="border-b border-hairline bg-sand/50 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                     <tr>
                       <th className="px-6 py-4">Role</th>
-                      <th className="px-6 py-4">Organization</th>
+                      <th className="px-6 py-4">Organisation</th>
                       <th className="px-6 py-4">Industry</th>
                     </tr>
                   </thead>
@@ -499,19 +508,32 @@ function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-sand/40">
-        <div className="shell flex flex-wrap items-center justify-between gap-8">
-          <div>
-            <h3 className="text-2xl font-bold tracking-tight text-foreground">
-              Precision thinking for ambitious leaders.
-            </h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Start with an honest, focused 30-minute discovery conversation.
+      <section className="py-20 bg-sand/40 border-b border-hairline">
+        <div className="shell text-center max-w-3xl">
+          <Reveal>
+            <h2 className="text-[clamp(1.85rem,3vw,2.5rem)] font-bold tracking-tight text-foreground">
+              Not sure where you fit?
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-muted-foreground">
+              The best way to find out is a conversation. Thirty minutes, no pitch: we'll clarify what's happening and whether there's a useful next step.
             </p>
-          </div>
-          <CTAWithMicro to="/contact" micro="No obligation · Virtual, any time zone">
-            Book a free 30-minute discovery call
-          </CTAWithMicro>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <CTAWithMicro
+                href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+                micro="30 minutes · No obligation · Virtual"
+                align="center"
+              >
+                Book a free discovery call
+              </CTAWithMicro>
+              <a
+                href="/contact"
+                className="group relative inline-flex items-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-sm"
+              >
+                <span>Send a message</span>
+                <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
+              </a>
+            </div>
+          </Reveal>
         </div>
       </section>
     </>

@@ -7,7 +7,6 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/testimonials", label: "Testimonials" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
 ];
@@ -63,8 +62,12 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden lg:block">
-          <CTA to="/contact" tone="outline" className="px-5 py-2 text-[13px]">
-            Book a Discovery Call
+          <CTA
+            href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+            tone="outline"
+            className="px-5 py-2 text-[13px]"
+          >
+            Book a free discovery call
           </CTA>
         </div>
 
@@ -105,9 +108,11 @@ export function SiteHeader() {
             ))}
           </ul>
           <div className="mt-8 flex flex-col gap-2">
-            <CTA to="/contact">Book a free 30-minute discovery call</CTA>
+            <CTA href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea">
+              Book a free discovery call
+            </CTA>
             <span className="text-xs text-muted-foreground">
-              No obligation · Virtual, any time zone
+              30 minutes · No pitch · Virtual, any time zone
             </span>
           </div>
         </nav>
