@@ -37,6 +37,43 @@ export interface Article {
   featured?: boolean;
 }
 
+export const SLUG_ALIASES: Record<string, string> = {
+  // Alternate slugs from document variations
+  "building-resilience-kids-leaders": "building-resilience-uno-game",
+  "comfort-zone-growth-kids-leaders": "comfort-zone-trap",
+  "building-resilience-diversity-inclusion-leadership": "building-resilience-diversity-inclusion",
+  // Old dummy slugs mapped to corresponding authentic blogs
+  "action-anxiety": "one-small-action-anxiety",
+  "action-overthinking": "one-small-action-anxiety",
+  "identity-beyond-title": "title-isnt-who-you-are",
+  "power-of-perspective": "friends-you-havent-met-leadership-mindset",
+  "thinking-investment": "waiting-for-permission",
+};
+
+export function resolveArticleSlug(slug?: string): string {
+  if (!slug) return "waiting-for-permission";
+  return SLUG_ALIASES[slug] || slug;
+}
+
+export const RELATED_POSTS_MAP: Record<string, string[]> = {
+  "waiting-for-permission": ["great-work-doesnt-speak-for-itself", "become-opportunity-magnet"],
+  "great-work-doesnt-speak-for-itself": ["waiting-for-permission", "doubt-profile-silent-career-killer"],
+  "doubt-profile-silent-career-killer": ["great-work-doesnt-speak-for-itself", "become-opportunity-magnet"],
+  "become-opportunity-magnet": ["waiting-for-permission", "doubt-profile-silent-career-killer", "strategic-selfishness-women-entrepreneurs"],
+  "messy-middle-entrepreneurship": ["strategic-selfishness-women-entrepreneurs", "one-small-action-anxiety"],
+  "one-small-action-anxiety": ["one-small-action-burnout", "strategy-comes-last"],
+  "friends-you-havent-met-leadership-mindset": ["title-isnt-who-you-are", "strategy-comes-last"],
+  "title-isnt-who-you-are": ["friends-you-havent-met-leadership-mindset", "waiting-for-permission"],
+  "one-small-action-burnout": ["one-small-action-anxiety", "strategy-comes-last"],
+  "strategy-comes-last": ["doubt-profile-silent-career-killer", "one-small-action-anxiety"],
+  "strategic-selfishness-women-entrepreneurs": ["messy-middle-entrepreneurship", "become-opportunity-magnet"],
+  "invisible-variables-keeping-you-stuck": ["doubt-profile-silent-career-killer", "waiting-for-permission"],
+  "mapping-team-dynamics": ["comfort-zone-trap", "building-resilience-diversity-inclusion"],
+  "building-resilience-uno-game": ["comfort-zone-trap", "building-resilience-diversity-inclusion"],
+  "comfort-zone-trap": ["building-resilience-uno-game", "building-resilience-diversity-inclusion"],
+  "building-resilience-diversity-inclusion": ["building-resilience-uno-game", "comfort-zone-trap", "mapping-team-dynamics"],
+};
+
 export const articlesData: Article[] = [
 
   {

@@ -1,14 +1,22 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { useState } from "react";
 import { Reveal } from "@/components/brand/Reveal";
 import { CTAWithMicro, CTA } from "@/components/brand/CTA";
-import { type Article } from "@/lib/articles";
+import { resolveArticleSlug, RELATED_POSTS_MAP, type Article } from "@/lib/articles";
 import { getArticleBySlug, getArticles } from "@/lib/sanity";
 import rheaPortrait from "@/assets/rhea-portrait.jpg";
 
 export const Route = createFileRoute("/insights/$slug")({
   loader: async ({ params }) => {
-    const article = await getArticleBySlug(params.slug);
+    const canonicalSlug = resolveArticleSlug(params.slug);
+    if (params.slug !== canonicalSlug) {
+      throw redirect({
+        to: "/insights/$slug",
+        params: { slug: canonicalSlug },
+      });
+    }
+
+    const article = await getArticleBySlug(canonicalSlug);
     if (!article) {
       throw notFound();
     }
@@ -147,7 +155,16 @@ function BlogPostPage() {
   const { article, allArticles } = Route.useLoaderData();
   const [copied, setCopied] = useState(false);
 
-  const relatedArticles = allArticles.filter((a) => a.slug !== article.slug).slice(0, 2);
+  const relatedSlugs = RELATED_POSTS_MAP[article.slug] || [];
+  const mappedRelated = relatedSlugs
+    .map((s) => allArticles.find((a) => a.slug === s))
+    .filter((a): a is Article => Boolean(a))
+    .slice(0, 2);
+
+  const relatedArticles =
+    mappedRelated.length > 0
+      ? mappedRelated
+      : allArticles.filter((a) => a.slug !== article.slug).slice(0, 2);
 
   const handleCopyLink = () => {
     if (typeof window !== "undefined") {

@@ -1,6 +1,6 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import { articlesData, type Article } from "./articles";
+import { articlesData, resolveArticleSlug, type Article } from "./articles";
 import { testimonialsData, type Testimonial } from "./testimonials";
 
 export interface SanitySiteSettings {
@@ -19,7 +19,8 @@ const defaultFallbackArticle: Article = articlesData[0]!;
 
 function getFallbackArticle(slug?: string): Article {
   if (!slug) return defaultFallbackArticle;
-  return articlesData.find((a) => a.slug === slug) ?? defaultFallbackArticle;
+  const canonical = resolveArticleSlug(slug);
+  return articlesData.find((a) => a.slug === canonical) ?? defaultFallbackArticle;
 }
 
 const env = import.meta.env as Record<string, string | undefined>;
@@ -57,7 +58,7 @@ export function urlFor(source: any) {
 }
 
 /**
- * Fetch all articles from Sanity, falling back gracefully to local articlesData
+ * Fetch all articles, strictly returning ONLY the 16 given blogs.
  */
 export async function getArticles(): Promise<Article[]> {
   if (!sanityClient) {
@@ -92,20 +93,31 @@ export async function getArticles(): Promise<Article[]> {
       return articlesData;
     }
 
-    return sanityPosts.map((post) => {
-      const fallback = getFallbackArticle(post.slug);
-      const imageUrl = post.mainImage ? urlFor(post.mainImage) : fallback.image;
+    // Filter to only match our 16 authentic given blogs
+    const validSlugs = new Set(articlesData.map((a) => a.slug));
+    const matchedSanityMap = new Map<string, any>();
+    for (const post of sanityPosts) {
+      const canonical = resolveArticleSlug(post.slug);
+      if (validSlugs.has(canonical)) {
+        matchedSanityMap.set(canonical, post);
+      }
+    }
 
+    // Always return all 16 given blogs, enriched with Sanity data if present
+    return articlesData.map((fallback) => {
+      const post = matchedSanityMap.get(fallback.slug);
+      if (!post) return fallback;
+
+      const imageUrl = post.mainImage ? urlFor(post.mainImage) : fallback.image;
       return {
-        id: post.slug || post._id,
-        slug: post.slug || post._id,
-        title: post.title,
+        ...fallback,
+        title: post.title || fallback.title,
         category: post.category || fallback.category,
         pillar: post.pillar || fallback.pillar,
         readTime: post.readTime || fallback.readTime,
         date: post.date || fallback.date,
         isoDate: post.isoDate || fallback.isoDate,
-        featured: Boolean(post.featured),
+        featured: post.featured !== undefined ? Boolean(post.featured) : fallback.featured,
         image: imageUrl || fallback.image,
         excerpt: post.excerpt || fallback.excerpt,
         pullQuote: post.pullQuote || fallback.pullQuote,
@@ -120,15 +132,22 @@ export async function getArticles(): Promise<Article[]> {
 }
 
 /**
- * Fetch a single article by slug from Sanity, falling back to local articlesData
+ * Fetch a single article by slug, resolving aliases and guaranteeing only the 16 given blogs.
  */
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  const canonicalSlug = resolveArticleSlug(slug);
+  const fallback = articlesData.find((a) => a.slug === canonicalSlug);
+
+  if (!fallback) {
+    return null;
+  }
+
   if (!sanityClient) {
-    return articlesData.find((a) => a.slug === slug) || null;
+    return fallback;
   }
 
   try {
-    const query = `*[_type == "post" && slug.current == $slug][0] {
+    const query = `*[_type == "post" && (slug.current == $canonicalSlug || slug.current == $slug)][0] {
       _id,
       title,
       "slug": slug.current,
@@ -149,25 +168,23 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     }`;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const post = await sanityClient.fetch<any>(query, { slug });
+    const post = await sanityClient.fetch<any>(query, { canonicalSlug, slug });
 
     if (!post) {
-      return articlesData.find((a) => a.slug === slug) || null;
+      return fallback;
     }
 
-    const fallback = getFallbackArticle(slug);
     const imageUrl = post.mainImage ? urlFor(post.mainImage) : fallback.image;
 
     return {
-      id: post.slug || post._id,
-      slug: post.slug || post._id,
-      title: post.title,
+      ...fallback,
+      title: post.title || fallback.title,
       category: post.category || fallback.category,
       pillar: post.pillar || fallback.pillar,
       readTime: post.readTime || fallback.readTime,
       date: post.date || fallback.date,
       isoDate: post.isoDate || fallback.isoDate,
-      featured: Boolean(post.featured),
+      featured: post.featured !== undefined ? Boolean(post.featured) : fallback.featured,
       image: imageUrl || fallback.image,
       excerpt: post.excerpt || fallback.excerpt,
       pullQuote: post.pullQuote || fallback.pullQuote,
@@ -176,7 +193,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     };
   } catch (err) {
     console.warn(`Sanity fetch failed for slug "${slug}", using fallback:`, err);
-    return articlesData.find((a) => a.slug === slug) || null;
+    return fallback;
   }
 }
 
