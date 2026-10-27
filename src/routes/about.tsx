@@ -280,15 +280,19 @@ function About() {
         </div>
       </section>
 
-      {/* Why patterns, not gaps */}
-      <section className="section-y border-b border-hairline bg-sand/30">
-        <div className="shell max-w-4xl">
+      {/* Why patterns, not gaps & The patterns I work with */}
+      <section className="relative overflow-hidden section-y border-b border-hairline bg-sand/30">
+        <Arc
+          core={false}
+          className="pointer-events-none absolute -right-28 -top-28 hidden h-96 w-96 opacity-25 lg:block"
+        />
+        <div className="shell relative">
           <Reveal>
             <span className="eyebrow">Perspective</span>
-            <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
+            <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight text-foreground">
               Why patterns, not gaps
             </h2>
-            <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-foreground/85">
+            <div className="mt-6 max-w-3xl space-y-4 text-[16px] leading-relaxed text-foreground/85">
               <p>
                 Most leadership development starts from a deficit: what's missing, what to fix, what competency to build. That framing misses the real constraint.
               </p>
@@ -300,6 +304,73 @@ function About() {
               </p>
             </div>
           </Reveal>
+
+          {/* Three patterns section for About */}
+          <div className="mt-16 border-t border-hairline/80 pt-14">
+            <Reveal>
+              <h2 className="text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight text-foreground">
+                The patterns I work with
+              </h2>
+              <p className="mt-4 max-w-[62ch] text-[16.5px] font-medium leading-relaxed text-foreground/90">
+                Three patterns. Quiet in the moment. Expensive over time.
+              </p>
+            </Reveal>
+
+            <div className="mt-10 grid gap-8 lg:grid-cols-3">
+              {/* Pattern 1 — The Expectation Trap */}
+              <Reveal delay={0.06} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                    The Expectation Trap
+                  </h3>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                    When your standards and external pressure collapse into one. For senior leaders, this shows up as going silent when unprepared, or overthinking a decision the board is waiting on. For founders, it shows up as decision paralysis.
+                  </p>
+                </div>
+
+                <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-[13px] leading-relaxed text-foreground">
+                  <strong className="font-semibold text-primary">What changed for a client:</strong> a senior leader moved from cognitive fog to board clarity by separating her own standards from the pressure in the room.
+                </div>
+              </Reveal>
+
+              {/* Pattern 2 — The Idolism Loop */}
+              <Reveal delay={0.12} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+                <div>
+                  <div>
+                    <h3 className="text-xl font-bold tracking-tight text-foreground">
+                      The Idolism Loop
+                    </h3>
+                    <p className="mt-1.5 text-xs font-medium text-primary">
+                      When someone else's certainty carries more weight than your own.
+                    </p>
+                  </div>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                    When someone else's opinion carries more weight than your own. For senior leaders, this shows up as struggling to influence without formal authority. For founders, it shows up as reluctance to delegate, or deferring to a more confident hire.
+                  </p>
+                </div>
+
+                <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-[13px] leading-relaxed text-foreground">
+                  <strong className="font-semibold text-primary">What changed for a client:</strong> a leader moved from silence to influence without formal authority by testing whose voice she was actually listening to.
+                </div>
+              </Reveal>
+
+              {/* Pattern 3 — The Negative Narration Spiral */}
+              <Reveal delay={0.18} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+                <div>
+                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                    The Negative Narration Spiral
+                  </h3>
+                  <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                    When the story you tell yourself gets clearer and less useful the longer you sit with it. For senior leaders, this shows up as rehearsing what could go wrong until action feels riskier than it is. For founders, it shows up in the difficult shift from doing everything yourself to leading a growing organisation.
+                  </p>
+                </div>
+
+                <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-[13px] leading-relaxed text-foreground">
+                  <strong className="font-semibold text-primary">What changed for a client:</strong> a founder moved from tangled to in control by naming the story that was making delegation feel dangerous.
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

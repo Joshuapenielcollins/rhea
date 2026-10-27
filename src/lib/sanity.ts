@@ -273,6 +273,15 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       };
     });
 
+    // Ensure Emerging Leader is demoted below senior leaders and founders
+    const emergingIdx = result.findIndex(
+      (item) => item.role && item.role.toLowerCase().includes("emerging leader")
+    );
+    if (emergingIdx !== -1 && emergingIdx < 3) {
+      const [demoted] = result.splice(emergingIdx, 1);
+      result.push(demoted);
+    }
+
     cachedTestimonials = { data: result, time: Date.now() };
     return result;
   } catch (err) {

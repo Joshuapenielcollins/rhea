@@ -1,6 +1,6 @@
 /**
- * One controlled piece of circular geometry: a single large ring with one inner
- * ring and one core. Used once per section at most, never stacked or scattered.
+ * Three concentric rings matching the RheAligned brand logo geometry.
+ * Used once per section at most for clean, consistent elegance.
  */
 export function Arc({
   className,
@@ -18,6 +18,7 @@ export function Arc({
 
   return (
     <svg viewBox="0 0 400 400" className={className} aria-hidden="true" focusable="false">
+      {/* Outer ring */}
       <g className={drift ? "ring-drift" : undefined} style={{ transformOrigin: "200px 200px" }}>
         <circle
           cx="200"
@@ -30,20 +31,31 @@ export function Arc({
           strokeDasharray="620 550"
         />
       </g>
+      {/* Middle ring */}
       <circle
         cx="200"
         cy="200"
-        r="122"
+        r="128"
         fill="none"
         stroke={stroke}
         strokeOpacity={opacity * 0.8}
+        strokeWidth="1"
+      />
+      {/* Inner ring — 3rd circle matching RheAligned brand logo */}
+      <circle
+        cx="200"
+        cy="200"
+        r="70"
+        fill="none"
+        stroke={stroke}
+        strokeOpacity={opacity * 0.65}
         strokeWidth="1"
       />
       {core ? (
         <circle
           cx="200"
           cy="200"
-          r="42"
+          r="26"
           fill={stroke}
           fillOpacity={tone === "light" ? 0.12 : 0.08}
           stroke={stroke}

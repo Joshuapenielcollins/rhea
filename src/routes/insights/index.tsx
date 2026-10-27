@@ -103,6 +103,83 @@ const categories = [
   "Proof",
 ] as const;
 
+function InsightsHeroArt() {
+  return (
+    <div className="pointer-events-none absolute -right-24 top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 lg:block">
+      <svg viewBox="0 0 500 500" className="h-full w-full" aria-hidden="true">
+        {/* Primary Orbit System */}
+        <g className="ring-drift" style={{ transformOrigin: "260px 240px" }}>
+          {/* Ring 1 - Outer */}
+          <circle
+            cx="260"
+            cy="240"
+            r="200"
+            fill="none"
+            stroke="var(--primary)"
+            strokeOpacity="0.22"
+            strokeWidth="1"
+            strokeDasharray="680 500"
+          />
+          {/* Ring 2 - Middle */}
+          <circle
+            cx="260"
+            cy="240"
+            r="140"
+            fill="none"
+            stroke="var(--primary)"
+            strokeOpacity="0.3"
+            strokeWidth="1"
+          />
+          {/* Ring 3 - Inner */}
+          <circle
+            cx="260"
+            cy="240"
+            r="80"
+            fill="none"
+            stroke="var(--primary)"
+            strokeOpacity="0.2"
+            strokeWidth="1"
+          />
+          {/* Accent node dot */}
+          <circle
+            cx="260"
+            cy="40"
+            r="4"
+            fill="var(--primary)"
+            fillOpacity="0.6"
+          />
+        </g>
+
+        {/* Secondary intersecting cognitive orbit (unique to Insights journal) */}
+        <circle
+          cx="170"
+          cy="310"
+          r="115"
+          fill="none"
+          stroke="var(--deep)"
+          strokeOpacity="0.18"
+          strokeWidth="1"
+          strokeDasharray="4 6"
+        />
+        <circle
+          cx="170"
+          cy="310"
+          r="55"
+          fill="var(--primary)"
+          fillOpacity="0.04"
+          stroke="var(--primary)"
+          strokeOpacity="0.25"
+          strokeWidth="1"
+        />
+
+        {/* Intersecting node points */}
+        <circle cx="170" cy="195" r="3.5" fill="var(--primary)" fillOpacity="0.5" />
+        <circle cx="260" cy="310" r="3" fill="var(--deep)" fillOpacity="0.4" />
+      </svg>
+    </div>
+  );
+}
+
 function Insights() {
   const { articles } = Route.useLoaderData();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -129,7 +206,8 @@ function Insights() {
     <>
       {/* Blog Hero Header */}
       <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/25">
-        <div className="shell pb-14 pt-14 lg:pt-20">
+        <InsightsHeroArt />
+        <div className="shell relative pb-14 pt-14 lg:pt-20">
           <Reveal>
             <span className="eyebrow">The Leadership Journal</span>
           </Reveal>

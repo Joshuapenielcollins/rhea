@@ -317,6 +317,101 @@ function WhatIHelpWith() {
   );
 }
 
+function ThreePatternsSection() {
+  return (
+    <section className="section-y border-b border-hairline bg-gradient-to-b from-background via-sand/20 to-background">
+      <div className="shell">
+        <Reveal>
+          <span className="eyebrow">The Patterns</span>
+          <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight text-foreground">
+            The patterns that get in the way
+          </h2>
+          <p className="mt-4 max-w-[64ch] text-[16.5px] font-medium leading-relaxed text-foreground/90">
+            Three patterns. They don't announce themselves. They just make you slightly less effective than you know you can be.
+          </p>
+          <p className="mt-2 max-w-[64ch] text-[15px] leading-relaxed text-muted-foreground">
+            These are not gaps in competence. They are patterns that can be recognised, examined and changed.
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-8 lg:grid-cols-3">
+          {/* Card 1 — The Expectation Trap */}
+          <Reveal delay={0.06} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+            <div>
+              <h3 className="text-xl font-bold tracking-tight text-foreground">
+                The Expectation Trap
+              </h3>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                When your standards and the room's pressure collapse into one. You overthink, go silent, or second-guess a decision you already know how to make.
+              </p>
+
+              <div className="mt-6 space-y-3 border-t border-hairline/80 pt-5 text-[13.5px] leading-relaxed text-muted-foreground">
+                <p>
+                  <strong className="font-semibold text-foreground">For senior leaders:</strong> going silent when unprepared; overthinking a decision the board is waiting on.
+                </p>
+                <p>
+                  <strong className="font-semibold text-foreground">For founders:</strong> decision paralysis before a board or investor conversation.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4 text-[13px] leading-relaxed text-foreground">
+              <strong className="font-semibold text-primary">What changed for a client:</strong> a senior leader moved from cognitive fog to board clarity by separating her own standards from the pressure in the room.
+            </div>
+          </Reveal>
+
+          {/* Card 2 — The Idolism Loop */}
+          <Reveal delay={0.12} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+            <div>
+              <div>
+                <h3 className="text-xl font-bold tracking-tight text-foreground">
+                  The Idolism Loop
+                </h3>
+                <p className="mt-1.5 text-xs font-medium text-primary">
+                  When someone else's certainty carries more weight than your own.
+                </p>
+              </div>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                You defer, over-check, or wait for permission. Someone else's certainty starts to count for more than your own judgement — even when you know the room isn't necessarily right.
+              </p>
+
+              <div className="mt-6 space-y-3 border-t border-hairline/80 pt-5 text-[13.5px] leading-relaxed text-muted-foreground">
+                <p>
+                  <strong className="font-semibold text-foreground">For senior leaders:</strong> struggling to influence without formal authority.
+                </p>
+                <p>
+                  <strong className="font-semibold text-foreground">For founders:</strong> reluctance to delegate; deferring to a more confident hire.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Card 3 — The Negative Narration Spiral */}
+          <Reveal delay={0.18} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
+            <div>
+              <h3 className="text-xl font-bold tracking-tight text-foreground">
+                The Negative Narration Spiral
+              </h3>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
+                When the story you tell yourself gets clearer and less useful the longer you sit with it. Uncertainty turns into a conclusion.
+              </p>
+
+              <div className="mt-6 space-y-3 border-t border-hairline/80 pt-5 text-[13.5px] leading-relaxed text-muted-foreground">
+                <p>
+                  <strong className="font-semibold text-foreground">For senior leaders:</strong> rehearsing what could go wrong until action feels riskier than it is.
+                </p>
+                <p>
+                  <strong className="font-semibold text-foreground">For founders:</strong> the shift from doing everything yourself to leading a growing organisation.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function TheRheAlignedMethod() {
   const steps = [
     {
@@ -412,8 +507,12 @@ function ClientOutcomes({ testimonials }: { testimonials: Testimonial[] }) {
   ];
 
   return (
-    <section className="section-y border-b border-hairline bg-sand/30">
-      <div className="shell">
+    <section className="relative overflow-hidden section-y border-b border-hairline bg-sand/30">
+      <Arc
+        core={false}
+        className="pointer-events-none absolute -right-24 -top-24 hidden h-80 w-80 opacity-25 lg:block"
+      />
+      <div className="shell relative">
         <Reveal>
           <span className="eyebrow">Outcomes</span>
           <h2 className="mt-4 text-[clamp(1.75rem,3vw,2.4rem)] font-bold tracking-tight">
@@ -668,6 +767,7 @@ function Home() {
       <Hero settings={settings} />
       <AudienceChips />
       <WhatIHelpWith />
+      <ThreePatternsSection />
       <TheRheAlignedMethod />
       <ClientOutcomes testimonials={testimonials} />
       <ForOrganizationsBand />

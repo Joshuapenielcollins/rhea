@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Reveal } from "@/components/brand/Reveal";
+import { Arc } from "@/components/brand/Arc";
+import rheaPortrait from "@/assets/rhea-portrait.jpg";
 
 export const Route = createFileRoute("/contact")({
   component: Contact,
@@ -280,39 +282,68 @@ function Contact() {
   return (
     <>
       {/* 5.1 Contact Page Introduction */}
-      <section className="border-b border-hairline bg-gradient-to-b from-background via-background to-sand/20">
-        <div className="shell pb-16 pt-14 lg:pt-20">
-          <Reveal>
-            <span className="eyebrow">Get In Touch</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h1 className="mt-4 max-w-[20ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-              Let's Have the Conversation That Matters
-            </h1>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <div className="mt-6 grid max-w-3xl gap-8 md:grid-cols-2">
-              <div className="rounded-xl border border-hairline bg-card p-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                  For Individuals
-                </span>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Book a free 30-minute discovery call. No obligation. Just a conversation about
-                  where you are and where you want to go.
-                </p>
-              </div>
+      <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/20">
+        <Arc
+          core={false}
+          className="pointer-events-none absolute -right-32 top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 opacity-25 lg:block"
+        />
+        <div className="shell relative pb-16 pt-14 lg:pt-20">
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
+            <div>
+              <Reveal>
+                <span className="eyebrow">Get In Touch</span>
+              </Reveal>
+              <Reveal delay={0.08}>
+                <h1 className="mt-4 max-w-[20ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
+                  Let's Have the Conversation That Matters
+                </h1>
+              </Reveal>
+              <Reveal delay={0.16}>
+                <div className="mt-8 grid gap-6 sm:grid-cols-2">
+                  <div className="rounded-xl border border-hairline bg-card p-6 shadow-sm">
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                      For Individuals
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Book a free 30-minute discovery call. No obligation. Just a conversation about
+                      where you are and where you want to go.
+                    </p>
+                  </div>
 
-              <div className="rounded-xl border border-hairline bg-card p-6">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                  For Organisations
-                </span>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Let's discuss how coaching can shift your leadership culture, support retention,
-                  and build performance that lasts.
-                </p>
-              </div>
+                  <div className="rounded-xl border border-hairline bg-card p-6 shadow-sm">
+                    <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                      For Organisations
+                    </span>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Let's discuss how coaching can shift your leadership culture, support retention,
+                      and build performance that lasts.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+
+            {/* Rhea Portrait Card */}
+            <Reveal delay={0.12} className="relative hidden lg:block">
+              <div className="relative mx-auto max-w-sm overflow-hidden rounded-2xl border border-hairline bg-card p-3 shadow-lg">
+                <div className="aspect-square overflow-hidden rounded-xl bg-sand">
+                  <img
+                    src={rheaPortrait}
+                    alt="Rhea Bulsara Sidhva — Founder & Executive Coach"
+                    className="h-full w-full object-cover object-top"
+                    width="400"
+                    height="400"
+                  />
+                </div>
+                <div className="p-3 text-center">
+                  <p className="text-sm font-bold text-foreground">Rhea Bulsara Sidhva</p>
+                  <p className="text-xs font-medium text-muted-foreground">
+                    Founder & Executive Coach · ICF-ACC
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 

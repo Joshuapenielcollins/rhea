@@ -38,7 +38,7 @@ function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="mt-4 text-sm text-muted-foreground">
-              Last updated: October 2026 | Effective immediately
+              Last updated: 27 October 2026 | Effective immediately
             </p>
           </Reveal>
         </div>
@@ -120,8 +120,8 @@ function PrivacyPolicyPage() {
                 confidentiality.)
               </li>
               <li>
-                <strong>Payment and billing information:</strong> invoices, payment confirmations
-                and billing addresses. (I do not store credit card details directly.)
+                <strong>Payment and billing information:</strong> invoices, bank transfer receipts
+                and billing names. (I do not use or store credit cards on this website; all coaching engagements are billed directly via bank transfer or direct corporate invoice.)
               </li>
               <li>
                 <strong>Technical and website usage data:</strong> your IP address, browser type,
@@ -208,11 +208,11 @@ function PrivacyPolicyPage() {
               providers who help me run my coaching practice, and only as necessary. These include:
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Calendly, for booking discovery calls.</li>
-              <li>Secure form and hosting platforms for managing website enquiries.</li>
-              <li>Email service providers (Google Workspace) for communication.</li>
-              <li>Professional banking services for invoicing and payment processing.</li>
-              <li>Privacy-focused website analytics and CDN hosting infrastructure.</li>
+              <li>Calendly, for scheduling discovery calls.</li>
+              <li>Custom-coded enquiry forms and Resend backend delivery infrastructure for securely processing message requests.</li>
+              <li>Microsoft 365 (Exchange) for business email communication and inbox correspondence.</li>
+              <li>Professional banking services for direct invoice settlements (no third-party card payment gateways).</li>
+              <li>Vercel and cloud CDN hosting infrastructure for secure website delivery.</li>
             </ul>
             <p>
               These providers act under strict confidentiality and security obligations. I may also
