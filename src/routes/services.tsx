@@ -27,9 +27,29 @@ export const Route = createFileRoute("/services")({
           "I partner with ambitious individuals and forward-thinking organisations globally to build clarity, resilience, and influence.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: "https://rhealigned.com/services" },
+      { property: "og:image", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "RheAligned — Executive Coaching & Services",
+      },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Executive Coaching and Leadership Development | RheAligned",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "I partner with ambitious individuals and forward-thinking organisations globally to build clarity, resilience, and influence.",
+      },
+      { name: "twitter:image", content: "https://rhealigned.com/og-image.jpg" },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [{ rel: "canonical", href: "https://rhealigned.com/services" }],
   }),
 });
 
@@ -45,7 +65,7 @@ const tiers = [
       "90-minute session (video)",
       "One-page summary of what we named and what you'll do next",
     ],
-    investment: "HK$1,500 – 3,000 (1 session)",
+    investment: "HK$1,500 (1 session)",
   },
   {
     tier: "Tier 2",
@@ -61,7 +81,7 @@ const tiers = [
       "Email access between sessions",
       "Final review and next-steps plan",
     ],
-    investment: "HK$8,000 – 12,000 (6 sessions)",
+    investment: "HK$8,000 (6 sessions)",
     featured: true,
   },
   {
@@ -79,7 +99,7 @@ const tiers = [
       "Mid-point and final reviews",
       "Optional stakeholder input, with your consent",
     ],
-    investment: "HK$16,000 – 24,000 (12 sessions)",
+    investment: "Tailored to scope (12 sessions / upon consultation)",
   },
 ];
 
@@ -146,7 +166,7 @@ const faqs = [
   },
   {
     q: "What's the investment?",
-    a: "Tier 1 (The Untangling Session) is HK$1,500 – 3,000. Tier 2 (The RheAligned Programme) is HK$8,000 – 12,000 for 6 sessions. Tier 3 (Executive Partnership) is HK$16,000 – 24,000 for 12 sessions. Organisational engagements are customised to your organisation's scope.",
+    a: "Tier 1 (The Untangling Session) is HK$1,500 for a 90-minute session. Tier 2 (The RheAligned Programme) is HK$8,000 for 6 sessions over three to six months. Tier 3 (Executive Partnership, 12 sessions) and organisational leadership programmes are tailored to your scope and objectives. Enquire during your discovery call.",
   },
   {
     q: "What languages do you coach in?",

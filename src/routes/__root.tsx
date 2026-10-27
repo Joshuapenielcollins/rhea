@@ -90,9 +90,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
       },
       { property: "og:site_name", content: "RheAligned" },
-      { property: "og:locale", content: "en_US" },
+      { property: "og:locale", content: "en_GB" },
       { property: "og:type", content: "website" },
+      {
+        property: "og:title",
+        content: "Executive and Leadership Coach | Rhea Bulsara Sidhva | RheAligned",
+      },
+      {
+        property: "og:description",
+        content:
+          "Executive and leadership coaching for senior leaders and founders. Former Global HR Leader at BP, Tata Group, and Sainsbury's. ICF-ACC | 500+ Hours of Coaching Practice.",
+      },
+      { property: "og:url", content: "https://rhealigned.com/" },
+      { property: "og:image", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "RheAligned — Executive and Leadership Coaching with Rhea Bulsara Sidhva",
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Executive and Leadership Coach | Rhea Bulsara Sidhva | RheAligned",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Executive and leadership coaching for senior leaders and founders. Former Global HR Leader at BP, Tata Group, and Sainsbury's.",
+      },
+      { name: "twitter:image", content: "https://rhealigned.com/og-image.jpg" },
       { name: "theme-color", content: "#054049" },
     ],
     links: [

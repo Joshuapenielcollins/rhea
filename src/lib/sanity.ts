@@ -112,6 +112,15 @@ export async function getArticles(): Promise<Article[]> {
       }
     }
 
+function cleanCategory(cat?: string, fallbackCat: string = "Method"): string {
+  if (!cat) return fallbackCat;
+  const trimmed = cat.trim();
+  if (/mental\s*health/i.test(trimmed)) {
+    return fallbackCat && !/mental\s*health/i.test(fallbackCat) ? fallbackCat : "Method";
+  }
+  return trimmed;
+}
+
     // Always return all 16 given blogs, enriched with Sanity data if present
     const result = articlesData.map((fallback) => {
       const post = matchedSanityMap.get(fallback.slug);
@@ -121,7 +130,7 @@ export async function getArticles(): Promise<Article[]> {
       return {
         ...fallback,
         title: post.title || fallback.title,
-        category: post.category || fallback.category,
+        category: cleanCategory(post.category, fallback.category),
         pillar: post.pillar || fallback.pillar,
         readTime: post.readTime || fallback.readTime,
         date: post.date || fallback.date,
@@ -191,7 +200,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
     return {
       ...fallback,
       title: post.title || fallback.title,
-      category: post.category || fallback.category,
+      category: cleanCategory(post.category, fallback.category),
       pillar: post.pillar || fallback.pillar,
       readTime: post.readTime || fallback.readTime,
       date: post.date || fallback.date,

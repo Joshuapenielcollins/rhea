@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
+import { Arc } from "@/components/brand/Arc";
 import { Reveal } from "@/components/brand/Reveal";
 import { CTAWithMicro } from "@/components/brand/CTA";
 import { type Article } from "@/lib/articles";
@@ -33,9 +34,29 @@ export const Route = createFileRoute("/insights/")({
             "Evidence-based frameworks on mindset, decision-making, and leadership patterns for executives and founders.",
         },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: "/insights" },
+        { property: "og:url", content: "https://rhealigned.com/insights" },
+        { property: "og:image", content: "https://rhealigned.com/og-image.jpg" },
+        { property: "og:image:secure_url", content: "https://rhealigned.com/og-image.jpg" },
+        { property: "og:image:type", content: "image/jpeg" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        {
+          property: "og:image:alt",
+          content: "RheAligned Leadership Insights — Executive Coaching by Rhea Bulsara Sidhva",
+        },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "Leadership Insights & Blog | RheAligned Executive Coaching",
+        },
+        {
+          name: "twitter:description",
+          content:
+            "Evidence-based frameworks on mindset, decision-making, and leadership patterns for executives and founders.",
+        },
+        { name: "twitter:image", content: "https://rhealigned.com/og-image.jpg" },
       ],
-      links: [{ rel: "canonical", href: "/insights" }],
+      links: [{ rel: "canonical", href: "https://rhealigned.com/insights" }],
       scripts: [
         {
           type: "application/ld+json",
@@ -186,6 +207,15 @@ function Insights() {
                   <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-md">
                     Featured Article
                   </span>
+                  {/* RheAligned signature brand Arc motif */}
+                  <div className="pointer-events-none absolute -bottom-10 -right-10 h-36 w-36 opacity-35 transition-opacity duration-300 group-hover:opacity-70">
+                    <Arc className="h-full w-full text-white" tone="light" drift={false} />
+                  </div>
+                  {/* RheAligned discreet brand badge */}
+                  <div className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-deep/75 px-2.5 py-1 text-[11px] font-medium tracking-wider text-white shadow-sm backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
+                    <span>RheAligned</span>
+                  </div>
                 </div>
                 <div className="flex flex-col justify-between">
                   <div>
@@ -268,6 +298,15 @@ function Insights() {
                       <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-[11px] font-semibold text-primary backdrop-blur">
                         {article.category}
                       </span>
+                      {/* RheAligned signature brand Arc motif */}
+                      <div className="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 opacity-30 transition-opacity duration-300 group-hover:opacity-65">
+                        <Arc className="h-full w-full text-white" tone="light" drift={false} />
+                      </div>
+                      {/* RheAligned discreet brand badge */}
+                      <div className="pointer-events-none absolute bottom-2.5 right-2.5 flex items-center gap-1.5 rounded-full bg-deep/70 px-2 py-0.5 text-[10px] font-medium tracking-wider text-white/90 shadow-sm backdrop-blur-sm">
+                        <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
+                        <span>RheAligned</span>
+                      </div>
                     </div>
 
                     {/* Card Content */}

@@ -46,6 +46,23 @@ export const Route = createFileRoute("/insights/$slug")({
         },
         { property: "og:type", content: "article" },
         { property: "og:url", content: `https://rhealigned.com/insights/${article.slug}` },
+        {
+          property: "og:image",
+          content: article.image?.startsWith("http")
+            ? article.image
+            : `https://rhealigned.com${article.image?.startsWith("/") ? "" : "/"}${article.image || "og-image.jpg"}`,
+        },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: `${article.title} | RheAligned` },
+        { name: "twitter:description", content: article.excerpt },
+        {
+          name: "twitter:image",
+          content: article.image?.startsWith("http")
+            ? article.image
+            : `https://rhealigned.com${article.image?.startsWith("/") ? "" : "/"}${article.image || "og-image.jpg"}`,
+        },
         { property: "article:published_time", content: article.isoDate },
         { property: "article:author", content: "Rhea Bulsara Sidhva" },
         { property: "article:section", content: article.category },

@@ -44,8 +44,27 @@ export const Route = createFileRoute("/")({
           "Whether you're stuck or tangled, the path forward starts with clarity. I help you find it. ICF-ACC | 500+ Hours of Coaching Practice.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: "https://rhealigned.com/" },
+      { property: "og:image", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:secure_url", content: "https://rhealigned.com/og-image.jpg" },
+      { property: "og:image:type", content: "image/jpeg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      {
+        property: "og:image:alt",
+        content: "RheAligned — Executive and Leadership Coaching with Rhea Bulsara Sidhva",
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "twitter:title",
+        content: "Executive and Leadership Coach | Rhea Bulsara Sidhva | RheAligned",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Executive coaching for senior leaders and founders operating below their capacity. Former Global HR Leader at BP, Tata Group, and Sainsbury's. ICF-ACC.",
+      },
+      { name: "twitter:image", content: "https://rhealigned.com/og-image.jpg" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -546,6 +565,15 @@ function HomepageInsightsPreview({ articles }: { articles: Article[] }) {
                   <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-[11px] font-semibold text-primary backdrop-blur">
                     {a.category}
                   </span>
+                  {/* RheAligned signature brand Arc motif */}
+                  <div className="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 opacity-30 transition-opacity duration-300 group-hover:opacity-65">
+                    <Arc className="h-full w-full text-white" tone="light" drift={false} />
+                  </div>
+                  {/* RheAligned discreet brand badge */}
+                  <div className="pointer-events-none absolute bottom-2.5 right-2.5 flex items-center gap-1.5 rounded-full bg-deep/70 px-2 py-0.5 text-[10px] font-medium tracking-wider text-white/90 shadow-sm backdrop-blur-sm">
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
+                    <span>RheAligned</span>
+                  </div>
                 </div>
                 <div className="flex flex-1 flex-col justify-between p-6">
                   <div>

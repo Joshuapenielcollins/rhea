@@ -1272,8 +1272,8 @@ export const articlesData: Article[] = [
         heading: "The Neuroscience of Service and Growth",
         paragraphs: [
           "There is a compounding effect at work here. Acts of service do not just benefit the recipient, they transform the giver.",
-          "Research from the Australian Institute of Family Studies found that if a child is involved in volunteering before the age of 13, the odds of having poor mental health are reduced by around 28 percent. It is the act of helping others in the wider community, and building empathy and understanding, that is a critical protective factor against mental ill-health.",
-          "Intergenerational contact specifically has demonstrated several positive outcomes: reduced ageist attitudes, improved mental health and skill development, and enhanced well-being for both younger and older participants.",
+          "Research from the Australian Institute of Family Studies found that if a child is involved in volunteering before the age of 13, the risk of emotional and psychological distress is reduced by around 28 percent. It is the act of helping others in the wider community, and building empathy and understanding, that is a critical protective factor for lifelong emotional wellbeing.",
+          "Intergenerational contact specifically has demonstrated several positive outcomes: reduced ageist attitudes, enhanced psychological resilience and skill development, and improved wellbeing for both younger and older participants.",
           "For leaders, the same mechanism applies. Acts of service can trigger the release of oxytocin, the hormone associated with connection, trust, and wellbeing. Service reminds us that our lives have purpose beyond ourselves. **At its core, leadership is service.**",
         ],
       },

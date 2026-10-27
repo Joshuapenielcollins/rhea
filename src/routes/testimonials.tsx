@@ -120,22 +120,10 @@ function Testimonials() {
                     “{t.pull}”
                   </blockquote>
 
-                  {/* Breakthrough Narrative */}
+                  {/* Testimonial Narrative */}
                   <p className="mt-5 text-[14.5px] leading-relaxed text-muted-foreground">
                     {t.breakthrough}
                   </p>
-                </div>
-
-                {/* Key Insight Box */}
-                <div className="mt-6 border-t border-hairline pt-5">
-                  <div className="rounded-xl border border-primary/20 bg-primary/6 p-4">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
-                      Key Breakthrough
-                    </span>
-                    <p className="mt-1 text-xs font-medium text-foreground leading-relaxed">
-                      {t.keyLearning}
-                    </p>
-                  </div>
                 </div>
               </Reveal>
             ))}

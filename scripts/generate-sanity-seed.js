@@ -233,7 +233,7 @@ const articles = [
   {
     slug: "action-anxiety",
     title: "Action is the Antidote to Anxiety",
-    category: "Mental Health",
+    category: "Method",
     readTime: "5 min read",
     date: "Sep 08, 2026",
     isoDate: "2026-09-08",

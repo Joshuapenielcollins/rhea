@@ -46,6 +46,47 @@
           "value": "noindex, nofollow, noarchive"
         }
       ]
+    },
+    {
+      "source": "/thank-you",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/insights/title-isnt-who-you-are",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/insights/identity-beyond-title",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/blog/title-isnt-who-you-are",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/blog/identity-beyond-title",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/insights/a-refugees-journey",
+      "destination": "/insights",
+      "permanent": true
+    },
+    {
+      "source": "/blog/a-refugees-journey",
+      "destination": "/insights",
+      "permanent": true
     }
   ],
   "rewrites": [
