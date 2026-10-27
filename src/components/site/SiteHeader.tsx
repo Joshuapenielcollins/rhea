@@ -18,6 +18,8 @@ function Wordmark() {
         src={logoUrl}
         alt="RheAligned - Clarity, Confidence, Influence"
         className="h-auto w-[clamp(10.5rem,18vw,14rem)] object-contain"
+        width="224"
+        height="48"
       />
     </Link>
   );

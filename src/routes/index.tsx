@@ -111,19 +111,22 @@ function Hero({ settings }: { settings: SanitySiteSettings }) {
 
             {/* CTAs */}
             <Reveal delay={0.25}>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <CTAWithMicro
-                  href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
-                  micro="No obligation · Virtual, any time zone"
-                >
-                  Book a free discovery call
-                </CTAWithMicro>
+              <div className="mt-8 flex flex-col items-start gap-2.5">
+                <div className="flex flex-wrap items-center gap-4">
+                  <CTA
+                    href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+                    tone="solid"
+                  >
+                    Book a free discovery call
+                  </CTA>
 
-                <div className="self-start pt-0.5">
                   <CTA to="/services" tone="outline">
                     Explore Coaching Options
                   </CTA>
                 </div>
+                <span className="text-[12px] text-muted-foreground tracking-wide font-normal pl-6">
+                  No obligation · Virtual, any time zone
+                </span>
               </div>
             </Reveal>
           </div>
@@ -137,6 +140,9 @@ function Hero({ settings }: { settings: SanitySiteSettings }) {
                   src={rheaPortrait}
                   alt="Rhea Bulsara Sidhva - Executive and Leadership Coach"
                   className="h-full w-full object-cover object-center filter transition-transform duration-700 hover:scale-105"
+                  width="480"
+                  height="480"
+                  fetchPriority="high"
                 />
               </div>
             </div>
@@ -264,6 +270,9 @@ function WhatIHelpWith() {
       <div className="shell">
         <Reveal>
           <span className="eyebrow">What I Help With</span>
+          <h2 className="mt-3 text-[clamp(1.75rem,2.8vw,2.3rem)] font-bold tracking-tight text-foreground">
+            Two moments when leaders reach out.
+          </h2>
         </Reveal>
 
         <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-12">
@@ -518,6 +527,9 @@ function ForOrganizationsBand() {
                 src={rheaSpeaking}
                 alt="Rhea Bulsara Sidhva speaking with organisational leaders"
                 className="aspect-[4/3] w-full object-cover object-top filter transition-transform duration-700 hover:scale-105"
+                width="420"
+                height="315"
+                loading="lazy"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-deep/50 via-transparent to-transparent" />
             </div>
@@ -561,6 +573,9 @@ function HomepageInsightsPreview({ articles }: { articles: Article[] }) {
                     src={a.image}
                     alt={a.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    width="600"
+                    height="375"
+                    loading="lazy"
                   />
                   <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 text-[11px] font-semibold text-primary backdrop-blur">
                     {a.category}
@@ -618,22 +633,27 @@ function FinalCTASection() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.12} className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <CTAWithMicro
-            href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
-            micro="30 minutes · No obligation · Virtual"
-            align="center"
-          >
-            Book a free discovery call
-          </CTAWithMicro>
+        <Reveal delay={0.12} className="mt-10 flex flex-col items-center">
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <CTA
+              href="https://calendly.com/rhea-rhealigned/discovery-call-with-rhea"
+              tone="solid"
+            >
+              Book a free discovery call
+            </CTA>
 
-          <a
-            href="mailto:rhea@rhealigned.com"
-            className="group relative inline-flex items-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-sm"
-          >
-            <span>rhea@rhealigned.com</span>
-            <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
-          </a>
+            <a
+              href="mailto:rhea@rhealigned.com"
+              className="group relative inline-flex items-center gap-2 rounded-full border border-hairline bg-card px-6 py-3 text-sm font-medium tracking-wide text-foreground transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-sm"
+            >
+              <span>rhea@rhealigned.com</span>
+              <span className="text-primary transition-transform group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
+
+          <span className="mt-3 text-xs tracking-wide text-muted-foreground font-normal">
+            30 minutes · No obligation · Virtual
+          </span>
         </Reveal>
       </div>
     </section>
