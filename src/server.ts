@@ -47,6 +47,46 @@ function isH3SwallowedErrorBody(body: string): boolean {
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      const url = new URL(request.url);
+
+      // Handle Resend Contact Form API
+      if (request.method === "POST" && url.pathname === "/api/contact") {
+        try {
+          const body = await request.json();
+          const { sendContactEmail } = await import("./lib/email-service");
+          await sendContactEmail(body);
+          return new Response(JSON.stringify({ ok: true, message: "Message sent successfully" }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+          });
+        } catch (err: unknown) {
+          console.error("Resend contact error:", err);
+          return new Response(
+            JSON.stringify({ ok: false, error: (err as Error)?.message || "Failed to send email" }),
+            { status: 500, headers: { "Content-Type": "application/json" } },
+          );
+        }
+      }
+
+      // Handle Resend Newsletter Form API
+      if (request.method === "POST" && url.pathname === "/api/newsletter") {
+        try {
+          const body = await request.json();
+          const { sendNewsletterEmail } = await import("./lib/email-service");
+          await sendNewsletterEmail(body);
+          return new Response(JSON.stringify({ ok: true, message: "Subscribed successfully" }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+          });
+        } catch (err: unknown) {
+          console.error("Resend newsletter error:", err);
+          return new Response(
+            JSON.stringify({ ok: false, error: (err as Error)?.message || "Failed to subscribe" }),
+            { status: 500, headers: { "Content-Type": "application/json" } },
+          );
+        }
+      }
+
       const handler = await getServerEntry();
       const rawResponse = await handler.fetch(request, env, ctx);
       const response = await normalizeCatastrophicSsrResponse(rawResponse);

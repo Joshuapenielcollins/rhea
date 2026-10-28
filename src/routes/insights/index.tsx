@@ -108,6 +108,47 @@ function Insights() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Newsletter collector state
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "submitting">("idle");
+  const [newsletterError, setNewsletterError] = useState<string | null>(null);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [subscribedEmail, setSubscribedEmail] = useState("");
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes("@")) {
+      setNewsletterError("Please enter a valid email address.");
+      return;
+    }
+
+    setNewsletterStatus("submitting");
+    setNewsletterError(null);
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || data.ok === false) {
+        throw new Error(data.error || "Failed to subscribe. Please try again.");
+      }
+
+      setSubscribedEmail(newsletterEmail.trim());
+      setNewsletterEmail("");
+      setNewsletterStatus("idle");
+      setShowSuccessPopup(true);
+    } catch (err: unknown) {
+      console.error("Newsletter subscription error:", err);
+      setNewsletterStatus("idle");
+      setNewsletterError((err as Error)?.message || "Something went wrong. Please try again.");
+    }
+  };
+
   const filteredArticles = useMemo(() => {
     return articles.filter((a) => {
       const matchesCategory =
@@ -370,25 +411,33 @@ function Insights() {
 
           <Reveal delay={0.08} className="mt-8">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Thank you for subscribing to RheAligned Insights!");
-              }}
+              onSubmit={handleNewsletterSubmit}
               className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row"
             >
               <input
                 type="email"
                 required
+                value={newsletterEmail}
+                onChange={(e) => {
+                  setNewsletterEmail(e.target.value);
+                  if (newsletterError) setNewsletterError(null);
+                }}
                 placeholder="Enter your email address"
                 className="flex-1 rounded-full border border-hairline bg-background px-5 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
               <button
                 type="submit"
-                className="rounded-full bg-deep px-6 py-3 text-sm font-semibold text-deep-foreground transition-all hover:bg-primary"
+                disabled={newsletterStatus === "submitting"}
+                className="rounded-full bg-deep px-6 py-3 text-sm font-semibold text-deep-foreground transition-all hover:bg-primary disabled:opacity-50"
               >
-                Subscribe
+                {newsletterStatus === "submitting" ? "Subscribing..." : "Subscribe"}
               </button>
             </form>
+
+            {newsletterError && (
+              <p className="mt-3 text-xs font-medium text-red-600">{newsletterError}</p>
+            )}
+
             <p className="mt-3 text-xs text-muted-foreground/80">
               I respect your privacy. Read our{" "}
               <Link to="/privacy-policy" className="text-primary underline hover:text-primary/80">
@@ -399,6 +448,63 @@ function Insights() {
           </Reveal>
         </div>
       </section>
+
+      {/* Successfully Subscribed Popup Modal */}
+      {showSuccessPopup && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-deep/60 backdrop-blur-sm"
+          onClick={() => setShowSuccessPopup(false)}
+        >
+          <div
+            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-hairline bg-card p-8 shadow-2xl text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Background brand concentric arc */}
+            <Arc
+              core={true}
+              drift={true}
+              className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 opacity-25"
+            />
+
+            {/* Checkmark icon badge */}
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <svg
+                className="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2.5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+
+            <span className="mt-4 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+              Successfully Subscribed
+            </span>
+            <h3 className="mt-2 text-2xl font-bold tracking-tight text-foreground">
+              Welcome to The Leadership Journal
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              You're all set! We've registered{" "}
+              <strong className="font-semibold text-foreground">{subscribedEmail}</strong>.
+              You'll receive practical reflections on executive presence, cognitive clarity, and decision-making once a month.
+            </p>
+
+            <div className="mt-7">
+              <button
+                type="button"
+                onClick={() => setShowSuccessPopup(false)}
+                className="w-full rounded-full bg-deep py-3 text-sm font-semibold text-deep-foreground transition-all hover:bg-primary"
+              >
+                Continue Reading
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -45,6 +45,7 @@ const directDetails = [
 function ContactForm() {
   const navigate = useNavigate();
   const [status, setStatus] = useState<"idle" | "submitting">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,16 +55,35 @@ function ContactForm() {
     consent: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.consent) {
       alert("Please accept the privacy policy consent to proceed.");
       return;
     }
     setStatus("submitting");
-    setTimeout(() => {
+    setErrorMessage(null);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || data.ok === false) {
+        throw new Error(data.error || "Failed to send your message. Please try again or email directly.");
+      }
+
+      // Success: redirect to thank you page
       navigate({ to: "/thank-you" });
-    }, 600);
+    } catch (err: unknown) {
+      console.error("Submission error:", err);
+      setStatus("idle");
+      setErrorMessage((err as Error)?.message || "Something went wrong sending your message. Please try again.");
+    }
   };
 
   return (
@@ -176,6 +196,19 @@ function ContactForm() {
           </Link>
         </label>
       </div>
+
+      {errorMessage && (
+        <div className="rounded-lg border border-red-200 bg-red-50 p-3.5 text-xs leading-relaxed text-red-800">
+          <p className="font-semibold">Unable to send message:</p>
+          <p className="mt-1">{errorMessage}</p>
+          <p className="mt-2 text-[11px] text-red-600">
+            You can also email Rhea directly at{" "}
+            <a href="mailto:rhea@rhealigned.com" className="font-medium underline">
+              rhea@rhealigned.com
+            </a>
+          </p>
+        </div>
+      )}
 
       <button
         type="submit"
