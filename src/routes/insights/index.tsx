@@ -131,26 +131,103 @@ function Insights() {
       <section className="relative overflow-hidden border-b border-hairline bg-gradient-to-b from-background via-background to-sand/25">
         <Arc
           core={false}
-          className="pointer-events-none absolute -right-36 top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 opacity-25 lg:block"
+          className="pointer-events-none absolute -right-36 top-1/2 hidden h-[32rem] w-[32rem] -translate-y-1/2 opacity-20 lg:block"
         />
-        <div className="shell relative pb-14 pt-14 lg:pt-20">
-          <Reveal>
-            <span className="eyebrow">The Leadership Journal</span>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <h1 className="mt-4 max-w-[22ch] text-[clamp(2.1rem,3.8vw,3.2rem)] font-bold leading-[1.08] tracking-tight text-foreground">
-              Practical insights on leadership, mindset, and cognitive clarity.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <p className="mt-5 max-w-[56ch] text-[16px] leading-relaxed text-muted-foreground">
-              Drawn from 14+ years of global HR leadership and 500+ hours of executive coaching. No
-              corporate jargon: actionable frameworks to operate at your peak.
-            </p>
-          </Reveal>
+        <div className="shell relative pb-12 pt-12 lg:pb-16 lg:pt-16">
+          <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            {/* Left Column: Title & Publication Context */}
+            <div>
+              <Reveal>
+                <span className="eyebrow">The Leadership Journal</span>
+              </Reveal>
+              <Reveal delay={0.06}>
+                <h1 className="mt-4 text-[clamp(2.1rem,3.4vw,3.1rem)] font-bold leading-[1.1] tracking-tight text-foreground">
+                  Practical insights on leadership, mindset, and cognitive clarity.
+                </h1>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <p className="mt-5 max-w-[54ch] text-[15.5px] leading-relaxed text-muted-foreground">
+                  Drawn from 14+ years of global HR leadership and 500+ hours of executive coaching.
+                  No corporate jargon: actionable frameworks to operate at your peak.
+                </p>
+              </Reveal>
+
+              {/* Journal Metrics & Pillars */}
+              <Reveal delay={0.18} className="mt-8 flex flex-wrap items-center gap-3 text-xs font-semibold">
+                <div className="flex items-center gap-2 rounded-full border border-hairline bg-card px-3.5 py-1.5 text-foreground shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span>16 Leadership Essays</span>
+                </div>
+                <div className="flex items-center gap-2 rounded-full border border-hairline bg-card px-3.5 py-1.5 text-foreground shadow-sm">
+                  <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
+                  <span>4 Cognitive Pillars</span>
+                </div>
+                <div className="flex items-center gap-2 rounded-full border border-hairline bg-card px-3.5 py-1.5 text-muted-foreground">
+                  <span>500+ Hours Coaching Practice</span>
+                </div>
+              </Reveal>
+            </div>
+
+            {/* Right Column: Featured Insight Spotlight Card */}
+            {featuredArticle && (
+              <Reveal delay={0.14}>
+                <div className="relative">
+                  <Link
+                    to="/insights/$slug"
+                    params={{ slug: featuredArticle.slug }}
+                    className="group relative block overflow-hidden rounded-2xl border border-hairline bg-card p-5 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-2xl"
+                  >
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-sand">
+                      <img
+                        src={featuredArticle.image}
+                        alt={featuredArticle.title}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute left-3 top-3 flex items-center gap-2">
+                        <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground shadow">
+                          Featured Insight
+                        </span>
+                        <span className="rounded-full bg-deep/80 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+                          {featuredArticle.category}
+                        </span>
+                      </div>
+                      <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 rounded-full bg-background/90 px-2.5 py-1 text-[11px] font-medium text-foreground shadow backdrop-blur-sm">
+                        <span>{featuredArticle.readTime}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <h2 className="text-xl font-bold leading-snug tracking-tight text-foreground transition-colors group-hover:text-primary">
+                        {featuredArticle.title}
+                      </h2>
+                      <p className="mt-2 line-clamp-2 text-[13.5px] leading-relaxed text-muted-foreground">
+                        {featuredArticle.excerpt}
+                      </p>
+
+                      <div className="mt-4 flex items-center justify-between border-t border-hairline pt-3">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <img
+                            src={rheaPortrait}
+                            alt="Rhea Bulsara Sidhva"
+                            className="h-5 w-5 rounded-full object-cover"
+                          />
+                          <span className="font-medium text-foreground/80">Rhea Bulsara Sidhva</span>
+                          <span>·</span>
+                          <span>{featuredArticle.date}</span>
+                        </div>
+                        <span className="text-xs font-bold text-primary group-hover:translate-x-1 transition-transform">
+                          Read full article →
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
+            )}
+          </div>
 
           {/* Search and Category Filter Bar */}
-          <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-12 flex flex-col gap-5 border-t border-hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
             {/* Category tabs */}
             <div className="flex flex-wrap items-center gap-2">
               {categories.map((cat) => (
@@ -191,71 +268,6 @@ function Insights() {
           </div>
         </div>
       </section>
-
-      {/* Featured Lead Article Banner (shown when no specific search is active) */}
-      {!searchQuery && selectedCategory === "All" && featuredArticle && (
-        <section className="border-b border-hairline bg-card py-12">
-          <div className="shell">
-            <Reveal>
-              <Link
-                to="/insights/$slug"
-                params={{ slug: featuredArticle.slug }}
-                className="group grid gap-8 overflow-hidden rounded-2xl border border-hairline bg-background p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-xl lg:grid-cols-2 lg:items-center lg:p-8"
-              >
-                <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-sand">
-                  <img
-                    src={featuredArticle.image}
-                    alt={featuredArticle.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground shadow-md">
-                    Featured Article
-                  </span>
-                  {/* RheAligned signature brand Arc motif */}
-                  <div className="pointer-events-none absolute -bottom-10 -right-10 h-36 w-36 opacity-35 transition-opacity duration-300 group-hover:opacity-70">
-                    <Arc className="h-full w-full text-white" tone="light" drift={false} />
-                  </div>
-                  {/* RheAligned discreet brand badge */}
-                  <div className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-deep/75 px-2.5 py-1 text-[11px] font-medium tracking-wider text-white shadow-sm backdrop-blur-sm">
-                    <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
-                    <span>RheAligned</span>
-                  </div>
-                </div>
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-wider text-primary">
-                      <span>{featuredArticle.category}</span>
-                      <span>·</span>
-                      <span className="text-muted-foreground">{featuredArticle.readTime}</span>
-                    </div>
-                    <h2 className="mt-3 text-2xl font-bold tracking-tight text-foreground transition-colors group-hover:text-primary sm:text-3xl">
-                      {featuredArticle.title}
-                    </h2>
-                    <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground">
-                      {featuredArticle.excerpt}
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center justify-between border-t border-hairline pt-4">
-                    <div className="flex items-center gap-2.5 text-xs text-muted-foreground">
-                      <img
-                        src={rheaPortrait}
-                        alt="Rhea Bulsara Sidhva"
-                        className="h-6 w-6 rounded-full object-cover"
-                      />
-                      <span>Rhea Bulsara Sidhva</span>
-                      <span>·</span>
-                      <span>{featuredArticle.date}</span>
-                    </div>
-                    <span className="text-xs font-bold text-primary group-hover:translate-x-1 transition-transform">
-                      Read full article →
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </Reveal>
-          </div>
-        </section>
-      )}
 
       {/* Main Blog Post Grid */}
       <section className="section-y border-b border-hairline">
