@@ -508,10 +508,18 @@ function ClientOutcomes({ testimonials }: { testimonials: Testimonial[] }) {
 
   return (
     <section className="relative overflow-hidden section-y border-b border-hairline bg-sand/30">
+      {/* Signature brand concentric circles in background */}
+      <Arc
+        core={true}
+        drift={true}
+        className="pointer-events-none absolute -right-16 -top-16 sm:-right-20 sm:-top-20 lg:-right-8 lg:-top-12 h-80 w-80 sm:h-96 sm:w-96 lg:h-[34rem] lg:w-[34rem] opacity-55"
+      />
       <Arc
         core={false}
-        className="pointer-events-none absolute -right-24 -top-24 hidden h-80 w-80 opacity-25 lg:block"
+        drift={false}
+        className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 opacity-25"
       />
+
       <div className="shell relative">
         <Reveal>
           <span className="eyebrow">Outcomes</span>
@@ -527,12 +535,45 @@ function ClientOutcomes({ testimonials }: { testimonials: Testimonial[] }) {
               delay={idx * 0.05}
               className={`panel bg-card p-6 shadow-sm ${idx === 4 ? "sm:col-span-2 lg:col-span-1" : ""}`}
             >
-              <div className="flex items-start gap-3">
-                <span className="mt-0.5 text-primary font-bold">✓</span>
+              <div className="flex items-start gap-3.5">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-[11px] font-bold text-primary">
+                  ✓
+                </span>
                 <p className="text-[15px] leading-relaxed text-foreground/90 font-medium">{outcome}</p>
               </div>
             </Reveal>
           ))}
+
+          {/* 6th Slot — Brand Design Element with Signature Concentric Circles */}
+          <Reveal
+            delay={0.25}
+            className="panel relative hidden lg:flex flex-col justify-between overflow-hidden border border-primary/20 bg-gradient-to-br from-primary/[0.07] via-card to-card p-6 shadow-sm"
+          >
+            <Arc
+              core={true}
+              drift={true}
+              className="pointer-events-none absolute -right-8 -bottom-8 h-36 w-36 opacity-45"
+            />
+            <div className="relative z-10">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
+                  The Shift
+                </span>
+              </div>
+              <p className="mt-2.5 text-[14.5px] font-medium leading-relaxed text-foreground/90">
+                Moving from internal friction to deliberate, grounded clarity under pressure.
+              </p>
+            </div>
+            <div className="relative z-10 mt-4 flex items-center justify-between border-t border-hairline/80 pt-3">
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                Measurable Impact
+              </span>
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[11px] font-bold text-primary">
+                ✓
+              </span>
+            </div>
+          </Reveal>
         </div>
 
         <div className="mt-12">
