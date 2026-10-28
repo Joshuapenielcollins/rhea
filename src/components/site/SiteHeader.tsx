@@ -51,10 +51,11 @@ export function SiteHeader() {
           className="hidden items-center gap-1 rounded-full border border-hairline bg-card/70 px-2 py-1.5 backdrop-blur lg:flex"
           aria-label="Primary"
         >
-          {nav.slice(1).map((item) => (
+          {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
+              activeOptions={{ exact: item.to === "/" }}
               activeProps={{ "data-active": "true" }}
               className="rounded-full px-3.5 py-1.5 text-[13.5px] font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground data-[active=true]:bg-secondary data-[active=true]:text-foreground"
             >
