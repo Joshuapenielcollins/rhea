@@ -320,7 +320,8 @@ function About() {
               {/* Pattern 1 — The Expectation Trap */}
               <Reveal delay={0.06} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                  {patterns[0].diagram}
+                  <h3 className="mt-6 text-xl font-bold tracking-tight text-foreground">
                     The Expectation Trap
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
@@ -336,7 +337,8 @@ function About() {
               {/* Pattern 2 — The Idolism Loop */}
               <Reveal delay={0.12} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
                 <div>
-                  <div>
+                  {patterns[1].diagram}
+                  <div className="mt-6">
                     <h3 className="text-xl font-bold tracking-tight text-foreground">
                       The Idolism Loop
                     </h3>
@@ -357,7 +359,8 @@ function About() {
               {/* Pattern 3 — The Negative Narration Spiral */}
               <Reveal delay={0.18} className="panel flex flex-col justify-between rounded-2xl bg-card p-8 shadow-sm">
                 <div>
-                  <h3 className="text-xl font-bold tracking-tight text-foreground">
+                  {patterns[2].diagram}
+                  <h3 className="mt-6 text-xl font-bold tracking-tight text-foreground">
                     The Negative Narration Spiral
                   </h3>
                   <p className="mt-4 text-[14.5px] leading-relaxed text-foreground/85">
@@ -444,26 +447,6 @@ function About() {
           </div>
           <div className="mx-auto aspect-square w-full max-w-[420px]">
             <MethodStage index={stage} />
-          </div>
-        </div>
-      </section>
-
-      {/* The Three Patterns */}
-      <section className="section-y border-b border-hairline bg-sand/20">
-        <div className="shell">
-          <Reveal>
-            <span className="eyebrow">The three patterns</span>
-          </Reveal>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {patterns.map((p, i) => (
-              <Reveal key={p.name} delay={i * 0.08} className="panel panel-hover bg-card">
-                {p.diagram}
-                <h2 className="mt-6 text-xl font-semibold tracking-tight leading-snug">{p.name}</h2>
-                <p className="mt-4 max-w-[38ch] text-[15px] leading-relaxed text-muted-foreground">
-                  {p.definition}
-                </p>
-              </Reveal>
-            ))}
           </div>
         </div>
       </section>
