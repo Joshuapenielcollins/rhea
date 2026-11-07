@@ -107,9 +107,20 @@ export function SiteFooter() {
       </div>
 
       {/* Copyright Bar */}
-      <div className="shell relative flex flex-wrap items-center justify-between gap-4 border-t border-deep-foreground/20 py-5 text-xs text-deep-foreground/85">
+      <div className="shell relative flex flex-col items-center justify-between gap-4 border-t border-deep-foreground/20 py-5 text-xs text-deep-foreground/85 md:flex-row">
         <span>© {new Date().getFullYear()} RheAligned. All rights reserved.</span>
-        <div className="flex items-center gap-4">
+        <p className="text-center text-xs text-deep-foreground/75 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+          Designed by{" "}
+          <a
+            href="https://elvtera.com/solutions/launch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-deep-foreground/90 underline underline-offset-4 decoration-deep-foreground/30 transition-colors hover:text-teal-200 hover:decoration-teal-200 focus:outline-none focus:underline"
+          >
+            Elvtera
+          </a>
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-4">
           <Link to="/privacy-policy" className="inline-flex items-center py-1 hover:text-white">
             Privacy Policy
           </Link>
